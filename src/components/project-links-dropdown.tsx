@@ -84,10 +84,7 @@ export default function ProjectLinksDropdown({ project }: ProjectLinksDropdownPr
     if (projectLinks.length === 0) return null;
 
     return (
-        <div
-            ref={containerRef}
-            className="relative shrink-0"
-        >
+        <div ref={containerRef} className="relative shrink-0">
             <style>{`
                 @keyframes linksGlow {
                     0% {
@@ -119,10 +116,8 @@ export default function ProjectLinksDropdown({ project }: ProjectLinksDropdownPr
             {/* Vertical Dropdown Tray */}
             <div
                 className={cn(
-                    "absolute right-0 top-full mt-2 flex flex-col gap-2 bg-background/95 backdrop-blur-md border border-muted p-2 rounded-xl shadow-lg transition-all duration-200 z-50 min-w-[160px]",
-                    isOpen
-                        ? "opacity-100 translate-y-0 pointer-events-auto"
-                        : "opacity-0 translate-y-2 pointer-events-none"
+                    "absolute right-0 top-full mt-2 flex flex-col gap-2 bg-background/95 backdrop-blur-md border border-muted p-2 rounded-xl shadow-lg transition-all duration-200 z-50 min-w-40",
+                    isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none",
                 )}
             >
                 {projectLinks.map((link) => (
@@ -134,7 +129,7 @@ export default function ProjectLinksDropdown({ project }: ProjectLinksDropdownPr
                             className={cn(
                                 buttonVariants({ variant: "outline", size: "sm" }),
                                 "flex items-center gap-1.5 border border-muted bg-background/50 text-foreground/80 hover:text-foreground hover:bg-accent/50 transition-all duration-200 shadow-xs rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer w-full justify-start",
-                                link.colorClass
+                                link.colorClass,
                             )}
                         >
                             <link.icon className="h-3.5 w-3.5" />

@@ -1,6 +1,5 @@
 import { getMainNav } from "@/components/config/routes";
 import { MainNav } from "@/components/main-nav";
-// import { ModeToggle } from "@/components/mode-toggle";
 import NavRightMenu from "@/components/nav-right-menu";
 import { PremiumFooter } from "@/components/premium-footer";
 
@@ -13,9 +12,6 @@ export default async function MarketingLayout({ children }: { children: React.Re
                 <header className="container z-50 bg-background mx-auto">
                     <div className="flex h-20 items-center justify-between py-6">
                         <MainNav items={mainNav} />
-                        {/* <nav className="flex items-center gap-4">
-                            <ModeToggle />
-                        </nav> */}
                         <NavRightMenu></NavRightMenu>
                     </div>
                 </header>

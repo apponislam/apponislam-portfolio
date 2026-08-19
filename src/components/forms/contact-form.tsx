@@ -93,9 +93,6 @@ const ContactForm = () => {
                             <FormControl>
                                 <Input placeholder="Enter your name" {...field} />
                             </FormControl>
-                            {/* <FormDescription>
-                                This is your public display name.
-                            </FormDescription> */}
                             <FormMessage />
                         </FormItem>
                     )}
@@ -135,9 +132,6 @@ const ContactForm = () => {
                             <FormControl>
                                 <Input placeholder="Link for social account" {...field} />
                             </FormControl>
-                            {/* <FormDescription>
-                                This is your public display name.
-                            </FormDescription> */}
                             <FormMessage />
                         </FormItem>
                     )}

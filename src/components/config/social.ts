@@ -30,6 +30,6 @@ export const SocialLinks: SocialInterface[] = [
         name: "Gmail",
         username: "apponislam",
         icon: Icons.gmail,
-        link: "mailto:11appon11@gmail.com",
+        link: "mailto:apponislamdev@gmail.com",
     },
 ];

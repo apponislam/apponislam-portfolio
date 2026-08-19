@@ -4,10 +4,9 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
-import { cn, formatDate, optimizeCloudinaryUrl } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import apponislam from "../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
-import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
 import { Projects, ProjectsInterface } from "@/components/config/projects";
 import { Metadata } from "next";
@@ -66,7 +65,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto">
-            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "absolute left-[-200px] top-14 hidden xl:inline-flex")}>
+            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "absolute -left-50 top-14 hidden xl:inline-flex")}>
                 <Icons.chevronLeft className="mr-2 h-4 w-4" />
                 All Projects
             </Link>

@@ -58,12 +58,12 @@ const ProjectsPage = () => {
         <>
             <PageHeader title={pagesConfig.projects.title} description={pagesConfig.projects.description} />
             <Tabs defaultValue="all" className="w-full">
-                <TabsList className="conatiner grid max-w-[30rem] grid-cols-3">
+                <TabsList className="conatiner grid max-w-120 grid-cols-3">
                     <TabsTrigger value="all">All</TabsTrigger>
                     <TabsTrigger value="personal">Personal</TabsTrigger>
                     <TabsTrigger value="professional">Professional</TabsTrigger>
                 </TabsList>
-                <div className="2xl:w-[1336px] mx-auto">
+                <div className="2xl:w-334 mx-auto">
                     <TabsContent value="all" className="w-full">
                         {renderContent("all")}
                     </TabsContent>

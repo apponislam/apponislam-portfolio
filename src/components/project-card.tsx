@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     return (
         <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-transparent dark:border-gray-700" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-            <div className="relative w-full h-[200px]">
+            <div className="relative w-full h-50">
                 <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt="img" fill />
                 {/* <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
             </div>
@@ -50,9 +50,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </div>
             <div className="absolute bottom-4 right-4">
                 <CustomTooltip text={project.type} icon={project.type === "Personal Project" ? Icons.userFill : Icons.work}>
-                    <div className="dark:border-gray-700 p-3 rounded-full bg-white border dark:bg-gray-950 border-gray-200 cursor-help select-none">
-                        {project.type === "Personal Project" ? <Icons.userFill className="h-4 w-4" /> : <Icons.work className="h-4 w-4" />}
-                    </div>
+                    <div className="dark:border-gray-700 p-3 rounded-full bg-white border dark:bg-gray-950 border-gray-200 cursor-help select-none">{project.type === "Personal Project" ? <Icons.userFill className="h-4 w-4" /> : <Icons.work className="h-4 w-4" />}</div>
                 </CustomTooltip>
             </div>
         </div>

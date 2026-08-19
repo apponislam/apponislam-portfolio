@@ -93,7 +93,7 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
         e.preventDefault();
         setPosition({
             x: e.clientX - dragStart.x,
-            y: e.clientY - dragStart.y
+            y: e.clientY - dragStart.y,
         });
     };
 
@@ -118,7 +118,7 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
                 <Image src={optimizeCloudinaryUrl(images[currentIndex], 1000)} alt={`${companyName} Screenshot ${currentIndex + 1}`} fill className="object-cover select-none" priority />
 
                 {/* Gradient Overlay for Controls */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 {/* Index Indicator Badge */}
                 <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs px-2.5 py-1 rounded-full font-medium select-none pointer-events-none z-10">
@@ -155,7 +155,12 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
             {images.length > 1 && (
                 <div className="flex justify-center gap-1.5 mt-3 select-none">
                     {images.map((_, index) => (
-                        <button key={index} onClick={() => setCurrentIndex(index)} className={cn("h-1.5 rounded-full transition-all duration-300 cursor-pointer", index === currentIndex ? "w-6 bg-foreground" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/60")} aria-label={`Go to slide ${index + 1}`} />
+                        <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={cn("h-1.5 rounded-full transition-all duration-300 cursor-pointer", index === currentIndex ? "w-6 bg-foreground" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/60")}
+                            aria-label={`Go to slide ${index + 1}`}
+                        />
                     ))}
                 </div>
             )}
@@ -172,7 +177,7 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
                     <div className="h-10 w-full select-none" />
 
                     {/* Lightbox Slider Display */}
-                    <div 
+                    <div
                         className="relative w-[95vw] h-[65vh] md:h-[75vh] rounded-lg overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200 select-none"
                         onClick={(e) => e.stopPropagation()}
                         onWheel={handleWheel}
@@ -185,12 +190,12 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
                             cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in",
                         }}
                     >
-                        <Image 
-                            src={optimizeCloudinaryUrl(images[lightboxIndex], 1920)} 
-                            alt={`${companyName} Fullscreen ${lightboxIndex + 1}`} 
-                            fill 
-                            className="object-contain select-none pointer-events-none" 
-                            sizes="95vw" 
+                        <Image
+                            src={optimizeCloudinaryUrl(images[lightboxIndex], 1920)}
+                            alt={`${companyName} Fullscreen ${lightboxIndex + 1}`}
+                            fill
+                            className="object-contain select-none pointer-events-none"
+                            sizes="95vw"
                             style={{
                                 transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                                 transition: isDragging ? "none" : "transform 0.15s ease-out",
@@ -202,10 +207,18 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
                     {/* Lightbox Navigation Buttons */}
                     {images.length > 1 && (
                         <>
-                            <button onClick={handleLightboxPrev} className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer z-50 animate-in slide-in-from-left-4" aria-label="Previous image">
+                            <button
+                                onClick={handleLightboxPrev}
+                                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer z-50 animate-in slide-in-from-left-4"
+                                aria-label="Previous image"
+                            >
                                 <Icons.chevronLeft className="w-6 h-6" />
                             </button>
-                            <button onClick={handleLightboxNext} className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer z-50 animate-in slide-in-from-right-4" aria-label="Next image">
+                            <button
+                                onClick={handleLightboxNext}
+                                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer z-50 animate-in slide-in-from-right-4"
+                                aria-label="Next image"
+                            >
                                 <Icons.chevronRight className="w-6 h-6" />
                             </button>
                         </>
@@ -225,7 +238,10 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
                                     <button
                                         key={idx}
                                         onClick={() => setLightboxIndex(idx)}
-                                        className={cn("relative w-20 aspect-video rounded-md overflow-hidden border-2 transition-all duration-200 cursor-pointer shrink-0", idx === lightboxIndex ? "border-emerald-500 scale-105 opacity-100 shadow-md shadow-emerald-500/20" : "border-white/10 opacity-40 hover:opacity-80")}
+                                        className={cn(
+                                            "relative w-20 aspect-video rounded-md overflow-hidden border-2 transition-all duration-200 cursor-pointer shrink-0",
+                                            idx === lightboxIndex ? "border-emerald-500 scale-105 opacity-100 shadow-md shadow-emerald-500/20" : "border-white/10 opacity-40 hover:opacity-80",
+                                        )}
                                         aria-label={`View image ${idx + 1}`}
                                     >
                                         <Image src={optimizeCloudinaryUrl(img, 200)} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />
