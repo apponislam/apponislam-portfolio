@@ -1,7 +1,8 @@
 export const siteConfig: any = {
     name: "Appon Islam",
-    description: "An open source application built using the new router, server components and everything new in Next.js 13.",
-    url: "https://4ppon.com",
+    title: "Appon Islam | Full Stack Developer & Software Engineer",
+    description: "Full Stack Developer specializing in building modern web applications with Next.js, React, TypeScript, and Node.js.",
+    url: "https://www.apponislam.com",
     ogImage: "https://i.ibb.co.com/g3gCBzP/apclassroom.jpg",
     links: {
         twitter: "https://twitter.com/appon2003",
