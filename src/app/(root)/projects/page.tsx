@@ -15,7 +15,7 @@ function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivE
 
 export const metadata: Metadata = {
     title: "Projects",
-    description: "Examples of cards built using the components.",
+    description: "Explore my portfolio of web applications, open-source projects, and professional software developments built with Next.js, React, Node.js, and TypeScript.",
 };
 
 const renderContent = async (tabVal: string) => {

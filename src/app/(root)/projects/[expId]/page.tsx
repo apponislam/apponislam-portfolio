@@ -9,6 +9,7 @@ import apponislam from "../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import ProjectsDescription from "@/components/exp-desc";
 import { Projects, ProjectsInterface } from "@/components/config/projects";
+import { siteConfig } from "@/components/config/site";
 import { Metadata } from "next";
 import ProjectLinksDropdown from "@/components/project-links-dropdown";
 import ProjectImageSlider from "@/components/project-image-slider";
@@ -33,9 +34,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
+    const ogImage = post.images && post.images.length > 0 ? post.images[0] : siteConfig.ogImage;
+
     return {
         title: post.companyName,
         description: post.shortDescription,
+        alternates: {
+            canonical: `${siteConfig.url}/projects/${post._id}`,
+        },
+        openGraph: {
+            title: `${post.companyName} | Appon Islam Portfolio`,
+            description: post.shortDescription,
+            url: `${siteConfig.url}/projects/${post._id}`,
+            images: [
+                {
+                    url: ogImage,
+                    width: 1200,
+                    height: 630,
+                    alt: post.companyName,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${post.companyName} | Appon Islam Portfolio`,
+            description: post.shortDescription,
+            images: [ogImage],
+        },
     };
 }
 

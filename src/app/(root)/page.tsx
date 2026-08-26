@@ -18,7 +18,7 @@ export default function Home() {
                 <section className="space-y-6 pb-8 pt-6 mb-0 md:pb-12 md:py-20 lg:py-32 h-screen flex items-center justify-center">
                     <div className="container flex max-w-5xl flex-col items-center gap-4 text-center -mt-20 mx-auto">
                         <div className="relative w-full">
-                            <Image src={apponislam} height={100} width={100} sizes="100vw" className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary dark:border-white dark:bg-white mx-auto" alt="appon-islam-img" />
+                            <Image src={apponislam} height={100} width={100} priority fetchPriority="high" sizes="(max-width: 768px) 160px, 256px" className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary dark:border-white dark:bg-white mx-auto" alt="appon-islam-img" />
                             {siteConfig.showStatus && (
                                 <div className="absolute top-2 left-1/2 translate-x-[15%] md:translate-x-[25%] flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 dark:bg-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.4)] text-[11px] md:text-xs font-bold text-white transition-all duration-300 hover:scale-105">
                                     <span className="relative flex h-2 w-2">

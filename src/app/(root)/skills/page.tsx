@@ -5,8 +5,8 @@ import { getSkills } from "@/components/actions/skill-actions";
 import SkillsCard from "@/components/skills-card";
 
 export const metadata: Metadata = {
-    title: "Skills",
-    description: "View my technical skills and proficiencies.",
+    title: "Skills & Experience",
+    description: "Discover Appon Islam's core competencies, technologies, frameworks, and full-stack development skill set.",
 };
 
 import { skillsInterface } from "@/components/config/skills";
