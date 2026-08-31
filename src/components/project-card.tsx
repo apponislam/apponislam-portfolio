@@ -23,13 +23,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     }, []);
 
     return (
-        <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-transparent dark:border-gray-700" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-            <div className="relative w-full h-50">
-                <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt="img" fill />
-                {/* <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
+        <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-transparent dark:border-gray-700 flex flex-col h-full justify-between" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+            <div className="relative w-full h-50 shrink-0">
+                <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt="img" fill />
+                {/* <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
             </div>
-            <div className="pt-5 space-y-3">
-                <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{project.companyName}</h5>
+            <div className="pt-5 space-y-3 flex-1 flex flex-col">
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{project.companyName}</h5>
                 <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400">{project.shortDescription}</p>
                 <div className="flex gap-2 flex-wrap">
                     <ChipContainer textArr={project.category} />
@@ -41,12 +41,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                         </Badge>
                     ))}
                 </div>
-                <Link href={`/projects/${project._id}`}>
-                    <Button variant={"default"} className="mt-2">
-                        Read more
-                        <Icons.chevronRight className="w-4 ml-1" />
-                    </Button>
-                </Link>
+                <div className="mt-auto pt-3">
+                    <Link href={`/projects/${project._id}`}>
+                        <Button variant={"default"}>
+                            Read more
+                            <Icons.chevronRight className="w-4 ml-1" />
+                        </Button>
+                    </Link>
+                </div>
             </div>
             <div className="absolute bottom-4 right-4">
                 <CustomTooltip text={project.type} icon={project.type === "Personal Project" ? Icons.userFill : Icons.work}>
