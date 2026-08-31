@@ -7,6 +7,16 @@ export interface ResumeItem {
     description: string[];
 }
 
+export interface CertificateItem {
+    id: string;
+    title: string;
+    issuer: string;
+    issueDate: string;
+    credentialUrl?: string;
+    isOngoing?: boolean;
+    description: string[];
+}
+
 export const experienceData: ResumeItem[] = [
     {
         id: "exp-1",
@@ -43,6 +53,42 @@ export const educationData: ResumeItem[] = [
         description: [
             "Graduated with a focus on Computer Technology, Network Administration, and core software engineering concepts.",
             "Engaged in practical projects involving system administration, database creation, and software development."
+        ]
+    }
+];
+
+export const certificatesData: CertificateItem[] = [
+    {
+        id: "cert-1",
+        title: "Complete Web Development Course",
+        issuer: "Programming Hero",
+        issueDate: "2024",
+        credentialUrl: "https://web.programming-hero.com",
+        description: [
+            "Comprehensive training covering modern JavaScript, React, Node.js, Express, and MongoDB.",
+            "Built multiple full-stack production-ready applications with clean code and industry standards."
+        ]
+    },
+    {
+        id: "cert-2",
+        title: "Next Level Web Development",
+        issuer: "Programming Hero",
+        issueDate: "2025",
+        credentialUrl: "https://next.programming-hero.com/",
+        description: [
+            "Advanced web engineering focusing on TypeScript, Next.js, Redux Toolkit, PostgreSQL, Prisma/Mongoose, and microservices architecture.",
+            "Mastered enterprise-level application design, performance optimization, and scalable backend implementations."
+        ]
+    },
+    {
+        id: "cert-3",
+        title: "Computer Science & Fundamentals",
+        issuer: "Phitron",
+        issueDate: "Ongoing",
+        isOngoing: true,
+        credentialUrl: "https://phitron.io/",
+        description: [
+            "In-depth learning of Data Structures & Algorithms, C++, Object-Oriented Programming (OOP), Software Engineering principles, and Problem Solving."
         ]
     }
 ];

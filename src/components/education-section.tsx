@@ -8,7 +8,7 @@ import { educationData } from "@/data/resume";
 
 export function EducationSection() {
     return (
-        <div className="space-y-6" data-aos="fade-left">
+        <div className="space-y-6" data-aos="fade-up">
             <div className="flex items-center gap-3 border-b pb-4 border-border/60">
                 <div className="p-2 rounded-lg bg-primary/5 text-primary">
                     <Icons.education className="h-6 w-6" />
