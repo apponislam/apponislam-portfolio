@@ -48,34 +48,32 @@ const ContactForm = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const formData = new URLSearchParams();
-            formData.append(GOOGLE_FORM_ENTRY_IDS.name, values.name);
-            formData.append(GOOGLE_FORM_ENTRY_IDS.email, values.email);
-            formData.append(GOOGLE_FORM_ENTRY_IDS.message, values.message);
-            formData.append(GOOGLE_FORM_ENTRY_IDS.social, values.social || "");
-
-            // Send POST request to Google Form
-            const response = await fetch(GOOGLE_FORM_URL, {
+            const response = await fetch("/api/contact", {
                 method: "POST",
-                body: formData,
-                mode: "no-cors", // required to avoid CORS issues
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
             });
 
-            console.log(response);
-            console.log("Form submitted successfully:", values);
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(data.error || "Failed to send message");
+            }
 
             // Show success message
             form.reset();
             storeModal.onOpen({
-                title: "Thankyou!",
+                title: "Thank you!",
                 description: "Your message has been received! I appreciate your contact and will get back to you shortly.",
                 icon: Icons.successAnimated,
             });
         } catch (err) {
-            console.log("Err!", err);
+            console.error("Error submitting contact form:", err);
             storeModal.onOpen({
                 title: "Oops!",
-                description: "Your message send failed.",
+                description: "Your message sending failed. Please try again.",
                 icon: Icons.failedAnimated,
             });
         }

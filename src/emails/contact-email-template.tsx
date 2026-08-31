@@ -5,9 +5,10 @@ interface ContactEmailTemplateProps {
     email: string;
     message: string;
     social?: string;
+    replyUrl?: string;
 }
 
-export const ContactEmailTemplate: React.FC<ContactEmailTemplateProps> = ({ name, email, message, social }) => (
+export const ContactEmailTemplate: React.FC<ContactEmailTemplateProps> = ({ name, email, message, social, replyUrl }) => (
     <div
         style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
@@ -111,7 +112,7 @@ export const ContactEmailTemplate: React.FC<ContactEmailTemplateProps> = ({ name
                 {/* Reply CTA */}
                 <div style={{ textAlign: "center", paddingTop: "8px" }}>
                     <a
-                        href={`mailto:${email}`}
+                        href={replyUrl || `mailto:${email}`}
                         style={{
                             display: "inline-block",
                             backgroundColor: "#ffffff",
