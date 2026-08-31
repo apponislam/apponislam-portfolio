@@ -19,13 +19,19 @@ export async function GET(
         }
 
         await connectToDatabase();
-        const contact = await Contact.findById(id).lean();
+        let contact = await Contact.findById(id);
 
         if (!contact) {
             return NextResponse.json(
                 { success: false, error: "Contact not found" },
                 { status: 404 }
             );
+        }
+
+        // Auto update status from "unread" to "read" upon admin viewing
+        if (contact.status === "unread") {
+            contact.status = "read";
+            await contact.save();
         }
 
         return NextResponse.json({

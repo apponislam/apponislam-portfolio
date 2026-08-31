@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/icons";
+import { Pagination } from "@/components/pagination";
 
 interface ContactItem {
     _id: string;
@@ -33,9 +34,10 @@ export default function AdminContactsPage() {
     const [pagination, setPagination] = useState<PaginationMeta | null>(null);
     const [page, setPage] = useState(1);
     const [search, setSearch] = useState("");
+    const [statusFilter, setStatusFilter] = useState<string>("all");
     const [loading, setLoading] = useState(true);
 
-    const fetchContacts = async (currentPage: number, searchQuery: string) => {
+    const fetchContacts = async (currentPage: number, searchQuery: string, statusQuery: string) => {
         setLoading(true);
         try {
             const queryParams = new URLSearchParams({
@@ -44,6 +46,9 @@ export default function AdminContactsPage() {
             });
             if (searchQuery.trim()) {
                 queryParams.set("search", searchQuery.trim());
+            }
+            if (statusQuery && statusQuery !== "all") {
+                queryParams.set("status", statusQuery);
             }
             const res = await fetch(`/api/admin/contacts?${queryParams.toString()}`);
             const data = await res.json();
@@ -59,17 +64,22 @@ export default function AdminContactsPage() {
     };
 
     useEffect(() => {
-        fetchContacts(page, search);
-    }, [page]);
+        fetchContacts(page, search, statusFilter);
+    }, [page, statusFilter]);
 
     const handleSearchSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setPage(1);
-        fetchContacts(1, search);
+        fetchContacts(1, search, statusFilter);
+    };
+
+    const handleStatusChange = (status: string) => {
+        setStatusFilter(status);
+        setPage(1);
     };
 
     return (
-        <div className="container mx-auto px-4 py-10 max-w-5xl space-y-8">
+        <div className="container mx-auto px-4 py-10 max-w-5xl space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-6 border-border/60">
                 <div>
                     <h1 className="font-heading text-3xl font-bold tracking-tight">Contact Messages</h1>
@@ -82,21 +92,44 @@ export default function AdminContactsPage() {
                 )}
             </div>
 
-            {/* Search Bar */}
-            <form onSubmit={handleSearchSubmit} className="flex gap-2 max-w-md">
-                <div className="relative flex-1">
-                    <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                        placeholder="Search by name, email, or message..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="pl-9"
-                    />
+            {/* Filter Controls: Search & Status Pills */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <form onSubmit={handleSearchSubmit} className="flex gap-2 max-w-md w-full">
+                    <div className="relative flex-1">
+                        <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input
+                            placeholder="Search by name, email, or message..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="pl-9"
+                        />
+                    </div>
+                    <Button type="submit" variant="secondary" className="gap-2">
+                        Search
+                    </Button>
+                </form>
+
+                {/* Status Filter Buttons */}
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+                    {[
+                        { label: "All", value: "all" },
+                        { label: "Unread", value: "unread" },
+                        { label: "Read", value: "read" },
+                        { label: "Replied", value: "replied" },
+                    ].map((tab) => (
+                        <Button
+                            key={tab.value}
+                            type="button"
+                            size="sm"
+                            variant={statusFilter === tab.value ? "default" : "outline"}
+                            onClick={() => handleStatusChange(tab.value)}
+                            className="text-xs capitalize h-8 px-3 rounded-full font-medium"
+                        >
+                            {tab.label}
+                        </Button>
+                    ))}
                 </div>
-                <Button type="submit" variant="secondary" className="gap-2">
-                    Search
-                </Button>
-            </form>
+            </div>
 
             {/* Messages List */}
             {loading ? (
@@ -184,31 +217,12 @@ export default function AdminContactsPage() {
                 </div>
             )}
 
-            {/* Pagination Controls */}
+            {/* Pagination Controls - Shown when there are more than 10 messages (totalPages > 1) */}
             {pagination && pagination.totalPages > 1 && (
-                <div className="flex items-center justify-between border-t pt-6 border-border/60">
-                    <p className="text-xs text-muted-foreground">
-                        Page {pagination.page} of {pagination.totalPages}
-                    </p>
-                    <div className="flex gap-2">
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            disabled={!pagination.hasPrevPage}
-                            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                        >
-                            <Icons.chevronLeft className="h-4 w-4 mr-1" /> Previous
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            disabled={!pagination.hasNextPage}
-                            onClick={() => setPage((prev) => prev + 1)}
-                        >
-                            Next <Icons.chevronRight className="h-4 w-4 ml-1" />
-                        </Button>
-                    </div>
-                </div>
+                <Pagination
+                    pagination={pagination}
+                    onPageChange={(p) => setPage(p)}
+                />
             )}
         </div>
     );
