@@ -1,6 +1,4 @@
-import { getMainNav } from "@/components/config/routes";
-import { MainNav } from "@/components/main-nav";
-import NavRightMenu from "@/components/nav-right-menu";
+import { AdminHeader } from "@/components/admin/AdminHeader";
 import { PremiumFooter } from "@/components/premium-footer";
 import { Metadata } from "next";
 
@@ -19,22 +17,15 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-    const mainNav = await getMainNav();
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
     return (
-        <>
-            <div className="container mx-auto">
-                <div className="mx-3 md:mx-0">
-                    <header className="container z-50 bg-background mx-auto">
-                        <div className="flex h-20 items-center justify-between py-6">
-                            <MainNav items={mainNav} />
-                            <NavRightMenu></NavRightMenu>
-                        </div>
-                    </header>
-                    {children}
-                    <PremiumFooter />
-                </div>
+        <div className="container mx-auto">
+            <div className="mx-3 md:mx-0">
+                <AdminHeader />
+                {children}
+                <PremiumFooter />
             </div>
-        </>
+        </div>
     );
 }
+
