@@ -9,7 +9,7 @@ export const siteConfig: any = {
         github: "https://github.com/apponislam",
         linkedin: "https://www.linkedin.com/in/apponislam/",
     },
-    email: "apponislam@gmail.com",
+    email: "apponislamdev@gmail.com",
     phone: "+8801722779803",
     location: "Dhaka, Bangladesh",
     showStatus: true,
