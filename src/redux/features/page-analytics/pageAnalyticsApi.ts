@@ -31,7 +31,7 @@ export const pageAnalyticsApi = baseApi.injectEndpoints({
         // Record page view (Public)
         trackPageView: builder.mutation<TResponse<TPageAnalytics>, TrackPageViewRequest>({
             query: (data) => ({
-                url: "/page-analytics",
+                url: "/page-analytics/track",
                 method: "POST",
                 body: data,
             }),
@@ -41,7 +41,7 @@ export const pageAnalyticsApi = baseApi.injectEndpoints({
         // Get page analytics stats / list (Admin)
         getAllAnalytics: builder.query<TResponse<TPageAnalytics[]>, AnalyticsQueryParams | void>({
             query: (params) => ({
-                url: "/page-analytics",
+                url: "/page-analytics/logs",
                 method: "GET",
                 params: params || {},
             }),
@@ -51,7 +51,7 @@ export const pageAnalyticsApi = baseApi.injectEndpoints({
         // Get page analytics summary (Admin)
         getAnalyticsSummary: builder.query<TResponse<any>, void>({
             query: () => ({
-                url: "/page-analytics/summary",
+                url: "/page-analytics/stats",
                 method: "GET",
             }),
             providesTags: ["PageAnalytics"],
