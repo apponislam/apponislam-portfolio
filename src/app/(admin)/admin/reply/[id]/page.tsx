@@ -1,92 +1,46 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/icons";
-
-interface ReplyItem {
-    replyMessage: string;
-    sentAt: string;
-    resendId?: string;
-}
-
-interface ContactDetails {
-    _id: string;
-    name: string;
-    email: string;
-    message: string;
-    social?: string;
-    status: string;
-    replies?: ReplyItem[];
-    createdAt: string;
-}
+import { useGetSingleContactQuery, useReplyToContactMutation } from "@/redux/features/contact/contactApi";
 
 export default function AdminReplyPage() {
     const params = useParams();
     const router = useRouter();
     const id = params.id as string;
 
-    const [contact, setContact] = useState<ContactDetails | null>(null);
+    const { data: contactResponse, isLoading: loading } = useGetSingleContactQuery(id, { skip: !id });
+    const [replyToContact, { isLoading: sending }] = useReplyToContactMutation();
+
+    const contact = contactResponse?.data;
     const [replyMessage, setReplyMessage] = useState("");
-    const [loading, setLoading] = useState(true);
-    const [sending, setSending] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-
-    const fetchContactDetails = async () => {
-        try {
-            const res = await fetch(`/api/admin/contacts/${id}`);
-            const data = await res.json();
-            if (data.success && data.data) {
-                setContact(data.data);
-            }
-        } catch (err) {
-            console.error("Failed to load message:", err);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        if (id) {
-            fetchContactDetails();
-        }
-    }, [id]);
 
     const handleSendReply = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!replyMessage.trim()) return;
 
-        setSending(true);
         setErrorMessage("");
         setSuccessMessage("");
 
         try {
-            const res = await fetch("/api/admin/reply", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contactId: id,
-                    replyMessage: replyMessage.trim(),
-                }),
-            });
+            const res = await replyToContact({
+                id,
+                replyMessage: replyMessage.trim(),
+            }).unwrap();
 
-            const data = await res.json();
-            if (!res.ok || !data.success) {
-                throw new Error(data.error || "Failed to send reply");
+            if (res.success) {
+                setSuccessMessage("Reply email sent successfully to " + (contact?.email || "sender"));
+                setReplyMessage("");
             }
-
-            setSuccessMessage("Reply email sent successfully to " + (contact?.email || "sender"));
-            setReplyMessage("");
-            fetchContactDetails();
         } catch (err: any) {
-            setErrorMessage(err.message || "Failed to send reply");
-        } finally {
-            setSending(false);
+            setErrorMessage(err?.data?.message || err?.message || "Failed to send reply");
         }
     };
 

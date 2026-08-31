@@ -3,6 +3,7 @@ import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Providers from "@/components/providers/ReduxProvider";
 import { siteConfig } from "@/components/config/site";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/utils/modal-provider";
@@ -118,12 +119,15 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
             <body suppressHydrationWarning={true} data-new-gr-c-s-check-loaded="14.1224.0" cz-shortcut-listen="true" data-gr-ext-installed="" className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
                 <script
+                    id="json-ld"
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    {children}
-                    <ModalProvider />
+                    <Providers>
+                        {children}
+                        <ModalProvider />
+                    </Providers>
                 </ThemeProvider>
             </body>
         </html>
