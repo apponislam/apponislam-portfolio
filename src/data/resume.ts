@@ -59,15 +59,15 @@ export const educationData: ResumeItem[] = [
 
 export const certificatesData: CertificateItem[] = [
     {
-        id: "cert-1",
-        title: "Complete Web Development Course",
-        issuer: "Programming Hero",
-        issueDate: "2024",
-        credentialUrl: "https://web.programming-hero.com",
+        id: "cert-3",
+        title: "Computer Science & Fundamentals",
+        issuer: "Phitron",
+        issueDate: "Ongoing",
+        isOngoing: true,
+        credentialUrl: "https://phitron.io/",
         description: [
-            "Comprehensive training covering modern JavaScript, React, Node.js, Express, and MongoDB.",
-            "Built multiple full-stack production-ready applications with clean code and industry standards."
-        ]
+            "In-depth learning of Data Structures & Algorithms, C++, Object-Oriented Programming (OOP), Software Engineering principles, and Problem Solving.",
+        ],
     },
     {
         id: "cert-2",
@@ -77,18 +77,18 @@ export const certificatesData: CertificateItem[] = [
         credentialUrl: "https://next.programming-hero.com/",
         description: [
             "Advanced web engineering focusing on TypeScript, Next.js, Redux Toolkit, PostgreSQL, Prisma/Mongoose, and microservices architecture.",
-            "Mastered enterprise-level application design, performance optimization, and scalable backend implementations."
-        ]
+            "Mastered enterprise-level application design, performance optimization, and scalable backend implementations.",
+        ],
     },
     {
-        id: "cert-3",
-        title: "Computer Science & Fundamentals",
-        issuer: "Phitron",
-        issueDate: "Ongoing",
-        isOngoing: true,
-        credentialUrl: "https://phitron.io/",
+        id: "cert-1",
+        title: "Complete Web Development Course",
+        issuer: "Programming Hero",
+        issueDate: "2024",
+        credentialUrl: "https://web.programming-hero.com",
         description: [
-            "In-depth learning of Data Structures & Algorithms, C++, Object-Oriented Programming (OOP), Software Engineering principles, and Problem Solving."
-        ]
-    }
+            "Comprehensive training covering modern JavaScript, React, Node.js, Express, and MongoDB.",
+            "Built multiple full-stack production-ready applications with clean code and industry standards.",
+        ],
+    },
 ];

@@ -20,7 +20,7 @@ export function EducationSection() {
                 {educationData.map((item) => (
                     <div key={item.id} className="relative group">
                         {/* Timeline Node */}
-                        <span className="absolute -left-7.75 top-1.5 flex h-4 w-4 items-center justify-center rounded-full border border-border bg-background group-hover:border-primary group-hover:bg-primary transition-all duration-300">
+                        <span className="absolute left-[-32.5px] top-5 -translate-y-1/2 flex h-4 w-4 items-center justify-center rounded-full border border-border bg-background group-hover:border-primary group-hover:bg-primary transition-all duration-300">
                             <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground group-hover:bg-background transition-all duration-300" />
                         </span>
 
