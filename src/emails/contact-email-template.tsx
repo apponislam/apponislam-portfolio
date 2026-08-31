@@ -11,142 +11,167 @@ interface ContactEmailTemplateProps {
 export const ContactEmailTemplate: React.FC<ContactEmailTemplateProps> = ({ name, email, message, social, replyUrl }) => (
     <div
         style={{
-            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-            backgroundColor: "#09090b",
-            padding: "40px 20px",
-            color: "#f4f4f5",
+            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+            backgroundColor: "#f8fafc",
+            padding: "40px 10px",
+            color: "#0f172a",
         }}
     >
-        <div
+        <table
+            align="center"
+            border={0}
+            cellPadding={0}
+            cellSpacing={0}
+            width="100%"
             style={{
                 maxWidth: "600px",
                 margin: "0 auto",
-                backgroundColor: "#18181b",
-                borderRadius: "16px",
+                backgroundColor: "#ffffff",
+                borderRadius: "12px",
                 overflow: "hidden",
-                border: "1px solid #27272a",
+                border: "1px solid #e2e8f0",
             }}
         >
-            {/* Header */}
-            <div
-                style={{
-                    padding: "32px 28px 24px 28px",
-                    borderBottom: "1px solid #27272a",
-                }}
-            >
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    <span
-                        style={{
-                            display: "inline-block",
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            backgroundColor: "#10b981",
-                            boxShadow: "0 0 10px rgba(16, 185, 129, 0.5)",
-                        }}
-                    />
-                    <span style={{ fontSize: "12px", fontWeight: 600, color: "#10b981", textTransform: "uppercase", letterSpacing: "1px" }}>New Message Received</span>
-                </div>
-                <h1 style={{ margin: "12px 0 0 0", fontSize: "22px", fontWeight: 700, color: "#ffffff" }}>Appon Islam Portfolio</h1>
-            </div>
-
-            {/* Content Body */}
-            <div style={{ padding: "28px" }}>
-                {/* Sender Details */}
-                <div
-                    style={{
-                        backgroundColor: "#09090b",
-                        border: "1px solid #27272a",
-                        borderRadius: "12px",
-                        padding: "20px",
-                        marginBottom: "24px",
-                    }}
-                >
-                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
-                        <tbody>
-                            <tr>
-                                <td style={{ padding: "6px 0", color: "#a1a1aa", width: "90px" }}>From:</td>
-                                <td style={{ padding: "6px 0", color: "#ffffff", fontWeight: 600 }}>{name}</td>
-                            </tr>
-                            <tr>
-                                <td style={{ padding: "6px 0", color: "#a1a1aa" }}>Email:</td>
-                                <td style={{ padding: "6px 0" }}>
-                                    <a href={`mailto:${email}`} style={{ color: "#38bdf8", textDecoration: "none", fontWeight: 500 }}>
-                                        {email}
-                                    </a>
-                                </td>
-                            </tr>
-                            {social && (
+            <tbody>
+                {/* Header */}
+                <tr>
+                    <td style={{ padding: "32px 28px 24px 28px", borderBottom: "1px solid #e2e8f0" }}>
+                        <table border={0} cellPadding={0} cellSpacing={0}>
+                            <tbody>
                                 <tr>
-                                    <td style={{ padding: "6px 0", color: "#a1a1aa" }}>Social:</td>
-                                    <td style={{ padding: "6px 0" }}>
-                                        <a href={social} target="_blank" rel="noreferrer" style={{ color: "#38bdf8", textDecoration: "none" }}>
-                                            {social}
+                                    <td style={{ verticalAlign: "middle", paddingRight: "8px" }}>
+                                        <div
+                                            style={{
+                                                width: "8px",
+                                                height: "8px",
+                                                borderRadius: "50%",
+                                                backgroundColor: "#10b981",
+                                                fontSize: "0px",
+                                                lineHeight: "0px",
+                                            }}
+                                        />
+                                    </td>
+                                    <td style={{ verticalAlign: "middle" }}>
+                                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#059669", textTransform: "uppercase", letterSpacing: "1px", display: "inline-block" }}>New Message Received</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h1 style={{ margin: "10px 0 0 0", fontSize: "22px", fontWeight: 700, color: "#0f172a" }}>Appon Islam Portfolio</h1>
+                    </td>
+                </tr>
+
+                {/* Content Body */}
+                <tr>
+                    <td style={{ padding: "28px" }}>
+                        {/* Sender Details Box */}
+                        <table
+                            border={0}
+                            cellPadding={0}
+                            cellSpacing={0}
+                            width="100%"
+                            style={{
+                                backgroundColor: "#f8fafc",
+                                border: "1px solid #e2e8f0",
+                                borderRadius: "8px",
+                                padding: "16px 20px",
+                                marginBottom: "24px",
+                                fontSize: "14px",
+                            }}
+                        >
+                            <tbody>
+                                <tr>
+                                    <td style={{ padding: "4px 0", color: "#64748b", width: "80px", fontWeight: 500 }}>From:</td>
+                                    <td style={{ padding: "4px 0", color: "#0f172a", fontWeight: 600 }}>{name}</td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: "4px 0", color: "#64748b", fontWeight: 500 }}>Email:</td>
+                                    <td style={{ padding: "4px 0" }}>
+                                        <a href={`mailto:${email}`} style={{ color: "#0284c7", textDecoration: "none", fontWeight: 600 }}>
+                                            {email}
                                         </a>
                                     </td>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+                                {social && (
+                                    <tr>
+                                        <td style={{ padding: "4px 0", color: "#64748b", fontWeight: 500 }}>Link:</td>
+                                        <td style={{ padding: "4px 0" }}>
+                                            <a href={social} target="_blank" rel="noreferrer" style={{ color: "#0284c7", textDecoration: "none" }}>
+                                                {social}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
 
-                {/* Message Body */}
-                <div style={{ marginBottom: "28px" }}>
-                    <p style={{ margin: "0 0 8px 0", fontSize: "12px", fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.5px" }}>Message</p>
-                    <div
+                        {/* Message Body */}
+                        <div style={{ marginBottom: "28px" }}>
+                            <p style={{ margin: "0 0 8px 0", fontSize: "12px", fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.5px" }}>Message</p>
+                            <div
+                                style={{
+                                    backgroundColor: "#ffffff",
+                                    border: "1px solid #e2e8f0",
+                                    borderRadius: "8px",
+                                    padding: "18px 20px",
+                                    fontSize: "15px",
+                                    lineHeight: "1.6",
+                                    color: "#334155",
+                                    whiteSpace: "pre-wrap",
+                                }}
+                            >
+                                {message}
+                            </div>
+                        </div>
+
+                        {/* Reply Button */}
+                        <table border={0} cellPadding={0} cellSpacing={0} width="100%">
+                            <tbody>
+                                <tr>
+                                    <td align="center" style={{ paddingTop: "8px" }}>
+                                        <a
+                                            href={replyUrl || `mailto:${email}`}
+                                            style={{
+                                                display: "inline-block",
+                                                backgroundColor: "#0f172a",
+                                                color: "#ffffff",
+                                                padding: "12px 28px",
+                                                borderRadius: "8px",
+                                                fontWeight: 600,
+                                                fontSize: "14px",
+                                                textDecoration: "none",
+                                            }}
+                                        >
+                                            Reply to {name}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                {/* Footer */}
+                <tr>
+                    <td
                         style={{
-                            backgroundColor: "#09090b",
-                            border: "1px solid #27272a",
-                            borderRadius: "12px",
-                            padding: "20px",
-                            fontSize: "15px",
-                            lineHeight: "1.6",
-                            color: "#e4e4e7",
-                            whiteSpace: "pre-wrap",
+                            backgroundColor: "#f8fafc",
+                            padding: "18px 28px",
+                            borderTop: "1px solid #e2e8f0",
+                            textAlign: "center",
+                            fontSize: "12px",
+                            color: "#64748b",
                         }}
                     >
-                        {message}
-                    </div>
-                </div>
-
-                {/* Reply CTA */}
-                <div style={{ textAlign: "center", paddingTop: "8px" }}>
-                    <a
-                        href={replyUrl || `mailto:${email}`}
-                        style={{
-                            display: "inline-block",
-                            backgroundColor: "#ffffff",
-                            color: "#09090b",
-                            padding: "12px 32px",
-                            borderRadius: "10px",
-                            fontWeight: 600,
-                            fontSize: "14px",
-                            textDecoration: "none",
-                        }}
-                    >
-                        Reply to {name}
-                    </a>
-                </div>
-            </div>
-
-            {/* Footer */}
-            <div
-                style={{
-                    backgroundColor: "#09090b",
-                    padding: "20px 28px",
-                    borderTop: "1px solid #27272a",
-                    textAlign: "center",
-                    fontSize: "12px",
-                    color: "#71717a",
-                }}
-            >
-                <p style={{ margin: 0 }}>
-                    Received via{" "}
-                    <a href="https://www.apponislam.com" style={{ color: "#a1a1aa", textDecoration: "none" }}>
-                        apponislam.com
-                    </a>
-                </p>
-            </div>
-        </div>
+                        <p style={{ margin: 0 }}>
+                            Received via{" "}
+                            <a href="https://www.apponislam.com" style={{ color: "#0f172a", fontWeight: 600, textDecoration: "none" }}>
+                                apponislam.com
+                            </a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 );

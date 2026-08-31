@@ -3,7 +3,7 @@ import { BsInfoCircle, BsQuestionCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { HiOutlineExternalLink, HiOutlineLink, HiBriefcase } from "react-icons/hi";
-import { AlertTriangle, ArrowRight, Award, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code, Workflow, Cloud, Database } from "lucide-react";
+import { AlertTriangle, ArrowRight, Award, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code, Workflow, Cloud, Database, Search, Mail, Calendar, Reply, ExternalLink } from "lucide-react";
 import { SiAngular, SiAntdesign, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin } from "react-icons/si";
 import { IoIosGitBranch } from "react-icons/io";
 import { TbBrandFiverr } from "react-icons/tb";
@@ -70,6 +70,11 @@ export const Icons = {
     externalLink: HiOutlineExternalLink,
     star: AiFillStar,
     certificate: Award,
+    search: Search,
+    mail: Mail,
+    calendar: Calendar,
+    reply: Reply,
+    externalLinkLucide: ExternalLink,
     education: GraduationCap,
     angular: SiAngular,
     bootstrap: SiBootstrap,

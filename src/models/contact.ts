@@ -86,4 +86,32 @@ const ContactSchema = new Schema<IContact>(
     }
 );
 
+// Deep Indexing for high-performance querying, sorting & filtering
+// 1. Text index for full-text search across name, email, message and reply content
+ContactSchema.index(
+    {
+        name: "text",
+        email: "text",
+        message: "text",
+        "replies.replyMessage": "text",
+    },
+    {
+        weights: {
+            name: 10,
+            email: 8,
+            message: 5,
+            "replies.replyMessage": 3,
+        },
+        name: "ContactTextIndex",
+    }
+);
+
+// 2. Compound index for status filtering + sorting by creation date (admin contacts table)
+ContactSchema.index({ status: 1, createdAt: -1 });
+
+// 3. Single field indexes for fast lookups
+ContactSchema.index({ email: 1 });
+ContactSchema.index({ createdAt: -1 });
+ContactSchema.index({ "replies.sentAt": -1 });
+
 export const Contact = models.Contact || model<IContact>("Contact", ContactSchema);
