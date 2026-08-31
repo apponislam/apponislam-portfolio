@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     return (
         <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-transparent dark:border-gray-700 flex flex-col h-full justify-between" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <div className="relative w-full h-50 shrink-0">
-                <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt="img" fill />
+                <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt="img" fill priority />
                 {/* <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
             </div>
             <div className="pt-5 space-y-3 flex-1 flex flex-col">
