@@ -146,7 +146,7 @@ export default function AdminContactsPage() {
                                 ) : (
                                     <div />
                                 )}
-                                <Button size="sm" onClick={() => router.push(`/admin/reply/${c._id}`)} className="gap-1.5 text-xs font-semibold px-3 h-7 w-full sm:w-auto">
+                                <Button size="sm" onClick={() => router.push(`/dashboard/contacts/${c._id}`)} className="gap-1.5 text-xs font-semibold px-3 h-7 w-full sm:w-auto">
                                     <Icons.reply className="h-3 w-3" />
                                     Reply
                                 </Button>

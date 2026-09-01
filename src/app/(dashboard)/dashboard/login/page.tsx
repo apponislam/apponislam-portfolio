@@ -40,7 +40,7 @@ export default function LoginPage() {
         dispatch(setUser({ user: res.data.user, token: res.data.accessToken }));
         setSuccessMessage("Login successful! Redirecting...");
         setTimeout(() => {
-          router.push("/admin/dashboard");
+          router.push("/dashboard");
         }, 1000);
       } else {
         setErrorMessage(res.message || "Failed to log in.");
@@ -99,7 +99,7 @@ export default function LoginPage() {
             <div className="flex items-center justify-between">
               <label className="text-sm font-medium leading-none">Password</label>
               <Link
-                href="/auth/forgot-password"
+                href="/dashboard/forgot-password"
                 className="text-xs text-primary hover:underline font-medium"
               >
                 Forgot password?

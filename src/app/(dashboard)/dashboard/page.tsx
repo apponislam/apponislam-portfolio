@@ -28,15 +28,13 @@ export default function DashboardPage() {
                         <LayoutDashboard className="h-7 w-7 text-primary" />
                         Admin Dashboard
                     </h1>
-                    <p className="text-muted-foreground text-sm mt-1">
-                        Welcome back! Here's a high-level overview of your portfolio's performance.
-                    </p>
+                    <p className="text-muted-foreground text-sm mt-1">Welcome back! Here's a high-level overview of your portfolio's performance.</p>
                 </div>
             </div>
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
+                <Card className="bg-linear-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-semibold text-muted-foreground">Total Page Views</CardTitle>
                         <div className="p-2 bg-primary/10 rounded-full">
@@ -44,14 +42,12 @@ export default function DashboardPage() {
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6" /> : summary?.totalViews || 0}
-                        </div>
+                        <div className="text-3xl font-bold">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6" /> : summary?.totalViews || 0}</div>
                         <p className="text-xs text-muted-foreground mt-2 font-medium">All time views</p>
                     </CardContent>
                 </Card>
-                
-                <Card className="bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
+
+                <Card className="bg-linear-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-semibold text-muted-foreground">Unique Visitors</CardTitle>
                         <div className="p-2 bg-blue-500/10 rounded-full">
@@ -59,14 +55,12 @@ export default function DashboardPage() {
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6" /> : summary?.totalUniqueVisitors || 0}
-                        </div>
+                        <div className="text-3xl font-bold">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6" /> : summary?.totalUniqueVisitors || 0}</div>
                         <p className="text-xs text-muted-foreground mt-2 font-medium">Unique IP addresses</p>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
+                <Card className="bg-linear-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-semibold text-muted-foreground">Top Route</CardTitle>
                         <div className="p-2 bg-emerald-500/10 rounded-full">
@@ -74,14 +68,12 @@ export default function DashboardPage() {
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-xl font-bold truncate">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6" /> : (summary?.topPages?.[0]?._id || "N/A")}
-                        </div>
+                        <div className="text-xl font-bold truncate">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6" /> : summary?.topPages?.[0]?._id || "N/A"}</div>
                         <p className="text-xs text-muted-foreground mt-2 font-medium">Most popular page</p>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
+                <Card className="bg-linear-to-br from-card to-card/50 backdrop-blur-sm border-border/60 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-semibold text-muted-foreground">Recent Activities</CardTitle>
                         <div className="p-2 bg-purple-500/10 rounded-full">
@@ -89,9 +81,7 @@ export default function DashboardPage() {
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold">
-                            {isLoadingActivity ? <Icons.spinner className="animate-spin h-6 w-6" /> : (activityResponse?.meta?.total || 0)}
-                        </div>
+                        <div className="text-3xl font-bold">{isLoadingActivity ? <Icons.spinner className="animate-spin h-6 w-6" /> : activityResponse?.meta?.total || 0}</div>
                         <p className="text-xs text-muted-foreground mt-2 font-medium">Total logged actions</p>
                     </CardContent>
                 </Card>
@@ -135,13 +125,11 @@ export default function DashboardPage() {
                                                 <Badge variant="outline" className="font-mono text-[10px] uppercase tracking-wider bg-primary/5 text-primary border-primary/20">
                                                     {activity.action}
                                                 </Badge>
-                                                <span className="text-sm font-medium text-foreground/90">
-                                                    {activity.details || "Action performed"}
-                                                </span>
+                                                <span className="text-sm font-medium text-foreground/90">{activity.details || "Action performed"}</span>
                                             </div>
                                         </div>
                                         <span className="text-xs text-muted-foreground whitespace-nowrap">
-                                            {new Date(activity.createdAt).toLocaleDateString()} at {new Date(activity.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                                            {new Date(activity.createdAt).toLocaleDateString()} at {new Date(activity.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                                         </span>
                                     </div>
                                 ))}

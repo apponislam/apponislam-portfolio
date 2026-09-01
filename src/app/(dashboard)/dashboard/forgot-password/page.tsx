@@ -30,7 +30,7 @@ export default function ForgotPasswordPage() {
       const res = await forgotPassword({ email: data.email }).unwrap();
       if (res.success) {
         localStorage.setItem("reset_email", data.email);
-        router.push("/auth/verify-otp");
+        router.push("/dashboard/verify-otp");
       } else {
         setErrorMessage(res.message || "Failed to send reset code.");
       }
@@ -43,7 +43,7 @@ export default function ForgotPasswordPage() {
     <div className="min-h-[80vh] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <Link
-          href="/auth/login"
+          href="/dashboard/login"
           className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors group"
         >
           <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />

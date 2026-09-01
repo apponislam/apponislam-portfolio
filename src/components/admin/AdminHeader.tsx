@@ -32,17 +32,17 @@ export function AdminHeader() {
   }, [pathname]);
 
   const adminNavItems = [
-    { title: "Dashboard", href: "/admin/dashboard" },
-    { title: "Messages", href: "/admin/contacts" },
-    { title: "Analytics", href: "/admin/analytics" },
-    { title: "Activity", href: "/admin/activity" },
+    { title: "Dashboard", href: "/dashboard" },
+    { title: "Messages", href: "/dashboard/contacts" },
+    { title: "Analytics", href: "/dashboard/analytics" },
+    { title: "Activity", href: "/dashboard/activity" },
   ];
 
   return (
     <header className="container z-50 bg-background mx-auto">
       <div className="flex h-20 items-center justify-between py-6">
         <div className="flex gap-6 md:gap-10">
-          <Link href="/admin/dashboard" className="hidden items-center space-x-2 md:flex">
+          <Link href="/dashboard" className="hidden items-center space-x-2 md:flex">
             <span className={cn(norican.className, "text-2xl")}>{siteConfig.name}</span>
           </Link>
 
@@ -53,7 +53,9 @@ export function AdminHeader() {
                 href={item.href}
                 className={cn(
                   "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
-                  pathname.startsWith(item.href) ? "text-foreground font-bold" : "text-foreground/60"
+                  pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href))
+                    ? "text-foreground font-bold"
+                    : "text-foreground/60"
                 )}
               >
                 {item.title}
@@ -89,7 +91,7 @@ export function AdminHeader() {
               </Button>
             </div>
           ) : (
-            <Link href="/auth/login">
+            <Link href="/dashboard/login">
               <Button size="sm">Login</Button>
             </Link>
           )}

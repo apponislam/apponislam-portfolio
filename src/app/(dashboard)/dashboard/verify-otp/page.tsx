@@ -85,7 +85,7 @@ export default function VerifyOtpPage() {
         localStorage.setItem("reset_token", res.data.token);
         setSuccessMessage("OTP verified successfully! Redirecting...");
         setTimeout(() => {
-          router.push("/auth/reset-password");
+          router.push("/dashboard/reset-password");
         }, 1000);
       } else {
         setErrorMessage(res.message || "Invalid or expired OTP code.");
@@ -116,7 +116,7 @@ export default function VerifyOtpPage() {
     <div className="min-h-[65vh] flex flex-col justify-center items-center py-6 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <Link
-          href="/auth/forgot-password"
+          href="/dashboard/forgot-password"
           className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors group"
         >
           <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />

@@ -62,7 +62,7 @@ export default function ResetPasswordPage() {
       <div className="w-full max-w-md space-y-8">
         {!isSuccess && (
           <Link
-            href="/auth/verify-otp"
+            href="/dashboard/verify-otp"
             className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors group"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
@@ -93,7 +93,7 @@ export default function ResetPasswordPage() {
               Password updated successfully!
             </div>
 
-            <Button onClick={() => router.push("/auth/login")} className="w-full">
+            <Button onClick={() => router.push("/dashboard/login")} className="w-full">
               Back to Login
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

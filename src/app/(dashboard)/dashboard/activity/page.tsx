@@ -22,7 +22,7 @@ export default function ActivityPage() {
         limit: 10,
         searchTerm: appliedSearch.trim() ? appliedSearch.trim() : undefined,
     });
-    
+
     const [deleteActivity, { isLoading: isDeleting }] = useDeleteActivityMutation();
 
     const activities = activityResponse?.data || [];
@@ -52,13 +52,13 @@ export default function ActivityPage() {
             storeModal.onOpen({
                 title: "Success!",
                 description: "Activity deleted successfully.",
-                icon: () => <CheckCircle2 className="w-12 h-12 text-primary mx-auto mb-4" />
+                icon: () => <CheckCircle2 className="w-12 h-12 text-primary mx-auto mb-4" />,
             });
         } catch (error: any) {
             storeModal.onOpen({
                 title: "Error!",
                 description: error?.data?.message || "Failed to delete activity.",
-                icon: () => <XCircle className="w-12 h-12 text-destructive mx-auto mb-4" />
+                icon: () => <XCircle className="w-12 h-12 text-destructive mx-auto mb-4" />,
             });
         }
     };
@@ -71,9 +71,7 @@ export default function ActivityPage() {
                         <Activity className="h-7 w-7 text-primary" />
                         Activity Log
                     </h1>
-                    <p className="text-muted-foreground text-sm mt-1">
-                        Monitor recent user actions, security logs, and platform activities.
-                    </p>
+                    <p className="text-muted-foreground text-sm mt-1">Monitor recent user actions, security logs, and platform activities.</p>
                 </div>
                 {paginationMeta && (
                     <Badge variant="outline" className="w-fit text-sm px-4 py-1.5 rounded-full shadow-sm bg-background">
@@ -86,12 +84,7 @@ export default function ActivityPage() {
                 <form onSubmit={handleSearchSubmit} className="flex gap-2 max-w-md w-full">
                     <div className="relative flex-1">
                         <Icons.search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        <Input 
-                            placeholder="Search by action, IP, or details..." 
-                            value={search} 
-                            onChange={(e) => setSearch(e.target.value)} 
-                            className="pl-9 bg-card shadow-sm" 
-                        />
+                        <Input placeholder="Search by action, IP, or details..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 bg-card shadow-sm" />
                     </div>
                     <Button type="submit" variant="default" className="gap-2 shadow-sm">
                         Search
@@ -125,9 +118,7 @@ export default function ActivityPage() {
                                             {new Date(activity.createdAt).toLocaleString()}
                                         </span>
                                     </div>
-                                    <p className="text-sm text-foreground/90 font-medium">
-                                        {activity.details || "No additional details provided."}
-                                    </p>
+                                    <p className="text-sm text-foreground/90 font-medium">{activity.details || "No additional details provided."}</p>
                                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground pt-1">
                                         {activity.ipAddress && (
                                             <div className="inline-flex items-center gap-1.5">
@@ -136,22 +127,16 @@ export default function ActivityPage() {
                                             </div>
                                         )}
                                         {activity.userAgent && (
-                                            <div className="inline-flex items-center gap-1.5 max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg truncate">
+                                            <div className="inline-flex items-center gap-1.5 max-w-50 sm:max-w-xs md:max-w-md lg:max-w-lg truncate">
                                                 <Monitor className="h-3.5 w-3.5 shrink-0" />
                                                 <span className="truncate">{activity.userAgent}</span>
                                             </div>
                                         )}
                                     </div>
                                 </div>
-                                
+
                                 <div className="shrink-0 md:pl-4 md:border-l border-border/50 flex md:flex-col items-center gap-2">
-                                    <Button 
-                                        variant="ghost" 
-                                        size="sm" 
-                                        onClick={() => handleDelete(activity._id)} 
-                                        disabled={isDeleting}
-                                        className="text-red-500 hover:text-red-600 hover:bg-red-500/10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity"
-                                    >
+                                    <Button variant="ghost" size="sm" onClick={() => handleDelete(activity._id)} disabled={isDeleting} className="text-red-500 hover:text-red-600 hover:bg-red-500/10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
                                         <Trash2 className="h-4 w-4 md:mr-2" />
                                         <span className="hidden md:inline">Delete</span>
                                     </Button>
