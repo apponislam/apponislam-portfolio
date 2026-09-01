@@ -4,12 +4,15 @@ import { TResponse } from "../contact/contactApi";
 export interface TPageAnalytics {
     _id: string;
     path: string;
-    views: number;
+    count?: number;
+    views?: number;
     uniqueVisitors?: number;
     ipAddress?: string;
     userAgent?: string;
     referrer?: string;
+    date?: string;
     createdAt: string;
+    lastVisitedAt?: string;
     updatedAt: string;
 }
 
