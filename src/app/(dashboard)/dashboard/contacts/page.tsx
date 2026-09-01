@@ -32,9 +32,9 @@ export default function AdminContactsPage() {
               total: meta.total,
               page: meta.page,
               limit: meta.limit,
-              totalPages: meta.totalPage,
-              hasNextPage: meta.page < meta.totalPage,
-              hasPrevPage: meta.page > 1,
+              totalPages: meta.totalPages,
+              hasNextPage: meta.hasNext ?? meta.page < meta.totalPages,
+              hasPrevPage: meta.hasPrev ?? meta.page > 1,
           }
         : null;
 

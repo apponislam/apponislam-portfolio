@@ -60,7 +60,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             {/* Left side info */}
             <p className="text-xs text-muted-foreground">
                 Showing page <span className="font-semibold text-foreground">{currentPage}</span> of{" "}
-                <span className="font-semibold text-foreground">{totalPages || 1}</span> ({totalItems} total messages)
+                <span className="font-semibold text-foreground">{totalPages || 1}</span> ({totalItems} total records)
             </p>
 
             {/* Right side page controls: < 1 ... 10,11 ... 100 > */}

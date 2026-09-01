@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "../icons";
 import { useModalStore } from "../hooks/use-modal-store";
+import { useSendContactMessageMutation } from "@/redux/features/contact/contactApi";
 
 const formSchema = z.object({
     name: z.string().min(3, {
@@ -23,8 +24,7 @@ const formSchema = z.object({
 
 const ContactForm = () => {
     const storeModal = useModalStore();
-
-    // const [open, setOpen] = useState(false);
+    const [sendContactMessage, { isLoading }] = useSendContactMessageMutation();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -38,32 +38,28 @@ const ContactForm = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
-            });
+            const res = await sendContactMessage({
+                name: values.name,
+                email: values.email,
+                message: values.message,
+                social: values.social || undefined,
+            }).unwrap();
 
-            const data = await response.json();
-
-            if (!response.ok || !data.success) {
-                throw new Error(data.error || "Failed to send message");
+            if (res.success) {
+                form.reset();
+                storeModal.onOpen({
+                    title: "Thank you!",
+                    description: res.message || "Your message has been received! I appreciate your contact and will get back to you shortly.",
+                    icon: Icons.successAnimated,
+                });
+            } else {
+                throw new Error(res.message || "Failed to send message");
             }
-
-            // Show success message
-            form.reset();
-            storeModal.onOpen({
-                title: "Thank you!",
-                description: "Your message has been received! I appreciate your contact and will get back to you shortly.",
-                icon: Icons.successAnimated,
-            });
-        } catch (err) {
+        } catch (err: any) {
             console.error("Error submitting contact form:", err);
             storeModal.onOpen({
                 title: "Oops!",
-                description: "Your message sending failed. Please try again.",
+                description: err?.data?.message || err?.message || "Your message sending failed. Please try again.",
                 icon: Icons.failedAnimated,
             });
         }
@@ -124,7 +120,16 @@ const ContactForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" disabled={isLoading}>
+                    {isLoading ? (
+                        <>
+                            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                            Sending...
+                        </>
+                    ) : (
+                        "Submit"
+                    )}
+                </Button>
             </form>
         </Form>
     );

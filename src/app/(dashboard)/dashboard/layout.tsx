@@ -1,4 +1,5 @@
 import { AdminHeader } from "@/components/admin/AdminHeader";
+import { AuthGuard } from "@/components/admin/AuthGuard";
 import { PremiumFooter } from "@/components/premium-footer";
 import { Metadata } from "next";
 
@@ -22,7 +23,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="container mx-auto">
             <div className="mx-3 md:mx-0">
                 <AdminHeader />
-                {children}
+                <AuthGuard>{children}</AuthGuard>
                 <PremiumFooter />
             </div>
         </div>
