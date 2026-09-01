@@ -1,6 +1,5 @@
 import { pagesConfig } from "@/components/config/pages";
 import PageHeader from "@/components/page-header";
-import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import React from "react";
 import ProjectCard from "@/components/project-card";
@@ -8,23 +7,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectsInterface } from "@/components/config/projects";
 import { getProjects } from "@/components/actions/project-actions";
 import { Icons } from "@/components/icons";
-
-function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-    return <div className={cn("flex items-center justify-center mb-4 md:mb-0 [&>div]:w-full ", className)} {...props} />;
-}
-
 export const metadata: Metadata = {
     title: "Projects",
     description: "Explore my portfolio of web applications, open-source projects, and professional software developments built with Next.js, React, Node.js, and TypeScript.",
 };
 
 const renderContent = async (tabVal: string) => {
-    // let expArr = Projects;
-    // console.log(expArr);
-
     let expArr: ProjectsInterface[] = await getProjects();
     expArr.sort((a, b) => Number(b._id) - Number(a._id));
-    // console.log(expArr);
 
     if (tabVal === "personal") {
         expArr = expArr.filter((val) => val.type === "Personal Project");
@@ -43,11 +33,9 @@ const renderContent = async (tabVal: string) => {
     }
 
     return (
-        <div className="container items-start justify-center gap-6 rounded-lg pt-8 p-0 md:p-8 sm:grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid justify-center gap-4 md:w-full lg:grid-cols-3 2xl:w-300 py-8">
             {expArr.map((exp) => (
-                <ProjectContainer key={exp._id}>
-                    <ProjectCard project={exp} />
-                </ProjectContainer>
+                <ProjectCard key={exp._id} project={exp} />
             ))}
         </div>
     );
@@ -58,12 +46,12 @@ const ProjectsPage = () => {
         <>
             <PageHeader title={pagesConfig.projects.title} description={pagesConfig.projects.description} />
             <Tabs defaultValue="all" className="w-full">
-                <TabsList className="conatiner grid max-w-120 grid-cols-3">
+                <TabsList className="grid max-w-120 grid-cols-3">
                     <TabsTrigger value="all">All</TabsTrigger>
                     <TabsTrigger value="personal">Personal</TabsTrigger>
                     <TabsTrigger value="professional">Professional</TabsTrigger>
                 </TabsList>
-                <div className="2xl:w-334 mx-auto">
+                <div className="w-full">
                     <TabsContent value="all" className="w-full">
                         {renderContent("all")}
                     </TabsContent>

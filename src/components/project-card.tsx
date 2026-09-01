@@ -40,6 +40,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                             {tech}
                         </Badge>
                     ))}
+                    {project.techStack.length > 4 && (
+                        <Badge variant="outline" className="text-xs">
+                            {project.techStack.length - 4}+
+                        </Badge>
+                    )}
                 </div>
                 <div className="mt-auto pt-3">
                     <Link href={`/projects/${project._id}`}>
