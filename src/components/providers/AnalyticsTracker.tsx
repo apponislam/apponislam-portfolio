@@ -12,7 +12,10 @@ export default function AnalyticsTracker({ children }: { children: React.ReactNo
     useEffect(() => {
         if (!pathname) return;
 
-        // Prevent duplicate tracking calls for the same route in strict mode
+        // Skip tracking internal admin dashboard pages
+        if (pathname.startsWith("/dashboard")) return;
+
+        // Prevent duplicate tracking for the exact same path in strict mode
         if (lastTrackedPath.current === pathname) return;
         lastTrackedPath.current = pathname;
 
@@ -20,10 +23,12 @@ export default function AnalyticsTracker({ children }: { children: React.ReactNo
 
         trackPageView({
             path: pathname,
-            referrer,
-        }).catch(() => {
-            // Silently ignore tracking failures so no errors show up in console or frontend
-        });
+            referrer: referrer || undefined,
+        })
+            .unwrap()
+            .catch(() => {
+                // Silently handle any tracking errors
+            });
     }, [pathname, trackPageView]);
 
     return <>{children}</>;

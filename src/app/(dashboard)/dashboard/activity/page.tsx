@@ -104,22 +104,22 @@ export default function ActivityPage() {
                     <p className="text-sm text-muted-foreground mt-1">Try adjusting your search criteria.</p>
                 </Card>
             ) : (
-                <div className="space-y-4">
+                <div className="space-y-3">
                     {activities.map((activity) => (
-                        <Card key={activity._id} className="overflow-hidden border border-border/50 hover:border-primary/30 transition-all duration-200 bg-card/40 backdrop-blur-sm shadow-sm group">
-                            <div className="p-4 sm:p-5 flex flex-col md:flex-row md:items-center gap-4">
-                                <div className="flex-1 space-y-2">
-                                    <div className="flex items-center gap-2">
-                                        <Badge variant="secondary" className="px-2 py-0.5 rounded-md font-mono text-xs text-primary bg-primary/10 border border-primary/20">
-                                            {activity.action}
-                                        </Badge>
-                                        <span className="text-xs text-muted-foreground inline-flex items-center gap-1">
-                                            <Clock className="h-3.5 w-3.5" />
-                                            {new Date(activity.createdAt).toLocaleString()}
-                                        </span>
-                                    </div>
-                                    <p className="text-sm text-foreground/90 font-medium">{activity.details || "No additional details provided."}</p>
-                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground pt-1">
+                        <div key={activity._id} className="p-3 sm:p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-200 bg-card/40 backdrop-blur-sm shadow-xs group flex flex-col md:flex-row md:items-center gap-3 justify-between">
+                            <div className="flex-1 space-y-1.5">
+                                <div className="flex items-center gap-2">
+                                    <Badge variant="secondary" className="px-2 py-0.5 rounded-md font-mono text-[11px] text-primary bg-primary/10 border border-primary/20">
+                                        {activity.action}
+                                    </Badge>
+                                    <span className="text-xs text-muted-foreground inline-flex items-center gap-1">
+                                        <Clock className="h-3.5 w-3.5" />
+                                        {new Date(activity.createdAt).toLocaleString()}
+                                    </span>
+                                </div>
+                                <p className="text-sm text-foreground/90 font-medium">{activity.details || "No additional details provided."}</p>
+                                {(activity.ipAddress || activity.userAgent) && (
+                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground pt-0.5">
                                         {activity.ipAddress && (
                                             <div className="inline-flex items-center gap-1.5">
                                                 <Globe className="h-3.5 w-3.5" />
@@ -133,16 +133,16 @@ export default function ActivityPage() {
                                             </div>
                                         )}
                                     </div>
-                                </div>
-
-                                <div className="shrink-0 md:pl-4 md:border-l border-border/50 flex md:flex-col items-center gap-2">
-                                    <Button variant="ghost" size="sm" onClick={() => handleDelete(activity._id)} disabled={isDeleting} className="text-red-500 hover:text-red-600 hover:bg-red-500/10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Trash2 className="h-4 w-4 md:mr-2" />
-                                        <span className="hidden md:inline">Delete</span>
-                                    </Button>
-                                </div>
+                                )}
                             </div>
-                        </Card>
+
+                            <div className="shrink-0 md:pl-3 md:border-l border-border/50 flex md:flex-col items-center gap-2">
+                                <Button variant="ghost" size="sm" onClick={() => handleDelete(activity._id)} disabled={isDeleting} className="h-7 text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <Trash2 className="h-3.5 w-3.5 md:mr-1.5" />
+                                    <span className="hidden md:inline">Delete</span>
+                                </Button>
+                            </div>
+                        </div>
                     ))}
                 </div>
             )}
