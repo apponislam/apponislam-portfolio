@@ -101,7 +101,8 @@ export function OtpVerificationForm({ email, onVerifySuccess, onVerifyOtp, onRes
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3 text-center">6-Digit Verification Code</label>
+                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 text-center">6-Digit Verification Code</label>
+                    {email && <p className="text-xs text-slate-400 text-center mb-3">Sent to <span className="text-slate-200 font-medium">{email}</span></p>}
 
                     <div className="flex items-center justify-center gap-2 sm:gap-3" onPaste={handleOtpPaste}>
                         {otp.map((digit, index) => (

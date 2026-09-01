@@ -21,16 +21,6 @@ const formSchema = z.object({
     social: z.string().url().optional().or(z.literal("")),
 });
 
-const GOOGLE_FORM_ID = "1FAIpQLSfmBwQ2yyYVOcVJ4GfRJV8TVIKzR4GW2RSG3BvlDekLaV1G-g";
-const GOOGLE_FORM_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
-
-const GOOGLE_FORM_ENTRY_IDS = {
-    name: "entry.1633920210",
-    email: "entry.227649005",
-    message: "entry.790080973",
-    social: "entry.1770822543",
-};
-
 const ContactForm = () => {
     const storeModal = useModalStore();
 

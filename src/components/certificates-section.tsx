@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Icons } from "@/components/icons";
