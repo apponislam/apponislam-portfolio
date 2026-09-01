@@ -257,5 +257,5 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by Appon Islam</sub>
+  <sub>Built with ❤️ by <a href="https://www.linkedin.com/in/apponislam/">Appon Islam</a></sub>
 </div>
