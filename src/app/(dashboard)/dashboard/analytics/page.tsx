@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/icons";
 import { Pagination } from "@/components/pagination";
 import { useGetAllAnalyticsQuery, useGetAnalyticsSummaryQuery } from "@/redux/features/page-analytics/pageAnalyticsApi";
-import { BarChart3, Users, Eye, Link as LinkIcon, MousePointerClick, CalendarDays } from "lucide-react";
+import { BarChart3, Users, Eye, MousePointerClick, CalendarDays } from "lucide-react";
 
 export default function AnalyticsPage() {
     const [page, setPage] = useState(1);
@@ -62,25 +62,38 @@ export default function AnalyticsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <Card className="bg-card/40 backdrop-blur-sm border-border/50 shadow-sm">
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                        <CardTitle className="text-sm font-medium">Total Views</CardTitle>
-                        <Eye className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Today's Views</CardTitle>
+                        <Eye className="h-4 w-4 text-primary" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5" /> : summary?.totalViews || 0}
+                        <div className="text-2xl font-bold font-mono">
+                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5 text-primary" /> : summary?.todayTotalPageViews ?? 0}
                         </div>
-                        <p className="text-xs text-muted-foreground mt-1">Across all pages</p>
+                        <p className="text-xs text-muted-foreground mt-1">Page views today</p>
                     </CardContent>
                 </Card>
-                
+
                 <Card className="bg-card/40 backdrop-blur-sm border-border/50 shadow-sm">
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                        <CardTitle className="text-sm font-medium">Unique Visitors</CardTitle>
-                        <Users className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Total Views</CardTitle>
+                        <Eye className="h-4 w-4 text-emerald-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5" /> : summary?.totalUniqueVisitors || 0}
+                        <div className="text-2xl font-bold font-mono">
+                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5 text-emerald-500" /> : summary?.totalPageViews ?? 0}
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-1">Across all time</p>
+                    </CardContent>
+                </Card>
+
+                <Card className="bg-card/40 backdrop-blur-sm border-border/50 shadow-sm">
+                    <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Total Unique Visitors</CardTitle>
+                        <Users className="h-4 w-4 text-purple-500" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold font-mono">
+                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5 text-purple-500" /> : summary?.totalUniqueVisitors ?? 0}
                         </div>
                         <p className="text-xs text-muted-foreground mt-1">Unique IP addresses</p>
                     </CardContent>
@@ -88,27 +101,14 @@ export default function AnalyticsPage() {
 
                 <Card className="bg-card/40 backdrop-blur-sm border-border/50 shadow-sm">
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                        <CardTitle className="text-sm font-medium">Top Path</CardTitle>
-                        <MousePointerClick className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Top Page Route</CardTitle>
+                        <MousePointerClick className="h-4 w-4 text-amber-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-lg font-bold truncate">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5" /> : (summary?.topPages?.[0]?._id || "N/A")}
+                        <div className="text-sm font-bold font-mono truncate text-primary">
+                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5 text-amber-500" /> : (summary?.topPages?.[0]?.path || "N/A")}
                         </div>
-                        <p className="text-xs text-muted-foreground mt-1">Most visited page</p>
-                    </CardContent>
-                </Card>
-
-                <Card className="bg-card/40 backdrop-blur-sm border-border/50 shadow-sm">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                        <CardTitle className="text-sm font-medium">Recorded Paths</CardTitle>
-                        <LinkIcon className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-5 w-5" /> : (summary?.topPages?.length || 0)}
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-1">Tracked endpoints</p>
+                        <p className="text-xs text-muted-foreground mt-1">Most visited path</p>
                     </CardContent>
                 </Card>
             </div>
