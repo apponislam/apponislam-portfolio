@@ -9,7 +9,7 @@ import { Icons } from "@/components/icons";
 import { Pagination } from "@/components/pagination";
 import { useModalStore } from "@/components/hooks/use-modal-store";
 import { useGetAllActivitiesQuery, useDeleteActivityMutation } from "@/redux/features/activity/activityApi";
-import { Trash2, Activity, Globe, Monitor, Clock, CheckCircle2, XCircle } from "lucide-react";
+import { Trash2, Activity, Globe, Monitor, Clock, CheckCircle2, XCircle, RefreshCw } from "lucide-react";
 
 export default function ActivityPage() {
     const [page, setPage] = useState(1);
@@ -17,7 +17,7 @@ export default function ActivityPage() {
     const [appliedSearch, setAppliedSearch] = useState("");
     const storeModal = useModalStore();
 
-    const { data: activityResponse, isLoading } = useGetAllActivitiesQuery({
+    const { data: activityResponse, isLoading, refetch } = useGetAllActivitiesQuery({
         page,
         limit: 10,
         searchTerm: appliedSearch.trim() ? appliedSearch.trim() : undefined,
@@ -73,11 +73,16 @@ export default function ActivityPage() {
                     </h1>
                     <p className="text-muted-foreground text-sm mt-1">Monitor recent user actions, security logs, and platform activities.</p>
                 </div>
-                {paginationMeta && (
-                    <Badge variant="outline" className="w-fit text-sm px-4 py-1.5 rounded-full shadow-sm bg-background">
-                        Total Records: {paginationMeta.total}
-                    </Badge>
-                )}
+                <div className="flex items-center gap-3">
+                    {paginationMeta && (
+                        <Badge variant="outline" className="w-fit text-sm px-4 py-1.5 rounded-full shadow-sm bg-background">
+                            Total Records: {paginationMeta.total}
+                        </Badge>
+                    )}
+                    <Button variant="outline" size="icon" onClick={() => refetch()} className="shrink-0 h-9 w-9 rounded-full border-primary/20 hover:border-primary/50" title="Refetch">
+                        <RefreshCw className="h-4 w-4" />
+                    </Button>
+                </div>
             </div>
 
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

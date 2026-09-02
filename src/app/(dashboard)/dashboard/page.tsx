@@ -20,14 +20,20 @@ import {
     Calendar,
     Mail,
     Flame,
+    RefreshCw,
 } from "lucide-react";
 
 export default function DashboardPage() {
-    const { data: summaryResponse, isLoading: isLoadingSummary } = useGetAnalyticsSummaryQuery();
-    const { data: activityResponse, isLoading: isLoadingActivity } = useGetAllActivitiesQuery({
+    const { data: summaryResponse, isLoading: isLoadingSummary, refetch: refetchSummary } = useGetAnalyticsSummaryQuery();
+    const { data: activityResponse, isLoading: isLoadingActivity, refetch: refetchActivity } = useGetAllActivitiesQuery({
         page: 1,
         limit: 5,
     });
+
+    const handleRefetch = () => {
+        refetchSummary();
+        refetchActivity();
+    };
 
     const summary = summaryResponse?.data;
     const activities = activityResponse?.data || [];
@@ -48,6 +54,9 @@ export default function DashboardPage() {
                         High-level overview of portfolio traffic, analytics, and activity.
                     </p>
                 </div>
+                <Button variant="outline" size="icon" onClick={handleRefetch} className="shrink-0 h-9 w-9 rounded-full border-primary/20 hover:border-primary/50" title="Refetch">
+                    <RefreshCw className="h-4 w-4" />
+                </Button>
             </div>
 
             {/* Top Stat Cards Grid */}
