@@ -27,9 +27,9 @@ export const experienceData: ResumeItem[] = [
             "Develop modern, responsive web applications using the MERN stack (MongoDB, Express, React, Node.js) and Next.js.",
             "Design and implement secure RESTful APIs, database schemas (MongoDB, PostgreSQL), and role-based authentication systems (JWT, Firebase).",
             "Convert complex Figma/PSD design layouts into clean, semantic, and pixel-perfect React/Tailwind CSS components.",
-            "Integrate third-party services, including payment gateways (SurjoPay, SSLCommerz) and state management solutions (Zustand, Redux)."
-        ]
-    }
+            "Integrate third-party services, including payment gateways (SurjoPay, SSLCommerz) and state management solutions (Zustand, Redux).",
+        ],
+    },
 ];
 
 export const educationData: ResumeItem[] = [
@@ -39,10 +39,7 @@ export const educationData: ResumeItem[] = [
         organization: "Northern University Bangladesh",
         location: "Dhaka, Bangladesh",
         duration: "2025 - Present",
-        description: [
-            "Pursuing a Bachelor of Science degree in Computer Science and Engineering.",
-            "Acquiring advanced knowledge in Algorithms, Software Architecture, System Design, and Database Systems."
-        ]
+        description: ["Pursuing a Bachelor of Science degree in Computer Science and Engineering.", "Acquiring advanced knowledge in Algorithms, Software Architecture, System Design, and Database Systems."],
     },
     {
         id: "edu-2",
@@ -50,11 +47,8 @@ export const educationData: ResumeItem[] = [
         organization: "Dinajpur Polytechnic Institute",
         location: "Dinajpur, Bangladesh",
         duration: "2020 - 2024",
-        description: [
-            "Graduated with a focus on Computer Technology, Network Administration, and core software engineering concepts.",
-            "Engaged in practical projects involving system administration, database creation, and software development."
-        ]
-    }
+        description: ["Graduated with a focus on Computer Technology, Network Administration, and core software engineering concepts.", "Engaged in practical projects involving system administration, database creation, and software development."],
+    },
 ];
 
 export const certificatesData: CertificateItem[] = [
@@ -64,31 +58,23 @@ export const certificatesData: CertificateItem[] = [
         issuer: "Phitron",
         issueDate: "Ongoing",
         isOngoing: true,
-        credentialUrl: "https://phitron.io/",
-        description: [
-            "In-depth learning of Data Structures & Algorithms, C++, Object-Oriented Programming (OOP), Software Engineering principles, and Problem Solving.",
-        ],
+        credentialUrl: "https://phitron.io",
+        description: ["In-depth learning of Data Structures & Algorithms, C++, Object-Oriented Programming (OOP), Software Engineering principles, and Problem Solving."],
     },
     {
         id: "cert-2",
         title: "Next Level Web Development",
         issuer: "Programming Hero",
         issueDate: "2025",
-        credentialUrl: "https://next.programming-hero.com/",
-        description: [
-            "Advanced web engineering focusing on TypeScript, Next.js, Redux Toolkit, PostgreSQL, Prisma/Mongoose, and microservices architecture.",
-            "Mastered enterprise-level application design, performance optimization, and scalable backend implementations.",
-        ],
+        credentialUrl: "https://web.programming-hero.com/verification?validationNumber=PHL2B4FullstackWEB9-02121030",
+        description: ["Advanced web engineering focusing on TypeScript, Next.js, Redux Toolkit, PostgreSQL, Prisma/Mongoose, and microservices architecture.", "Mastered enterprise-level application design, performance optimization, and scalable backend implementations."],
     },
     {
         id: "cert-1",
         title: "Complete Web Development Course",
         issuer: "Programming Hero",
         issueDate: "2024",
-        credentialUrl: "https://web.programming-hero.com",
-        description: [
-            "Comprehensive training covering modern JavaScript, React, Node.js, Express, and MongoDB.",
-            "Built multiple full-stack production-ready applications with clean code and industry standards.",
-        ],
+        credentialUrl: "https://drive.google.com/file/d/16LgflhQ_RcU2BcvnQ0yg88fDp7RFURAu/view?usp=sharing",
+        description: ["Comprehensive training covering modern JavaScript, React, Node.js, Express, and MongoDB.", "Built multiple full-stack production-ready applications with clean code and industry standards."],
     },
 ];
