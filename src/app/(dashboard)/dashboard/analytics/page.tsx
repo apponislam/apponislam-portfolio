@@ -9,7 +9,7 @@ import { Icons } from "@/components/icons";
 import { Pagination } from "@/components/pagination";
 import { useGetAllAnalyticsQuery, TPageAnalytics } from "@/redux/features/page-analytics/pageAnalyticsApi";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { BarChart3, Eye, CalendarDays, Globe, Monitor, ExternalLink, Clock, Info } from "lucide-react";
+import { BarChart3, Eye, CalendarDays, Globe, Monitor, ExternalLink, Clock, Info, RefreshCw } from "lucide-react";
 
 export default function AnalyticsPage() {
     const [page, setPage] = useState(1);
@@ -17,7 +17,7 @@ export default function AnalyticsPage() {
     const [appliedSearch, setAppliedSearch] = useState("");
     const [selectedLog, setSelectedLog] = useState<TPageAnalytics | null>(null);
 
-    const { data: analyticsResponse, isLoading: isLoadingAnalytics } = useGetAllAnalyticsQuery({
+    const { data: analyticsResponse, isLoading: isLoadingAnalytics, refetch } = useGetAllAnalyticsQuery({
         page,
         limit: 10,
         path: appliedSearch.trim() ? appliedSearch.trim() : undefined,
@@ -54,6 +54,9 @@ export default function AnalyticsPage() {
                     </h1>
                     <p className="text-muted-foreground text-sm mt-1">Comprehensive overview of traffic metrics, visitor activity, and page logs.</p>
                 </div>
+                <Button variant="outline" size="icon" onClick={() => refetch()} className="shrink-0 h-9 w-9 rounded-full border-primary/20 hover:border-primary/50" title="Refetch">
+                    <RefreshCw className="h-4 w-4" />
+                </Button>
             </div>
 
             {/* Filter Input */}

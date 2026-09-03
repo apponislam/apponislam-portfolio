@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/icons";
 import { Pagination } from "@/components/pagination";
 import { useGetAllContactsQuery } from "@/redux/features/contact/contactApi";
+import { RefreshCw } from "lucide-react";
 
 export default function AdminContactsPage() {
     const router = useRouter();
@@ -17,7 +18,7 @@ export default function AdminContactsPage() {
     const [appliedSearch, setAppliedSearch] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("all");
 
-    const { data: contactsResponse, isLoading: loading } = useGetAllContactsQuery({
+    const { data: contactsResponse, isLoading: loading, refetch } = useGetAllContactsQuery({
         page,
         limit: 5,
         searchTerm: appliedSearch.trim() ? appliedSearch.trim() : undefined,
@@ -56,11 +57,16 @@ export default function AdminContactsPage() {
                     <h1 className="font-heading text-3xl font-bold tracking-tight">Contact Messages</h1>
                     <p className="text-muted-foreground text-sm mt-1">View and manage all inquiry messages submitted via your portfolio.</p>
                 </div>
-                {paginationMeta && (
-                    <Badge variant="outline" className="w-fit text-sm px-3 py-1">
-                        Total Messages: {paginationMeta.total}
-                    </Badge>
-                )}
+                <div className="flex items-center gap-3">
+                    {paginationMeta && (
+                        <Badge variant="outline" className="w-fit text-sm px-3 py-1">
+                            Total Messages: {paginationMeta.total}
+                        </Badge>
+                    )}
+                    <Button variant="outline" size="icon" onClick={() => refetch()} className="shrink-0 h-9 w-9 rounded-full border-primary/20 hover:border-primary/50" title="Refetch">
+                        <RefreshCw className="h-4 w-4" />
+                    </Button>
+                </div>
             </div>
 
             {/* Filter Controls: Search & Status Pills */}
