@@ -25,16 +25,7 @@ export const metadata: Metadata = {
         template: `%s | ${siteConfig.name}`,
     },
     description: siteConfig.description,
-    keywords: [
-        "Appon Islam",
-        "Full Stack Developer",
-        "Software Engineer",
-        "React",
-        "Next.js",
-        "TypeScript",
-        "JavaScript",
-        "Portfolio",
-    ],
+    keywords: ["Appon Islam", "Full Stack Developer", "Software Engineer", "React", "Next.js", "TypeScript", "JavaScript", "Portfolio"],
     authors: [
         {
             name: siteConfig.name,
@@ -95,11 +86,7 @@ export default function RootLayout({
         name: siteConfig.name,
         url: siteConfig.url,
         image: siteConfig.ogImage,
-        sameAs: [
-            siteConfig.links.github,
-            siteConfig.links.linkedin,
-            siteConfig.links.twitter,
-        ],
+        sameAs: [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.twitter],
         jobTitle: "Full Stack Developer",
         worksFor: {
             "@type": "Organization",
@@ -117,12 +104,11 @@ export default function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning={true}>
+            <head>
+                <meta name="google-adsense-account" content="ca-pub-8203376437117377" />
+            </head>
             <body suppressHydrationWarning={true} data-new-gr-c-s-check-loaded="14.1224.0" cz-shortcut-listen="true" data-gr-ext-installed="" className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
-                <script
-                    id="json-ld"
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                />
+                <script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <Providers>
                         {children}
