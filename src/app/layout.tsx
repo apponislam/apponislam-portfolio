@@ -106,6 +106,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
             <head>
                 <meta name="google-adsense-account" content="ca-pub-8203376437117377" />
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8203376437117377" crossOrigin="anonymous"></script>
             </head>
             <body suppressHydrationWarning={true} data-new-gr-c-s-check-loaded="14.1224.0" cz-shortcut-listen="true" data-gr-ext-installed="" className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
                 <script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
