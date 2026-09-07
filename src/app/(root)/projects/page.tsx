@@ -7,9 +7,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectsInterface } from "@/components/config/projects";
 import { getProjects } from "@/components/actions/project-actions";
 import { Icons } from "@/components/icons";
+import { siteConfig } from "@/components/config/site";
+
 export const metadata: Metadata = {
     title: "Projects",
     description: "Explore my portfolio of web applications, open-source projects, and professional software developments built with Next.js, React, Node.js, and TypeScript.",
+    alternates: {
+        canonical: `${siteConfig.url}/projects`,
+    },
 };
 
 const renderContent = async (tabVal: string) => {

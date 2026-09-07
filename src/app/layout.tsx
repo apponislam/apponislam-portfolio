@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         icon: "/favicon.ico",
     },
     alternates: {
-        canonical: siteConfig.url,
+        canonical: "./",
     },
     robots: {
         index: true,

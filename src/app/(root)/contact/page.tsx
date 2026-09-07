@@ -9,6 +9,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Contact",
     description: "Let's connect and explore collaborations.",
+    alternates: {
+        canonical: `${siteConfig.url}/contact`,
+    },
 };
 
 const ContactPage = () => {

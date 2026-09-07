@@ -4,9 +4,14 @@ import { pagesConfig } from "@/components/config/pages";
 import { getSkills } from "@/components/actions/skill-actions";
 import SkillsCard from "@/components/skills-card";
 
+import { siteConfig } from "@/components/config/site";
+
 export const metadata: Metadata = {
     title: "Skills & Experience",
     description: "Discover Appon Islam's core competencies, technologies, frameworks, and full-stack development skill set.",
+    alternates: {
+        canonical: `${siteConfig.url}/skills`,
+    },
 };
 
 import { skillsInterface } from "@/components/config/skills";

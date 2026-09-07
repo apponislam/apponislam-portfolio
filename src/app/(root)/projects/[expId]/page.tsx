@@ -31,6 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!post) {
         return {
             title: "Project Not Found",
+            robots: {
+                index: false,
+                follow: false,
+            },
         };
     }
 
