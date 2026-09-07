@@ -13,6 +13,8 @@ export interface CertificateItem {
     issuer: string;
     issueDate: string;
     credentialUrl?: string;
+    codeChefUrl?: string;
+    codeForcesUrl?: string;
     isOngoing?: boolean;
     description: string[];
 }
@@ -59,6 +61,8 @@ export const certificatesData: CertificateItem[] = [
         issueDate: "Ongoing",
         isOngoing: true,
         credentialUrl: "https://phitron.io",
+        codeChefUrl: "https://www.codechef.com/users/apponislam",
+        codeForcesUrl: "https://codeforces.com/profile/apponislam",
         description: ["In-depth learning of Data Structures & Algorithms, C++, Object-Oriented Programming (OOP), Software Engineering principles, and Problem Solving."],
     },
     {

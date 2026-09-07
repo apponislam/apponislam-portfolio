@@ -49,26 +49,50 @@ export function CertificatesSection() {
                             )}
                         </div>
 
-                        {item.credentialUrl && (
-                            <div className="mt-4 pt-3 border-t border-border/40 flex justify-end">
-                                {item.isOngoing ? (
-                                    <span
-                                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground cursor-not-allowed opacity-50"
-                                        title="Ongoing - Credential not yet available"
-                                    >
-                                        <span>Verify Credential</span>
-                                        <Icons.externalLink className="h-3.5 w-3.5" />
-                                    </span>
-                                ) : (
+                        {(item.credentialUrl || item.codeChefUrl || item.codeForcesUrl) && (
+                            <div className="mt-4 pt-3 border-t border-border/40 flex flex-wrap gap-4 justify-end">
+                                {item.codeChefUrl && (
                                     <Link
-                                        href={item.credentialUrl}
+                                        href={item.codeChefUrl}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
                                     >
-                                        <span>Verify Credential</span>
-                                        <Icons.externalLink className="h-3.5 w-3.5" />
+                                        <span>CodeChef</span>
+                                        <Icons.codeChef className="h-3.5 w-3.5" />
                                     </Link>
+                                )}
+                                {item.codeForcesUrl && (
+                                    <Link
+                                        href={item.codeForcesUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+                                    >
+                                        <span>Codeforces</span>
+                                        <Icons.codeForces className="h-3.5 w-3.5" />
+                                    </Link>
+                                )}
+                                {item.credentialUrl && (
+                                    item.isOngoing ? (
+                                        <span
+                                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground cursor-not-allowed opacity-50"
+                                            title="Ongoing - Credential not yet available"
+                                        >
+                                            <span>Verify Credential</span>
+                                            <Icons.externalLink className="h-3.5 w-3.5" />
+                                        </span>
+                                    ) : (
+                                        <Link
+                                            href={item.credentialUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+                                        >
+                                            <span>Verify Credential</span>
+                                            <Icons.externalLink className="h-3.5 w-3.5" />
+                                        </Link>
+                                    )
                                 )}
                             </div>
                         )}
