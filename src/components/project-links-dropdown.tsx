@@ -10,11 +10,28 @@ import { Project } from "@/data/projects";
 
 interface ProjectLinksDropdownProps {
     project: Project;
+    align?: "left" | "right" | "auto";
 }
 
-export default function ProjectLinksDropdown({ project }: ProjectLinksDropdownProps) {
+export default function ProjectLinksDropdown({ project, align = "auto" }: ProjectLinksDropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [detectedAlign, setDetectedAlign] = useState<"left" | "right">("right");
     const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (isOpen && containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowWidth = window.innerWidth;
+            // Auto-detect: if space on right is limited (< 180px) or button is on right half of screen, align right
+            if (windowWidth - rect.left < 180 || rect.left > windowWidth / 2) {
+                setDetectedAlign("right");
+            } else {
+                setDetectedAlign("left");
+            }
+        }
+    }, [isOpen]);
+
+    const effectiveAlign = align === "auto" ? detectedAlign : align;
 
     const hasSpecificGithub = !!(project.githubFrontendLink || project.githubBackendLink);
     const hasSpecificWebsite = !!(project.liveLink || project.productionLink);
@@ -116,7 +133,8 @@ export default function ProjectLinksDropdown({ project }: ProjectLinksDropdownPr
             {/* Vertical Dropdown Tray */}
             <div
                 className={cn(
-                    "absolute left-0 right-auto sm:left-auto sm:right-0 top-full mt-2 flex flex-col gap-2 bg-background/95 backdrop-blur-md border border-muted p-2 rounded-xl shadow-lg transition-all duration-200 z-50 min-w-40 max-w-[calc(100vw-2rem)]",
+                    "absolute top-full mt-2 flex flex-col gap-2 bg-background/95 backdrop-blur-md border border-muted p-2 rounded-xl shadow-lg transition-all duration-200 z-50 min-w-40 max-w-[calc(100vw-2rem)]",
+                    effectiveAlign === "left" ? "left-0 right-auto" : "right-0 left-auto",
                     isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none",
                 )}
             >
