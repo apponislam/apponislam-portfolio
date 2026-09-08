@@ -45,7 +45,10 @@ export const projectsData: Project[] = [
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750946015/ghizuld8wtalp8x6dscp.png",
         ],
         descriptionDetails: {
-            paragraphs: ["Bike Shop is an online platform that allows customers to browse, search, and filter bikes with ease. Authenticated users can place orders, track status, and manage their profiles securely.", "Admins can manage all users, orders, and product listings with complete control from their dedicated dashboard. SurjoPay is integrated for secure payment transactions."],
+            paragraphs: [
+                "Bike Shop is an online platform that allows customers to browse, search, and filter bikes with ease. Authenticated users can place orders, track status, and manage their profiles securely.",
+                "Admins can manage all users, orders, and product listings with complete control from their dedicated dashboard. SurjoPay is integrated for secure payment transactions.",
+            ],
             bullets: ["JWT-based role authentication for customers and admins", "Dynamic search, filters, and product detail pages", "SurjoPay integration for secure checkout", "Admin dashboard for user, product, and order management", "Track orders with real-time status updates"],
         },
     },
@@ -147,8 +150,17 @@ export const projectsData: Project[] = [
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959256/mxtpijllql1uym6yakqo.png",
         ],
         descriptionDetails: {
-            paragraphs: ["CraftNest lets artists and buyers connect over unique jute and wooden crafts. Users can securely add, update, and manage their own products, while visitors explore curated items by sub-category.", "The site features JWT-protected routes, Google/Firebase authentication, TanStack-Query data fetching, and dark/light theme switching for an engaging shopping experience."],
-            bullets: ["Private dashboards for adding, updating, and deleting crafts", "Category & sub-category filtering with responsive UI", "Form validation and toast notifications for all CRUD actions", "Dark / light theme toggle and Lottie animations on the home page", "Fully environment-secured Firebase & MongoDB credentials"],
+            paragraphs: [
+                "CraftNest lets artists and buyers connect over unique jute and wooden crafts. Users can securely add, update, and manage their own products, while visitors explore curated items by sub-category.",
+                "The site features JWT-protected routes, Google/Firebase authentication, TanStack-Query data fetching, and dark/light theme switching for an engaging shopping experience.",
+            ],
+            bullets: [
+                "Private dashboards for adding, updating, and deleting crafts",
+                "Category & sub-category filtering with responsive UI",
+                "Form validation and toast notifications for all CRUD actions",
+                "Dark / light theme toggle and Lottie animations on the home page",
+                "Fully environment-secured Firebase & MongoDB credentials",
+            ],
         },
     },
     {
@@ -168,13 +180,24 @@ export const projectsData: Project[] = [
         startDate: "2025-03-10",
         endDate: "2025-05-01",
         companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945636/uljmooa6wwmk8nyxoya1.png",
-        images: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945645/tbvxsx4gd0oxi1zppiou.png", "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945689/vttlmzd2glycl6ej3en2.png", "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945728/otqcoz6fkoaqd4l2ylmy.png", "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945760/rnrvbemx7rlvr0hlqo37.png"],
+        images: [
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945645/tbvxsx4gd0oxi1zppiou.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945689/vttlmzd2glycl6ej3en2.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945728/otqcoz6fkoaqd4l2ylmy.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945760/rnrvbemx7rlvr0hlqo37.png",
+        ],
         descriptionDetails: {
             paragraphs: [
                 "Sustainability Idea Hub is a web application where users can submit, discuss, and vote on eco-friendly ideas. Members can categorize ideas, comment with nested threads, and interact through a Reddit-style voting system.",
                 "Admins can review submissions, give feedback, and highlight impactful projects. Additionally, members can monetize their ideas by marking them as 'Paid', which requires payment for access.",
             ],
-            bullets: ["JWT-based authentication and role management (Member/Admin)", "Paid/free idea visibility control with SSLCommerz integration", "Nested commenting and voting system like Reddit", "Admin approval/rejection with feedback mechanism", "Search and filter ideas by keyword or category"],
+            bullets: [
+                "JWT-based authentication and role management (Member/Admin)",
+                "Paid/free idea visibility control with SSLCommerz integration",
+                "Nested commenting and voting system like Reddit",
+                "Admin approval/rejection with feedback mechanism",
+                "Search and filter ideas by keyword or category",
+            ],
         },
         warning: "Note: This project is hosted on a free tier and may take a few seconds to spin up on initial load. Sandbox payment mode is enabled.",
     },
@@ -241,7 +264,16 @@ export const projectsData: Project[] = [
         startDate: "2025-11-10",
         endDate: "2026-02-20",
         companyLogoImg: "/projects/letanest/letanest1.webp",
-        images: ["/projects/letanest/letanest1.webp", "/projects/letanest/letanest2.webp", "/projects/letanest/letanest3.webp", "/projects/letanest/letanest4.webp", "/projects/letanest/letanest5.webp", "/projects/letanest/letanest6.webp", "/projects/letanest/letanest7.webp", "/projects/letanest/letanest8.webp"],
+        images: [
+            "/projects/letanest/letanest1.webp",
+            "/projects/letanest/letanest2.webp",
+            "/projects/letanest/letanest3.webp",
+            "/projects/letanest/letanest4.webp",
+            "/projects/letanest/letanest5.webp",
+            "/projects/letanest/letanest6.webp",
+            "/projects/letanest/letanest7.webp",
+            "/projects/letanest/letanest8.webp",
+        ],
         descriptionDetails: {
             paragraphs: [
                 "LetANest is an end-to-end travel and property listing platform designed to offer short-term lets and unique festival stays. It serves as a dual-sided marketplace allowing hosts to manage properties, memberships, and verify their identities, while enabling guests to discover and book unique destinations.",
@@ -274,8 +306,21 @@ export const projectsData: Project[] = [
         techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Redux Toolkit", "RTK Query", "Node.js", "Express.js", "Prisma ORM", "PostgreSQL", "Stripe API", "ShipStation API", "Resend API", "Zod"],
         startDate: "Jan 2026",
         endDate: "Apr 2026",
-        companyLogoImg: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=300&q=80",
-        images: ["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80"],
+        companyLogoImg: "/projects/peptide/peptide1.webp",
+        images: [
+            "/projects/peptide/peptide1.webp",
+            "/projects/peptide/peptide2.webp",
+            "/projects/peptide/peptide3.webp",
+            "/projects/peptide/peptide4.webp",
+            "/projects/peptide/peptide5.webp",
+            "/projects/peptide/peptide6.webp",
+            "/projects/peptide/peptide7.webp",
+            "/projects/peptide/peptide8.webp",
+            "/projects/peptide/peptide9.webp",
+            "/projects/peptide/peptide10.webp",
+            "/projects/peptide/peptide11.webp",
+            "/projects/peptide/peptide12.webp",
+        ],
         descriptionDetails: {
             paragraphs: [
                 "PEPTIDE.CLUB is a state-of-the-art e-commerce platform custom-built for research peptides and laboratory compounds. Designed with high performance and security in mind, the platform integrates a modern Next.js 16 App Router frontend with a scalable Express.js backend infrastructure.",
@@ -310,7 +355,11 @@ export const projectsData: Project[] = [
         startDate: "2026-05-01",
         endDate: "2026-08-30",
         companyLogoImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&auto=format&fit=crop&q=80",
-        images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80", "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&auto=format&fit=crop&q=80"],
+        images: [
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&auto=format&fit=crop&q=80",
+        ],
         descriptionDetails: {
             paragraphs: [
                 "Djarna is a full-featured peer-to-peer (P2P) social marketplace platform designed to connect buyers and sellers seamlessly across Web and Mobile. It features a complete multi-vendor ecosystem with real-time price negotiation, listing promotions, seller wallet withdrawals, identity verification (KYC), and multi-channel payment integrations.",
