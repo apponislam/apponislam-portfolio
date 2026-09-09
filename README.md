@@ -108,19 +108,19 @@ graph TD
     PublicPages -->|Track Page View| AnalyticsAPI[RTK Query PageAnalytics API]
     PublicPages -->|Send Message| ContactAPI[RTK Query Contact API]
 
-    AuthGuard -->|Authenticated| AdminPages[Admin Dashboard /dashboard]
-    AuthGuard -->|Unauthenticated| LoginPage[/dashboard/login]
+    AuthGuard -->|Authenticated| AdminPages["Admin Dashboard (/dashboard)"]
+    AuthGuard -->|Unauthenticated| LoginPage["Login Page (/dashboard/login)"]
 
-    AdminPages --> AnalyticsModule[/dashboard/analytics]
-    AdminPages --> ContactsModule[/dashboard/contacts]
-    AdminPages --> ActivityModule[/dashboard/activity]
+    AdminPages --> AnalyticsModule["Analytics (/dashboard/analytics)"]
+    AdminPages --> ContactsModule["Contacts (/dashboard/contacts)"]
+    AdminPages --> ActivityModule["Activity (/dashboard/activity)"]
 
     AnalyticsModule --> BaseApi[Base RTK Query API]
     ContactsModule --> BaseApi
     ActivityModule --> BaseApi
 
     BaseApi -->|JWT Bearer Token| BackendServer[Express / Node Backend API]
-    BaseApi -->|On 401 Session Expiry| RefreshTokenEndpoint[POST /auth/refresh-token]
+    BaseApi -->|On 401 Session Expiry| RefreshTokenEndpoint["POST /auth/refresh-token"]
 ```
 
 ---
