@@ -1,37 +1,80 @@
+export interface ProjectLink {
+    url?: string;
+    disabled: boolean;
+    private: boolean;
+}
+
+export interface ProjectContribution {
+    name: string;
+    role: string;
+    profileImage: string;
+    linkedinUsername: string;
+    highlights: string[];
+}
+
 export interface Project {
     _id: string;
+    serial: number;
     type: string;
     companyName: string;
     category: string[];
     shortDescription: string;
-    websiteLink?: string;
-    githubLink?: string;
-    githubFrontendLink?: string;
-    githubBackendLink?: string;
-    liveLink?: string;
-    productionLink?: string;
-    appLink?: string;
+
+    links: {
+        githubFrontend?: ProjectLink;
+        githubBackend?: ProjectLink;
+        githubApp?: ProjectLink;
+        demo?: ProjectLink;
+        live?: ProjectLink;
+        googleStore?: ProjectLink;
+        appleStore?: ProjectLink;
+    };
+
+    contributions: ProjectContribution[];
+
     techStack: string[];
     startDate: string;
     endDate: string;
     companyLogoImg: string;
     images: string[];
+
     descriptionDetails: {
         paragraphs: string[];
         bullets: string[];
     };
+
     warning?: string;
 }
 
-export const projectsData: Project[] = [
+export const projects: Project[] = [
     {
-        _id: "1",
+        _id: "bike-shop-application",
+        serial: 1,
         type: "Personal Project",
         companyName: "Bike Shop Application",
         category: ["Full Stack", "Web Dev"],
         shortDescription: "A complete bike e-commerce platform with secure JWT-based authentication, role-based dashboards, product filters, and integrated SurjoPay payment system.",
-        websiteLink: "https://peppy-hotteok-65ea2d.netlify.app/",
-        githubLink: "https://github.com/apponislam/bike-store-frontend",
+        links: {
+            demo: {
+                url: "https://peppy-hotteok-65ea2d.netlify.app/",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/bike-store-frontend",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["Next.js", "React", "Tailwind CSS", "Node.js", "Express.js", "Typescript", "MongoDB", "JWT", "SurjoPay"],
         startDate: "2025-04-01",
         endDate: "2025-06-10",
@@ -53,13 +96,33 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "2",
+        _id: "ap-classroom",
+        serial: 2,
         type: "Personal Project",
         companyName: "AP Classroom",
         category: ["Full Stack", "Web Dev"],
         shortDescription: "A MERN-stack learning-management platform with role-based dashboards for students, teachers, and admins, featuring class creation, enrollment, assignments, payments, and comprehensive analytics.",
-        websiteLink: "https://assignmentb9a12.web.app/",
-        githubLink: "https://github.com/apponislam/Classrooms-client",
+        links: {
+            demo: {
+                url: "https://assignmentb9a12.web.app/",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/Classrooms-client",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["React", "Next.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "JWT", "TanStack Query", "react-hook-form", "SurjoPay"],
         startDate: "2025-05-15",
         endDate: "2025-06-26",
@@ -92,13 +155,33 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "3",
+        _id: "appon-assignment-library",
+        serial: 3,
         type: "Personal Project",
         companyName: "Appon Assignment Library",
         category: ["Full Stack", "Web Dev"],
         shortDescription: "An online group study platform built with the MERN stack allowing users to create, attempt, and grade assignments collaboratively with secure auth, role-based logic, and PDF preview.",
-        websiteLink: "https://assignmentb9a11.web.app/",
-        githubLink: "https://github.com/apponislam/assignments-client",
+        links: {
+            demo: {
+                url: "https://assignmentb9a11.web.app/",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/assignments-client",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["React", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Firebase", "Typescript", "Javascript", "HTML 5", "CSS 3", "Google Auth"],
         startDate: "2025-06-10",
         endDate: "2025-06-26",
@@ -131,13 +214,33 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "4",
+        _id: "appon-painting-drawing",
+        serial: 4,
         type: "Personal Project",
         companyName: "Appon Painting & Drawing",
         category: ["Full Stack", "Web Dev"],
         shortDescription: "Appon Painting & Drawing is a Jute & Wooden-Craft e-commerce platform with secure auth, private dashboards, and fully responsive design.",
-        websiteLink: "https://assignmentb9a10.web.app/",
-        githubLink: "https://github.com/apponislam/painting-drawing-client",
+        links: {
+            demo: {
+                url: "https://assignmentb9a10.web.app/",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/painting-drawing-client",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["React", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Firebase", "Typescript", "Javascript", "HTML 5", "CSS 3", "Google Auth"],
         startDate: "2025-06-12",
         endDate: "2025-06-26",
@@ -164,18 +267,43 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "5",
+        _id: "sustainability-idea-hub",
+        serial: 5,
         type: "Personal Project",
         companyName: "Sustainability Idea Hub",
         category: ["Full Stack", "Web Dev"],
         shortDescription: "A full-stack platform for sharing and managing sustainability-focused ideas with role-based access, voting, comments, and paid content system.",
-        websiteLink: "https://idea-hub-client.vercel.app/",
-        githubLink: "https://github.com/apponislam/idea-hub-client",
-        githubFrontendLink: "https://github.com/apponislam/idea-hub-client",
-        githubBackendLink: "https://github.com/apponislam/idea-hub-server",
-        liveLink: "https://idea-hub-client.vercel.app/",
-        productionLink: "https://idea-hub-client.vercel.app/",
-        appLink: "https://idea-hub-client.vercel.app/",
+        links: {
+            demo: {
+                url: "https://idea-hub-client.vercel.app/",
+                disabled: false,
+                private: false,
+            },
+            live: {
+                url: "https://idea-hub-client.vercel.app/",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/idea-hub-client",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/idea-hub-server",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["Next.js", "React", "Tailwind CSS", "Node.js", "Express.js", "Typescript", "PostgreSQL", "Prisma", "JWT"],
         startDate: "2025-03-10",
         endDate: "2025-05-01",
@@ -202,17 +330,48 @@ export const projectsData: Project[] = [
         warning: "Note: This project is hosted on a free tier and may take a few seconds to spin up on initial load. Sandbox payment mode is enabled.",
     },
     {
-        _id: "6",
+        _id: "bazar-hisab",
+        serial: 6,
         type: "Personal Project",
         companyName: "Bazar Hisab",
         category: ["FinTech", "Expense Tracker", "Web Application", "Mobile Application"],
         shortDescription: "Your family and group market expense tracker, budget planner, and daily bazar account book.",
-        websiteLink: "https://mybazarhisab.apponislam.top/",
-        githubFrontendLink: "https://github.com/apponislam/mybazarhisab-frontend-web",
-        githubBackendLink: "https://github.com/apponislam/bazarhisab-backend",
-        liveLink: "https://mybazarhisab.apponislam.top/",
-        productionLink: "https://mybazarhisab.apponislam.top/",
-        appLink: "https://drive.google.com/file/d/1CpzWad9sHVbts2j5phWaTq6dP4WQRaEe/view?usp=sharing",
+        links: {
+            demo: {
+                url: "https://mybazarhisab.apponislam.top/",
+                disabled: false,
+                private: false,
+            },
+            live: {
+                url: "https://mybazarhisab.apponislam.top/",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/mybazarhisab-frontend-web",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/bazarhisab-backend",
+                disabled: false,
+                private: false,
+            },
+            githubApp: {
+                url: "https://drive.google.com/file/d/1CpzWad9sHVbts2j5phWaTq6dP4WQRaEe/view?usp=sharing",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["Next.js 16", "React 19", "React Native", "TypeScript", "Node.js", "Express.js", "MongoDB", "Mongoose", "Redux Toolkit", "RTK Query", "Tailwind CSS", "Zod", "PDFKit"],
         startDate: "2025-01-15",
         endDate: "Present",
@@ -249,17 +408,43 @@ export const projectsData: Project[] = [
         warning: "Note: The live application is currently actively in use for my personal daily expense tracking and household budget management. However, you are welcome to create your own account to explore and test the platform.",
     },
     {
-        _id: "7",
+        _id: "letanest",
+        serial: 7,
         type: "Professional",
         companyName: "LetANest - Short-Term Lets & Festival Stays",
         category: ["Full Stack", "Travel Tech", "Property Management"],
         shortDescription: "A comprehensive travel and property listing platform that connects hosts and guests with seamless bookings, host verification, and real-time messaging.",
-        websiteLink: "https://www.letanest.com",
-        githubFrontendLink: "https://github.com/apponislam/letanest",
-        githubBackendLink: "https://github.com/apponislam/letanest-server",
-        liveLink: "https://www.letanest.com",
-        productionLink: "https://www.letanest.com",
-        appLink: "",
+        links: {
+            demo: {
+                url: "https://www.letanest.com",
+                disabled: false,
+                private: false,
+            },
+            live: {
+                url: "https://www.letanest.com",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/letanest",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/letanest-server",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["Next.js 15", "React 19", "Tailwind CSS v4", "Redux Toolkit", "Radix UI", "Node.js", "Express 5", "TypeScript", "MongoDB", "Mongoose", "Socket.io", "Stripe", "JWT Authentication"],
         startDate: "2025-11-10",
         endDate: "2026-02-20",
@@ -293,16 +478,43 @@ export const projectsData: Project[] = [
         warning: "",
     },
     {
-        _id: "8",
+        _id: "peptide-club",
+        serial: 8,
         type: "Full Stack E-Commerce Platform",
         companyName: "Peptide Club",
         category: ["E-Commerce", "Full Stack", "Healthcare & Research", "Web Application"],
         shortDescription: "A premium full-stack e-commerce platform for research peptides featuring dynamic user pricing tiers, Stripe payment integration, automated ShipStation logistics, and a comprehensive admin analytics portal.",
-        websiteLink: "https://peptide.club",
-        liveLink: "https://peptide.club",
-        productionLink: "https://peptide.club",
-        githubFrontendLink: "https://github.com/apponislam/Peptide-Frontend",
-        githubBackendLink: "https://github.com/apponislam/Peptide-Backend",
+        links: {
+            demo: {
+                url: "https://peptide.club",
+                disabled: false,
+                private: false,
+            },
+            live: {
+                url: "https://peptide.club",
+                disabled: false,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/Peptide-Frontend",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/Peptide-Backend",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: [],
+            },
+        ],
         techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Redux Toolkit", "RTK Query", "Node.js", "Express.js", "Prisma ORM", "PostgreSQL", "Stripe API", "ShipStation API", "Resend API", "Zod"],
         startDate: "Jan 2026",
         endDate: "Apr 2026",
@@ -339,18 +551,58 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "9",
+        _id: "djarna-p2p-social-marketplace",
+        serial: 9,
         type: "Professional",
         companyName: "Djarna - P2P Social Marketplace",
         category: ["E-Commerce", "Marketplace", "Web Development", "Mobile App"],
         shortDescription: "A multi-vendor peer-to-peer (P2P) social marketplace platform featuring real-time offer negotiation, Paydunya/Wave mobile payments with automated escrow holds, DExchange/Twilio SMS verification, seller wallets, Flutter mobile app, and a Next.js admin dashboard.",
-        websiteLink: "https://dashboard.djarna.com",
-        githubLink: "",
-        githubFrontendLink: "https://github.com/apponislam/djarna_dashboard",
-        githubBackendLink: "https://github.com/apponislam/djarna_app_backend",
-        liveLink: "https://dashboard.djarna.com",
-        productionLink: "https://dashboard.djarna.com",
-        appLink: "https://play.google.com/store/apps/details?id=com.mohamed.djarna",
+        links: {
+            demo: {
+                url: "https://dashboard.djarna.com",
+                disabled: false,
+                private: false,
+            },
+            live: {
+                url: "https://dashboard.djarna.com",
+                disabled: false,
+                private: false,
+            },
+            githubApp: {
+                url: "https://github.com/apponislam/djarna_flutter_app",
+                disabled: true,
+                private: false,
+            },
+            githubFrontend: {
+                url: "https://github.com/apponislam/djarna_dashboard",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/djarna_app_backend",
+                disabled: false,
+                private: false,
+            },
+            googleStore: {
+                url: "https://play.google.com/store/apps/details?id=com.mohamed.djarna",
+                disabled: false,
+                private: false,
+            },
+            appleStore: {
+                url: "https://apps.apple.com/us/app/djarna/id6787214492",
+                disabled: false,
+                private: false,
+            },
+        },
+        contributions: [
+            {
+                name: "Appon Islam",
+                role: "Full Stack Developer",
+                profileImage: "/appon.webp",
+                linkedinUsername: "apponislam",
+                highlights: ["aksdfladsf", "aksdjfkladsf"],
+            },
+        ],
         techStack: ["Next.js", "TypeScript", "React", "Node.js", "Express.js", "MongoDB", "Mongoose", "Socket.IO", "Redux Toolkit", "Tailwind CSS", "Flutter", "Paydunya Gateway", "DExchange SMS API", "Twilio SMS", "Firebase FCM", "Zod", "Nodemailer", "Multer & Sharp"],
         startDate: "2026-05-01",
         endDate: "2026-08-30",
@@ -378,3 +630,9 @@ export const projectsData: Project[] = [
         warning: "Demo environment has simulated payment gateways enabled.",
     },
 ];
+
+export type ProjectsInterface = Project;
+
+export const Projects: ProjectsInterface[] = projects;
+
+export const featuredProjects = Projects.slice(0, 3);

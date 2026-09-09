@@ -1,13 +1,12 @@
 import { pagesConfig } from "@/components/config/pages";
 import PageHeader from "@/components/page-header";
 import { Metadata } from "next";
-import React from "react";
 import ProjectCard from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ProjectsInterface } from "@/components/config/projects";
-import { getProjects } from "@/components/actions/project-actions";
 import { Icons } from "@/components/icons";
 import { siteConfig } from "@/components/config/site";
+import { getProjects } from "@/components/actions/project-actions";
+import { ProjectsInterface } from "@/data/projects";
 
 export const metadata: Metadata = {
     title: "Projects",
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
 
 const renderContent = async (tabVal: string) => {
     let expArr: ProjectsInterface[] = await getProjects();
-    expArr.sort((a, b) => Number(b._id) - Number(a._id));
+    expArr.sort((a, b) => Number(b.serial) - Number(a.serial));
 
     if (tabVal === "personal") {
         expArr = expArr.filter((val) => val.type === "Personal Project");

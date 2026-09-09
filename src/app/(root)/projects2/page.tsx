@@ -5,8 +5,8 @@ import ProjectCard from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Icons } from "@/components/icons";
 import { siteConfig } from "@/components/config/site";
-import { getProjects } from "@/components/actions/project-actions2";
-import { ProjectsInterface } from "@/data/projects2";
+import { getProjects } from "@/components/actions/project-actions";
+import { ProjectsInterface } from "@/data/projects";
 
 export const metadata: Metadata = {
     title: "Projects",

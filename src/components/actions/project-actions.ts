@@ -1,4 +1,4 @@
-import { Projects } from "../config/projects";
+import { Projects } from "@/data/projects";
 
 export async function getProjects() {
     return Projects;
@@ -6,7 +6,7 @@ export async function getProjects() {
 
 export async function getFeaturedProjects() {
     const list = [...Projects];
-    list.sort((a, b) => Number(b._id) - Number(a._id));
+    list.sort((a, b) => Number(b.serial) - Number(a.serial));
     return list.slice(0, 3);
 }
 
@@ -22,4 +22,3 @@ export async function getProjectById(projectId: string) {
         throw error;
     }
 }
-

@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Project, ProjectLink } from "@/data/projects2";
+import { Project, ProjectLink } from "@/data/projects";
 import { Icons } from "../icons";
 import CustomTooltip from "../custom-tooltips";
 import { buttonVariants } from "../ui/button";
@@ -122,7 +122,6 @@ export default function ProjectLinksDropdown2({ project, align = "auto" }: Proje
 
     const projectLinks = rawProjectLinks.filter((link): link is NonNullable<typeof link> => Boolean(link));
 
-
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -180,25 +179,15 @@ export default function ProjectLinksDropdown2({ project, align = "auto" }: Proje
                             className={cn(
                                 buttonVariants({ variant: "outline", size: "sm" }),
                                 "flex items-center gap-1.5 border border-muted bg-background/50 text-foreground/80 transition-all duration-200 shadow-xs rounded-full px-3.5 py-1.5 text-xs font-semibold w-full justify-start whitespace-nowrap",
-                                isDisabled
-                                    ? "opacity-60 bg-muted/20 border-dashed cursor-not-allowed text-muted-foreground"
-                                    : "hover:text-foreground hover:bg-accent/50 cursor-pointer",
+                                isDisabled ? "opacity-60 bg-muted/20 border-dashed cursor-not-allowed text-muted-foreground" : "hover:text-foreground hover:bg-accent/50 cursor-pointer",
                                 !isDisabled && link.colorClass,
                             )}
                         >
                             <link.icon className="h-3.5 w-3.5 shrink-0" />
                             <span className={cn("truncate", isDisabled && "line-through opacity-70")}>{link.label}</span>
                             <div className="ml-auto flex items-center gap-1">
-                                {link.disabled && (
-                                    <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-muted/80 text-muted-foreground border border-muted-foreground/20">
-                                        None
-                                    </span>
-                                )}
-                                {link.isPrivate && (
-                                    <span className="text-[10px] uppercase font-mono px-1 py-0.2 rounded bg-muted/80 text-muted-foreground border border-muted-foreground/20">
-                                        Private
-                                    </span>
-                                )}
+                                {link.disabled && <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-muted/80 text-muted-foreground border border-muted-foreground/20">None</span>}
+                                {link.isPrivate && <span className="text-[10px] uppercase font-mono px-1 py-0.2 rounded bg-muted/80 text-muted-foreground border border-muted-foreground/20">Private</span>}
                             </div>
                         </div>
                     );
@@ -213,12 +202,7 @@ export default function ProjectLinksDropdown2({ project, align = "auto" }: Proje
 
                     return (
                         <CustomTooltip key={link.label} text={link.tooltip}>
-                            <Link
-                                href={link.url!}
-                                target="_blank"
-                                onClick={() => setIsOpen(false)}
-                                className="block w-full"
-                            >
+                            <Link href={link.url!} target="_blank" onClick={() => setIsOpen(false)} className="block w-full">
                                 {content}
                             </Link>
                         </CustomTooltip>
@@ -228,6 +212,3 @@ export default function ProjectLinksDropdown2({ project, align = "auto" }: Proje
         </div>
     );
 }
-
-
-

@@ -1,18 +1,18 @@
 import Link from "next/link";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, formatDate } from "@/lib/utils";
-import apponislam from "../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import ProjectsDescription from "@/components/exp-desc";
 import { siteConfig } from "@/components/config/site";
 import { Metadata } from "next";
 import ProjectImageSlider from "@/components/project-image-slider";
-import { Projects, ProjectsInterface } from "@/data/projects2";
+import { Projects, ProjectsInterface } from "@/data/projects";
+import { getProjectById } from "@/components/actions/project-actions";
+
 import ProjectLinksDropdown2 from "@/components/projects/porject-links-dropdown2";
-import Contributions from "@/components/projects/contributions";
+import Contributions from "@/components/contributions";
 
 type Props = {
     params: Promise<{ expId: string }>;
@@ -26,9 +26,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { expId } = await params;
-    const post = Projects.find((project) => project._id === expId);
 
-    if (!post) {
+    let post: ProjectsInterface;
+    try {
+        post = await getProjectById(expId);
+    } catch {
         return {
             title: "Project Not Found",
             robots: {
@@ -44,12 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: post.companyName,
         description: post.shortDescription,
         alternates: {
-            canonical: `${siteConfig.url}/projects/${post._id}`,
+            canonical: `${siteConfig.url}/projects2/${post._id}`,
         },
         openGraph: {
             title: `${post.companyName} | Appon Islam Portfolio`,
             description: post.shortDescription,
-            url: `${siteConfig.url}/projects/${post._id}`,
+            url: `${siteConfig.url}/projects2/${post._id}`,
             images: [
                 {
                     url: ogImage,
@@ -68,19 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-type Params = Promise<{ expId: string }>;
-
-const githubUsername = "apponislam";
-
-async function getProjectById(expId: string) {
-    const project = Projects.find((p) => p._id === expId);
-    if (!project) {
-        throw new Error("Failed to fetch project");
-    }
-    return project;
-}
-
-export default async function ProjectsPage({ params }: { params: Params }) {
+export default async function ProjectsPage({ params }: Props) {
     const { expId } = await params;
 
     let exp: ProjectsInterface;
@@ -94,7 +84,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto">
-            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "absolute -left-50 top-14 hidden xl:inline-flex")}>
+            <Link href="/projects2" className={cn(buttonVariants({ variant: "ghost" }), "absolute -left-50 top-14 hidden xl:inline-flex")}>
                 <Icons.chevronLeft className="mr-2 h-4 w-4" />
                 All Projects
             </Link>
@@ -138,7 +128,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
 
             <hr className="mt-12" />
             <div className="flex justify-center py-6 lg:py-10">
-                <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }))}>
+                <Link href="/projects2" className={cn(buttonVariants({ variant: "ghost" }))}>
                     <Icons.chevronLeft className="mr-2 h-4 w-4" />
                     All Projects
                 </Link>
