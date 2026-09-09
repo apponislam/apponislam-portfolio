@@ -548,3 +548,10 @@ export const projects2Data: Project[] = [
         warning: "Demo environment has simulated payment gateways enabled.",
     },
 ];
+
+export type ProjectsInterface = Project;
+
+export const Projects: ProjectsInterface[] = projects2Data;
+
+export const featuredProjects = Projects.slice(0, 3);
+
