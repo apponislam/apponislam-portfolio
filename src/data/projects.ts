@@ -28,6 +28,7 @@ export interface Project {
         live?: ProjectLink;
         googleStore?: ProjectLink;
         appleStore?: ProjectLink;
+        driveApp?: ProjectLink;
     };
 
     contributions: ProjectContribution[];
@@ -62,6 +63,11 @@ export const projects: Project[] = [
             },
             githubFrontend: {
                 url: "https://github.com/apponislam/bike-store-frontend",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/bike-store-backend",
                 disabled: false,
                 private: false,
             },
@@ -110,6 +116,11 @@ export const projects: Project[] = [
             },
             githubFrontend: {
                 url: "https://github.com/apponislam/Classrooms-client",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/Classrooms-server",
                 disabled: false,
                 private: false,
             },
@@ -172,6 +183,11 @@ export const projects: Project[] = [
                 disabled: false,
                 private: false,
             },
+            githubBackend: {
+                url: "https://github.com/apponislam/assignments-server",
+                disabled: false,
+                private: false,
+            },
         },
         contributions: [
             {
@@ -228,6 +244,11 @@ export const projects: Project[] = [
             },
             githubFrontend: {
                 url: "https://github.com/apponislam/painting-drawing-client",
+                disabled: false,
+                private: false,
+            },
+            githubBackend: {
+                url: "https://github.com/apponislam/painting-drawing-server",
                 disabled: false,
                 private: false,
             },
@@ -358,6 +379,11 @@ export const projects: Project[] = [
                 private: false,
             },
             githubApp: {
+                url: "https://github.com/apponislam/mybazarhisab-frontend-app",
+                disabled: false,
+                private: false,
+            },
+            driveApp: {
                 url: "https://drive.google.com/file/d/1CpzWad9sHVbts2j5phWaTq6dP4WQRaEe/view?usp=sharing",
                 disabled: false,
                 private: false,
@@ -480,7 +506,7 @@ export const projects: Project[] = [
     {
         _id: "peptide-club",
         serial: 8,
-        type: "Full Stack E-Commerce Platform",
+        type: "Professional",
         companyName: "Peptide Club",
         category: ["E-Commerce", "Full Stack", "Healthcare & Research", "Web Application"],
         shortDescription: "A premium full-stack e-commerce platform for research peptides featuring dynamic user pricing tiers, Stripe payment integration, automated ShipStation logistics, and a comprehensive admin analytics portal.",

@@ -53,17 +53,18 @@ export default function ProjectLinksDropdown({ project, align = "auto" }: Projec
     const githubAppInfo = extractLink(links.githubApp);
     const googleStoreInfo = extractLink(links.googleStore);
     const appleStoreInfo = extractLink(links.appleStore);
+    const driveAppInfo = extractLink(links.driveApp);
 
     const getTooltipText = (info: ReturnType<typeof extractLink>, defaultAction: string) => {
         if (!info) return "";
         if (info.disabled && info.isPrivate) {
-            return `Private repository & link disabled (${defaultAction} unavailable)`;
+            return `Private link & disabled (${defaultAction} unavailable)`;
         }
         if (info.disabled) {
             return `Link is currently disabled (${defaultAction} unavailable)`;
         }
         if (info.isPrivate) {
-            return `Private repository (${defaultAction} requires special access)`;
+            return `Private access (${defaultAction} requires special access)`;
         }
         return defaultAction;
     };
@@ -117,6 +118,13 @@ export default function ProjectLinksDropdown({ project, align = "auto" }: Projec
             icon: Icons.smartphone,
             tooltip: getTooltipText(appleStoreInfo, "Download on Apple App Store"),
             colorClass: "hover:text-sky-500 hover:border-sky-500/30 hover:bg-sky-500/5 dark:hover:bg-sky-500/10",
+        },
+        driveAppInfo && {
+            ...driveAppInfo,
+            label: "Drive APK",
+            icon: Icons.smartphone,
+            tooltip: getTooltipText(driveAppInfo, "Download APK from Google Drive"),
+            colorClass: "hover:text-amber-500 hover:border-amber-500/30 hover:bg-amber-500/5 dark:hover:bg-amber-500/10",
         },
     ];
 
