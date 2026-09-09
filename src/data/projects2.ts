@@ -568,18 +568,28 @@ export const projects2Data: Project[] = [
                 disabled: false,
                 private: false,
             },
+            githubApp: {
+                url: "https://github.com/apponislam/djarna_flutter_app",
+                disabled: true,
+                private: false,
+            },
             githubFrontend: {
-                url: "https://github.com/example/djarna-dashboard",
+                url: "https://github.com/apponislam/djarna_dashboard",
                 disabled: false,
                 private: false,
             },
             githubBackend: {
-                url: "https://github.com/example/djarna-backend",
+                url: "https://github.com/apponislam/djarna_app_backend",
                 disabled: false,
                 private: false,
             },
             googleStore: {
                 url: "https://play.google.com/store/apps/details?id=com.mohamed.djarna",
+                disabled: false,
+                private: false,
+            },
+            appleStore: {
+                url: "https://apps.apple.com/us/app/djarna/id6787214492",
                 disabled: false,
                 private: false,
             },
@@ -590,7 +600,7 @@ export const projects2Data: Project[] = [
                 role: "Full Stack Developer",
                 profileImage: "/appon.webp",
                 linkedinUsername: "apponislam",
-                highlights: [],
+                highlights: ["aksdfladsf", "aksdjfkladsf"],
             },
         ],
         techStack: ["Next.js", "TypeScript", "React", "Node.js", "Express.js", "MongoDB", "Mongoose", "Socket.IO", "Redux Toolkit", "Tailwind CSS", "Flutter", "Paydunya Gateway", "DExchange SMS API", "Twilio SMS", "Firebase FCM", "Zod", "Nodemailer", "Multer & Sharp"],
@@ -626,4 +636,3 @@ export type ProjectsInterface = Project;
 export const Projects: ProjectsInterface[] = projects2Data;
 
 export const featuredProjects = Projects.slice(0, 3);
-
