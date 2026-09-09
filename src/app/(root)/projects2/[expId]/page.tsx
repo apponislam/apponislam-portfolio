@@ -89,7 +89,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
         exp = await getProjectById(expId);
     } catch (err) {
         console.log(err);
-        redirect("/projects");
+        redirect("/projects2");
     }
 
     return (
@@ -112,7 +112,6 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 </div>
 
                 <Contributions contributions={exp.contributions} />
-
             </div>
 
             <ProjectImageSlider images={exp.images} companyName={exp.companyName} />
