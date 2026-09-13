@@ -35,7 +35,7 @@ export default function SkillsCard2({ skills }: SkillsCardProps) {
                             <div className="space-y-2">
                                 <h3 className="font-bold">{skill.name}</h3>
                                 <p className="text-sm text-muted-foreground">{skill.description}</p>
-                                <Rating stars={skill.rating} />
+                                {/* <Rating stars={skill.rating} /> */}
                             </div>
                         </div>
                     </div>
