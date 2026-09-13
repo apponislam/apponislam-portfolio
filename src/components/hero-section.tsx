@@ -34,9 +34,7 @@ export function HeroSection() {
                 </div>
                 <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">{siteConfig.name}</h1>
                 <h3 className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl font-semibold">Full Stack Developer</h3>
-                <p className="max-w-2xl leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">
-                    {siteConfig.description}
-                </p>
+                <p className="max-w-2xl leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">{siteConfig.description}</p>
 
                 <div className="grid grid-cols-2 mt-6 items-center justify-center sm:flex-row gap-3">
                     <Link href={siteConfig.links.github} target="_blank" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
