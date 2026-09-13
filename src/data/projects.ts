@@ -417,8 +417,8 @@ export const projects: Project[] = [
             },
         ],
         techStack: ["Next.js 16", "React 19", "React Native", "TypeScript", "Node.js", "Express.js", "MongoDB", "Mongoose", "Redux Toolkit", "RTK Query", "Tailwind CSS", "Zod", "PDFKit"],
-        startDate: "2025-01-15",
-        endDate: "Present",
+        startDate: "2026-07-13",
+        endDate: "2026-08-09",
         companyLogoImg: "/projects/mybazarhisab/mybazarhisab1.webp",
         images: [
             "/projects/mybazarhisab/mybazarhisab1.webp",
@@ -522,7 +522,7 @@ export const projects: Project[] = [
                 "Secured the platform using custom JWT authentication, bcrypt, and global error handling strategies.",
             ],
         },
-        warning: "",
+        warning: "Note: This application is live in production and actively used by real users.",
     },
     {
         _id: "peptide-club",
