@@ -78,12 +78,12 @@ export default async function ProjectsPage({ params }: Props) {
         exp = await getProjectById(expId);
     } catch (err) {
         console.log(err);
-        redirect("/projects2");
+        redirect("/projects");
     }
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto">
-            <Link href="/projects2" className={cn(buttonVariants({ variant: "ghost" }), "absolute -left-50 top-14 hidden xl:inline-flex")}>
+            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "absolute -left-50 top-14 hidden xl:inline-flex")}>
                 <Icons.chevronLeft className="mr-2 h-4 w-4" />
                 All Projects
             </Link>
@@ -127,7 +127,7 @@ export default async function ProjectsPage({ params }: Props) {
 
             <hr className="mt-12" />
             <div className="flex justify-center py-6 lg:py-10">
-                <Link href="/projects2" className={cn(buttonVariants({ variant: "ghost" }))}>
+                <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }))}>
                     <Icons.chevronLeft className="mr-2 h-4 w-4" />
                     All Projects
                 </Link>
