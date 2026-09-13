@@ -24,7 +24,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
                         <Tooltip key={idx} delayDuration={100}>
                             <TooltipTrigger asChild>
                                 <Link href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-sm hover:opacity-90 transition-all group p-1.5 rounded-lg hover:bg-accent/40 border border-transparent hover:border-muted">
-                                    <Image src={profileImg} alt={contributor.name} width={42} height={42} className="rounded-full bg-white object-cover border border-muted group-hover:scale-105 transition-transform" />
+                                    <Image src={profileImg} alt={contributor.name} width={40} height={40} className="rounded-full bg-white object-cover border border-muted group-hover:scale-105 transition-transform h-10 w-10" />
                                     <div className="flex-1 text-left leading-tight">
                                         <p className="font-medium group-hover:text-primary transition-colors">{contributor.name}</p>
                                         <p className="text-[12px] text-muted-foreground">{contributor.role}</p>

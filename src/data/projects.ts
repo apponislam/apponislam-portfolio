@@ -622,11 +622,34 @@ export const projects: Project[] = [
         },
         contributions: [
             {
+                name: "Ahmad Zakaria Labib",
+                role: "UI/UX Designer",
+                profileImage: "/team/labib.jpg",
+                linkedinUsername: "ahmad-zakaria-labib-b798a31ab",
+                highlights: [
+                    "Designed intuitive UI/UX for P2P marketplace mobile app and offer negotiation screens.",
+                    "Created design system, user wireframes, and interactive prototypes for seller onboarding.",
+                ],
+            },
+            {
+                name: "Rimon Islam",
+                role: "Flutter Developer",
+                profileImage: "/team/rimon.jpg",
+                linkedinUsername: "rimon-islam-797004239",
+                highlights: [
+                    "Developed cross-platform Flutter application for iOS & Android with custom UI components.",
+                    "Integrated Paydunya/Wave mobile payments, push notifications, and DExchange SMS verification.",
+                ],
+            },
+            {
                 name: "Appon Islam",
                 role: "Full Stack Developer",
                 profileImage: "/appon.webp",
                 linkedinUsername: "apponislam",
-                highlights: [],
+                highlights: [
+                    "Architected scalable Express.js backend with Socket.IO real-time offer negotiation & chat.",
+                    "Built Next.js admin dashboard and managed Play Store & App Store deployment pipelines.",
+                ],
             },
         ],
         techStack: ["Next.js", "TypeScript", "React", "Node.js", "Express.js", "MongoDB", "Mongoose", "Socket.IO", "Redux Toolkit", "Tailwind CSS", "Flutter", "Paydunya Gateway", "DExchange SMS API", "Twilio SMS", "Firebase FCM", "Zod", "Nodemailer", "Multer & Sharp"],
