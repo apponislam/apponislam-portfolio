@@ -20,7 +20,7 @@ export function HeroSection() {
                         fetchPriority="high"
                         sizes="(max-width: 768px) 160px, 256px"
                         className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary dark:border-white dark:bg-white mx-auto"
-                        alt="appon-islam-img"
+                        alt={`${siteConfig.name}-img`}
                     />
                     {siteConfig.showStatus && (
                         <div className="absolute top-2 left-1/2 translate-x-[15%] md:translate-x-[25%] flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 dark:bg-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.4)] text-[11px] md:text-xs font-bold text-white transition-all duration-300 hover:scale-105">
@@ -32,18 +32,18 @@ export function HeroSection() {
                         </div>
                     )}
                 </div>
-                <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">Appon Islam</h1>
+                <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">{siteConfig.name}</h1>
                 <h3 className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl font-semibold">Full Stack Developer</h3>
                 <p className="max-w-2xl leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">
-                    Full Stack Developer specializing in crafting responsive, scalable, and high-performance web applications. Dedicated to writing clean code and delivering exceptional user experiences with React, Next.js, and modern Web technologies.
+                    {siteConfig.description}
                 </p>
 
                 <div className="grid grid-cols-2 mt-6 items-center justify-center sm:flex-row gap-3">
-                    <Link href={"https://github.com/apponislam"} target="_blank" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
+                    <Link href={siteConfig.links.github} target="_blank" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
                         <Icons.gitHub className="w-4 h-4 mr-2" /> GitHub
                     </Link>
                     <Link
-                        href={"https://www.linkedin.com/in/apponislam/"}
+                        href={siteConfig.links.linkedin}
                         target="_blank"
                         className={cn(
                             buttonVariants({
@@ -57,7 +57,7 @@ export function HeroSection() {
                     </Link>
 
                     <Link
-                        href={`https://drive.google.com/file/d/1A29W_NKb_N3VPjADS4tWapnEQUzmnQFs/view?usp=sharing`}
+                        href={siteConfig.links.resume}
                         target="_blank"
                         className={cn(
                             buttonVariants({
