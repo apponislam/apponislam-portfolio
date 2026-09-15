@@ -80,27 +80,62 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: siteConfig.name,
-        url: siteConfig.url,
-        image: siteConfig.ogImage,
-        sameAs: [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.twitter],
-        jobTitle: "Full Stack Developer",
-        worksFor: {
-            "@type": "Organization",
-            name: "Freelance / Self-Employed",
+    const jsonLd = [
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: siteConfig.name,
+            url: siteConfig.url,
+            image: siteConfig.ogImage,
+            sameAs: [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.twitter],
+            jobTitle: "Full Stack Developer",
+            worksFor: {
+                "@type": "Organization",
+                name: "Freelance / Self-Employed",
+            },
+            address: {
+                "@type": "PostalAddress",
+                addressLocality: "Dhaka",
+                addressCountry: "Bangladesh",
+            },
+            email: siteConfig.email,
+            telephone: siteConfig.phone,
+            description: siteConfig.description,
         },
-        address: {
-            "@type": "PostalAddress",
-            addressLocality: "Dhaka",
-            addressCountry: "Bangladesh",
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: siteConfig.name,
+            url: siteConfig.url,
         },
-        email: siteConfig.email,
-        telephone: siteConfig.phone,
-        description: siteConfig.description,
-    };
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: [
+                {
+                    "@type": "SiteNavigationElement",
+                    position: 1,
+                    name: "Projects",
+                    description: "Explore web applications and software developments by Appon Islam",
+                    url: `${siteConfig.url}/projects`,
+                },
+                {
+                    "@type": "SiteNavigationElement",
+                    position: 2,
+                    name: "Skills",
+                    description: "Full-stack development skills, technologies, and experience",
+                    url: `${siteConfig.url}/skills`,
+                },
+                {
+                    "@type": "SiteNavigationElement",
+                    position: 3,
+                    name: "Contact",
+                    description: "Get in touch with Appon Islam",
+                    url: `${siteConfig.url}/contact`,
+                },
+            ],
+        },
+    ];
 
     return (
         <html lang="en" suppressHydrationWarning={true}>
