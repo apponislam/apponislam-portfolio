@@ -25,6 +25,39 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
         return () => clearTimeout(timer);
     }, [currentIndex, images.length]);
 
+    useEffect(() => {
+        if (images.length <= 1) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) {
+                return;
+            }
+
+            if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                if (isLightboxOpen) {
+                    setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+                } else {
+                    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+                }
+            } else if (e.key === "ArrowRight") {
+                e.preventDefault();
+                if (isLightboxOpen) {
+                    setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+                } else {
+                    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+                }
+            } else if (e.key === "Escape" && isLightboxOpen) {
+                e.preventDefault();
+                setIsLightboxOpen(false);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [isLightboxOpen, images.length]);
+
     if (!images || images.length === 0) return null;
 
     const handlePrev = (e: React.MouseEvent) => {
