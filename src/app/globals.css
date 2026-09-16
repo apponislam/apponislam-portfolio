@@ -189,3 +189,45 @@ a[disabled],
     cursor: not-allowed;
 }
 
+/* 1px Micro Scrollbar for Entire Site */
+*::-webkit-scrollbar,
+::-webkit-scrollbar {
+    width: 1px !important;
+    height: 1px !important;
+}
+
+*::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.45) !important;
+    border-radius: 9999px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.85) !important;
+}
+
+.dark *::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.dark *::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(52, 211, 153, 0.9) !important;
+}
+
+/* Firefox ultra-thin scrollbar */
+html, body, * {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(148, 163, 184, 0.45) transparent !important;
+}
+
+.dark html, .dark body, .dark * {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent !important;
+}

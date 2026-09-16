@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Icons } from "./icons";
 import { cn, optimizeCloudinaryUrl } from "@/lib/utils";
@@ -14,6 +14,25 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
+    const thumbnailContainerRef = useRef<HTMLDivElement | null>(null);
+    const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+    useEffect(() => {
+        if (!isLightboxOpen) return;
+        const container = thumbnailContainerRef.current;
+        const activeThumb = thumbnailRefs.current[lightboxIndex];
+        if (container && activeThumb) {
+            const containerWidth = container.clientWidth;
+            const thumbLeft = activeThumb.offsetLeft;
+            const thumbWidth = activeThumb.clientWidth;
+            const targetScrollLeft = thumbLeft - containerWidth / 2 + thumbWidth / 2;
+
+            container.scrollTo({
+                left: Math.max(0, targetScrollLeft),
+                behavior: "smooth",
+            });
+        }
+    }, [lightboxIndex, isLightboxOpen]);
 
     useEffect(() => {
         if (images.length <= 1) return;
@@ -266,10 +285,19 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
 
                         {/* Thumbnail Strip (Scrollable) */}
                         {images.length > 1 && (
-                            <div className="w-full flex gap-2 overflow-x-auto py-2 justify-start sm:justify-center items-center scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+                            <div
+                                ref={thumbnailContainerRef}
+                                className={cn(
+                                    "w-full flex gap-2 overflow-x-auto py-2 items-center px-4 scroll-smooth",
+                                    images.length > 6 ? "justify-start" : "justify-start sm:justify-center"
+                                )}
+                            >
                                 {images.map((img, idx) => (
                                     <button
                                         key={idx}
+                                        ref={(el) => {
+                                            thumbnailRefs.current[idx] = el;
+                                        }}
                                         onClick={() => setLightboxIndex(idx)}
                                         className={cn(
                                             "relative w-20 aspect-video rounded-md overflow-hidden border-2 transition-all duration-200 cursor-pointer shrink-0",
