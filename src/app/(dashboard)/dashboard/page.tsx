@@ -8,24 +8,15 @@ import { Icons } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import { useGetAnalyticsSummaryQuery } from "@/redux/features/page-analytics/pageAnalyticsApi";
 import { useGetAllActivitiesQuery } from "@/redux/features/activity/activityApi";
-import {
-    BarChart3,
-    Users,
-    Eye,
-    Activity,
-    LayoutDashboard,
-    ArrowRight,
-    Clock,
-    TrendingUp,
-    Calendar,
-    Mail,
-    Flame,
-    RefreshCw,
-} from "lucide-react";
+import { BarChart3, Users, Eye, Activity, LayoutDashboard, ArrowRight, Clock, TrendingUp, Calendar, Mail, Flame, RefreshCw } from "lucide-react";
 
 export default function DashboardPage() {
     const { data: summaryResponse, isLoading: isLoadingSummary, refetch: refetchSummary } = useGetAnalyticsSummaryQuery();
-    const { data: activityResponse, isLoading: isLoadingActivity, refetch: refetchActivity } = useGetAllActivitiesQuery({
+    const {
+        data: activityResponse,
+        isLoading: isLoadingActivity,
+        refetch: refetchActivity,
+    } = useGetAllActivitiesQuery({
         page: 1,
         limit: 5,
     });
@@ -42,7 +33,7 @@ export default function DashboardPage() {
     const dailyTrend = summary?.dailyTrend || [];
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-7xl space-y-8">
+        <div className="container mx-auto px-4 py-8 space-y-8">
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-6 border-border/60">
                 <div>
@@ -50,9 +41,7 @@ export default function DashboardPage() {
                         <LayoutDashboard className="h-7 w-7 text-primary" />
                         Admin Dashboard
                     </h1>
-                    <p className="text-muted-foreground text-sm mt-1">
-                        High-level overview of portfolio traffic, analytics, and activity.
-                    </p>
+                    <p className="text-muted-foreground text-sm mt-1">High-level overview of portfolio traffic, analytics, and activity.</p>
                 </div>
                 <Button variant="outline" size="icon" onClick={handleRefetch} className="shrink-0 h-9 w-9 rounded-full border-primary/20 hover:border-primary/50" title="Refetch">
                     <RefreshCw className="h-4 w-4" />
@@ -63,68 +52,52 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <Card className="bg-card/40 backdrop-blur-sm border-border/60 shadow-sm hover:border-primary/40 transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                            Today's Views
-                        </CardTitle>
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Today's Views</CardTitle>
                         <div className="p-2 bg-primary/10 text-primary rounded-xl">
                             <Eye className="h-4 w-4" />
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold font-mono">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-primary" /> : summary?.todayTotalPageViews ?? 0}
-                        </div>
+                        <div className="text-3xl font-bold font-mono">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-primary" /> : (summary?.todayTotalPageViews ?? 0)}</div>
                         <p className="text-xs text-muted-foreground mt-1 font-medium">Page views recorded today</p>
                     </CardContent>
                 </Card>
 
                 <Card className="bg-card/40 backdrop-blur-sm border-border/60 shadow-sm hover:border-blue-500/40 transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                            Today's Visitors
-                        </CardTitle>
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Today's Visitors</CardTitle>
                         <div className="p-2 bg-blue-500/10 text-blue-500 rounded-xl">
                             <Users className="h-4 w-4" />
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold font-mono">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-blue-500" /> : summary?.todayUniqueVisitors ?? 0}
-                        </div>
+                        <div className="text-3xl font-bold font-mono">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-blue-500" /> : (summary?.todayUniqueVisitors ?? 0)}</div>
                         <p className="text-xs text-muted-foreground mt-1 font-medium">Unique IP visitors today</p>
                     </CardContent>
                 </Card>
 
                 <Card className="bg-card/40 backdrop-blur-sm border-border/60 shadow-sm hover:border-emerald-500/40 transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                            Total Views
-                        </CardTitle>
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Total Views</CardTitle>
                         <div className="p-2 bg-emerald-500/10 text-emerald-500 rounded-xl">
                             <TrendingUp className="h-4 w-4" />
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold font-mono">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-emerald-500" /> : summary?.totalPageViews ?? 0}
-                        </div>
+                        <div className="text-3xl font-bold font-mono">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-emerald-500" /> : (summary?.totalPageViews ?? 0)}</div>
                         <p className="text-xs text-muted-foreground mt-1 font-medium">All time page views</p>
                     </CardContent>
                 </Card>
 
                 <Card className="bg-card/40 backdrop-blur-sm border-border/60 shadow-sm hover:border-purple-500/40 transition-all duration-300">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                            Total Visitors
-                        </CardTitle>
+                        <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Total Visitors</CardTitle>
                         <div className="p-2 bg-purple-500/10 text-purple-500 rounded-xl">
                             <Users className="h-4 w-4" />
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold font-mono">
-                            {isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-purple-500" /> : summary?.totalUniqueVisitors ?? 0}
-                        </div>
+                        <div className="text-3xl font-bold font-mono">{isLoadingSummary ? <Icons.spinner className="animate-spin h-6 w-6 text-purple-500" /> : (summary?.totalUniqueVisitors ?? 0)}</div>
                         <p className="text-xs text-muted-foreground mt-1 font-medium">All time unique visitors</p>
                     </CardContent>
                 </Card>
