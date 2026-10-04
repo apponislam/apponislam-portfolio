@@ -9,15 +9,21 @@ import { Icons } from "@/components/icons";
 import { Pagination } from "@/components/pagination";
 import { useModalStore } from "@/components/hooks/use-modal-store";
 import { useGetAllActivitiesQuery, useDeleteActivityMutation } from "@/redux/features/activity/activityApi";
-import { Trash2, Activity, Globe, Monitor, Clock, CheckCircle2, XCircle, RefreshCw } from "lucide-react";
+import { Trash2, Activity, Globe, Monitor, Clock, CheckCircle2, XCircle, RefreshCw, AlertTriangle } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 
 export default function ActivityPage() {
     const [page, setPage] = useState(1);
     const [search, setSearch] = useState("");
     const [appliedSearch, setAppliedSearch] = useState("");
+    const [deletingId, setDeletingId] = useState<string | null>(null);
     const storeModal = useModalStore();
 
-    const { data: activityResponse, isLoading, refetch } = useGetAllActivitiesQuery({
+    const {
+        data: activityResponse,
+        isLoading,
+        refetch,
+    } = useGetAllActivitiesQuery({
         page,
         limit: 10,
         searchTerm: appliedSearch.trim() ? appliedSearch.trim() : undefined,
@@ -45,10 +51,12 @@ export default function ActivityPage() {
         setAppliedSearch(search);
     };
 
-    const handleDelete = async (id: string) => {
-        if (!confirm("Are you sure you want to delete this activity log?")) return;
+    const confirmDelete = async () => {
+        if (!deletingId) return;
+        const targetId = deletingId;
+        setDeletingId(null);
         try {
-            await deleteActivity(id).unwrap();
+            await deleteActivity(targetId).unwrap();
             storeModal.onOpen({
                 title: "Success!",
                 description: "Activity deleted successfully.",
@@ -64,7 +72,7 @@ export default function ActivityPage() {
     };
 
     return (
-        <div className="container mx-auto px-4 py-10 max-w-6xl space-y-8">
+        <div className="container mx-auto px-4 py-10  space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-6 border-border/60">
                 <div>
                     <h1 className="font-heading text-3xl font-bold tracking-tight inline-flex items-center gap-2">
@@ -142,7 +150,7 @@ export default function ActivityPage() {
                             </div>
 
                             <div className="shrink-0 md:pl-3 md:border-l border-border/50 flex md:flex-col items-center gap-2">
-                                <Button variant="ghost" size="sm" onClick={() => handleDelete(activity._id)} disabled={isDeleting} className="h-7 text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+                                <Button variant="ghost" size="sm" onClick={() => setDeletingId(activity._id)} disabled={isDeleting} className="h-7 text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
                                     <Trash2 className="h-3.5 w-3.5 md:mr-1.5" />
                                     <span className="hidden md:inline">Delete</span>
                                 </Button>
@@ -157,6 +165,25 @@ export default function ActivityPage() {
                     <Pagination pagination={paginationMeta} onPageChange={(p) => setPage(p)} />
                 </div>
             )}
+
+            <Dialog open={!!deletingId} onOpenChange={(open) => !open && setDeletingId(null)}>
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2 text-destructive">
+                            <AlertTriangle className="h-5 w-5" /> Delete Activity Log
+                        </DialogTitle>
+                        <DialogDescription className="pt-2">Are you sure you want to delete this activity log? This action cannot be undone.</DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className="flex flex-row justify-end gap-3 pt-2">
+                        <Button variant="outline" onClick={() => setDeletingId(null)}>
+                            Cancel
+                        </Button>
+                        <Button variant="destructive" onClick={confirmDelete} disabled={isDeleting}>
+                            {isDeleting ? "Deleting..." : "Delete"}
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

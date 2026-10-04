@@ -25,13 +25,13 @@ export function ResumeSection() {
             </div>
 
             {/* Grid Layout for Experience & Education */}
-            <div className="mx-auto grid gap-10 lg:grid-cols-2 w-full max-w-6xl pt-4">
+            <div className="mx-auto grid gap-10 lg:grid-cols-2 w-full  pt-4">
                 <ExperienceSection />
                 <EducationSection />
             </div>
 
             {/* Professional Certifications */}
-            <div className="mx-auto w-full max-w-6xl pt-4">
+            <div className="mx-auto w-full  pt-4">
                 <CertificatesSection />
             </div>
         </section>

@@ -17,7 +17,11 @@ export default function AnalyticsPage() {
     const [appliedSearch, setAppliedSearch] = useState("");
     const [selectedLog, setSelectedLog] = useState<TPageAnalytics | null>(null);
 
-    const { data: analyticsResponse, isLoading: isLoadingAnalytics, refetch } = useGetAllAnalyticsQuery({
+    const {
+        data: analyticsResponse,
+        isLoading: isLoadingAnalytics,
+        refetch,
+    } = useGetAllAnalyticsQuery({
         page,
         limit: 10,
         path: appliedSearch.trim() ? appliedSearch.trim() : undefined,
@@ -44,7 +48,7 @@ export default function AnalyticsPage() {
     };
 
     return (
-        <div className="container mx-auto px-4 py-10 max-w-6xl space-y-8">
+        <div className="container mx-auto px-4 py-10  space-y-8">
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-6 border-border/60">
                 <div>
@@ -136,12 +140,7 @@ export default function AnalyticsPage() {
                                             {log.count ?? log.views ?? 0} Views
                                         </Badge>
 
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            onClick={() => setSelectedLog(log)}
-                                            className="h-8 gap-1 text-xs cursor-pointer hover:bg-primary/5 hover:border-primary/40"
-                                        >
+                                        <Button variant="outline" size="sm" onClick={() => setSelectedLog(log)} className="h-8 gap-1 text-xs cursor-pointer hover:bg-primary/5 hover:border-primary/40">
                                             <Info className="h-3.5 w-3.5 text-primary" />
                                             <span>Details</span>
                                         </Button>

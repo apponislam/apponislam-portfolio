@@ -18,7 +18,11 @@ export default function AdminContactsPage() {
     const [appliedSearch, setAppliedSearch] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("all");
 
-    const { data: contactsResponse, isLoading: loading, refetch } = useGetAllContactsQuery({
+    const {
+        data: contactsResponse,
+        isLoading: loading,
+        refetch,
+    } = useGetAllContactsQuery({
         page,
         limit: 5,
         searchTerm: appliedSearch.trim() ? appliedSearch.trim() : undefined,
@@ -51,7 +55,7 @@ export default function AdminContactsPage() {
     };
 
     return (
-        <div className="container mx-auto px-4 py-10 max-w-5xl space-y-6">
+        <div className="container mx-auto px-4 py-10 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-6 border-border/60">
                 <div>
                     <h1 className="font-heading text-3xl font-bold tracking-tight">Contact Messages</h1>
