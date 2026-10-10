@@ -24,7 +24,7 @@ export default function AnalyticsPage() {
     } = useGetAllAnalyticsQuery({
         page,
         limit: 10,
-        path: appliedSearch.trim() ? appliedSearch.trim() : undefined,
+        searchTerm: appliedSearch.trim() ? appliedSearch.trim() : undefined,
     });
 
     const analytics = analyticsResponse?.data || [];

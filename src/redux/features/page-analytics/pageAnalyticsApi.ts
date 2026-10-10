@@ -25,6 +25,7 @@ export interface AnalyticsQueryParams {
     page?: number;
     limit?: number;
     path?: string;
+    searchTerm?: string;
     startDate?: string;
     endDate?: string;
 }
