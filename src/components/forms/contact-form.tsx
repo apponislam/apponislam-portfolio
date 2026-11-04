@@ -67,7 +67,13 @@ const ContactForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 min-w-full">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8 min-w-full"
+                toolname="submitContactForm"
+                tooldescription="Submit an inquiry, message, project collaboration, or hiring request to Appon Islam."
+                toolautosubmit="false"
+            >
                 <FormField
                     control={form.control}
                     name="name"
@@ -75,7 +81,12 @@ const ContactForm = () => {
                         <FormItem>
                             <FormLabel>Name</FormLabel>
                             <FormControl>
-                                <Input placeholder="Enter your name" {...field} />
+                                <Input
+                                    placeholder="Enter your name"
+                                    toolparamdescription="Your full name"
+                                    required
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -88,7 +99,13 @@ const ContactForm = () => {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="Enter your email" {...field} />
+                                <Input
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    toolparamdescription="Your valid email address for receiving responses"
+                                    required
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -101,7 +118,12 @@ const ContactForm = () => {
                         <FormItem>
                             <FormLabel>Message</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="Enter your message" {...field} />
+                                <Textarea
+                                    placeholder="Enter your message"
+                                    toolparamdescription="Details about your project inquiry, question, or message"
+                                    required
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -114,7 +136,12 @@ const ContactForm = () => {
                         <FormItem>
                             <FormLabel>Social (optional)</FormLabel>
                             <FormControl>
-                                <Input placeholder="Link for social account" {...field} />
+                                <Input
+                                    type="url"
+                                    placeholder="Link for social account"
+                                    toolparamdescription="Optional link to your LinkedIn, GitHub, or portfolio website"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

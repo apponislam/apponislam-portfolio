@@ -1,0 +1,56 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Appon Islam - Full Stack Developer Portfolio",
+    "url": "https://www.apponislam.com"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:apponislam.com:tools:contact-form",
+      "displayName": "Appon Islam Contact Tool",
+      "type": "application/x-webmcp-tool",
+      "url": "https://www.apponislam.com/contact",
+      "description": "Send a direct message, project collaboration, or hiring request to Appon Islam.",
+      "representativeQueries": [
+        "contact Appon Islam",
+        "hire full stack developer Appon Islam",
+        "send inquiry to Appon Islam",
+        "reach out for freelance Next.js project"
+      ]
+    },
+    {
+      "identifier": "urn:air:apponislam.com:content:llms-txt",
+      "displayName": "LLMs Summary Document",
+      "type": "text/markdown",
+      "url": "https://www.apponislam.com/llms.txt",
+      "description": "Structured Markdown summary of Appon Islam's portfolio, tech stack, skills, projects, and contact channels.",
+      "representativeQueries": [
+        "what are Appon Islam's skills",
+        "view Appon Islam portfolio summary",
+        "learn about Appon Islam tech stack"
+      ]
+    },
+    {
+      "identifier": "urn:air:apponislam.com:content:projects",
+      "displayName": "Portfolio Projects Catalog",
+      "type": "text/html",
+      "url": "https://www.apponislam.com/projects",
+      "description": "Explore full-stack web applications and software engineering projects developed by Appon Islam.",
+      "representativeQueries": [
+        "show projects by Appon Islam",
+        "view Next.js and MERN stack projects by Appon Islam"
+      ]
+    },
+    {
+      "identifier": "urn:air:apponislam.com:content:skills",
+      "displayName": "Developer Technical Skills",
+      "type": "text/html",
+      "url": "https://www.apponislam.com/skills",
+      "description": "Comprehensive list of frontend, backend, database, and devops proficiencies.",
+      "representativeQueries": [
+        "what technologies does Appon Islam use",
+        "view Appon Islam developer skills"
+      ]
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import Providers from "@/components/providers/ReduxProvider";
 import { siteConfig } from "@/components/config/site";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/utils/modal-provider";
+import { WebMCPProvider } from "@/components/providers/WebMCPProvider";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -61,6 +62,9 @@ export const metadata: Metadata = {
     },
     alternates: {
         canonical: "./",
+        types: {
+            "application/json": [{ url: "/.well-known/ard.json", title: "ARD Manifest" }],
+        },
     },
     robots: {
         index: true,
@@ -139,12 +143,18 @@ export default function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning={true}>
+            <head>
+                <link rel="ard" href="/.well-known/ard.json" />
+                <link rel="agentmap" href="/.well-known/ard.json" />
+            </head>
             <body suppressHydrationWarning={true} data-new-gr-c-s-check-loaded="14.1224.0" cz-shortcut-listen="true" data-gr-ext-installed="" className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
                 <script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <Providers>
-                        {children}
-                        <ModalProvider />
+                        <WebMCPProvider>
+                            {children}
+                            <ModalProvider />
+                        </WebMCPProvider>
                     </Providers>
                 </ThemeProvider>
             </body>

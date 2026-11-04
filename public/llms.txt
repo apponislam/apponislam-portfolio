@@ -1,0 +1,33 @@
+# Appon Islam | Full Stack Developer & Software Engineer
+
+> Full Stack Developer building high-performance, scalable, and modern web applications with Next.js, React, TypeScript, Node.js, Express, MongoDB, and PostgreSQL. Focused on clean architecture, seamless user experience, and robust software engineering.
+
+## Primary Navigation
+- [Home](https://www.apponislam.com/)
+- [Projects](https://www.apponislam.com/projects)
+- [Skills](https://www.apponislam.com/skills)
+- [Contact](https://www.apponislam.com/contact)
+
+## Featured Projects
+- [Bike Shop Application](https://www.apponislam.com/projects/bike-shop-application): Full-stack bike e-commerce platform with JWT-based authentication, role-based dashboards, product filters, and integrated SurjoPay payment system.
+- [AP Classroom](https://www.apponislam.com/projects/ap-classroom): MERN-stack learning-management platform with role-based dashboards for students, teachers, and admins, featuring class management, assignments, and payments.
+- [Appon Assignment Library](https://www.apponislam.com/projects/appon-assignment-library): Academic resource sharing and submission repository for university students with PDF previews and batch downloads.
+
+## Core Capabilities & Tech Stack
+- **Frontend:** Next.js, React, TypeScript, JavaScript, Tailwind CSS, Redux Toolkit, Zustand, HTML5, CSS3
+- **Backend:** Node.js, Express.js, RESTful APIs, GraphQL, JWT, Firebase Authentication
+- **Databases:** MongoDB, PostgreSQL, Mongoose, Prisma
+- **Tools & Platforms:** Git, GitHub, Docker, Postman, Vercel, Netlify
+
+## Contact & Social Links
+- **Email:** [apponislamdev@gmail.com](mailto:apponislamdev@gmail.com)
+- **Phone:** [+8801722779803](tel:+8801722779803)
+- **Location:** Dhaka, Bangladesh
+- **GitHub:** [github.com/apponislam](https://github.com/apponislam)
+- **LinkedIn:** [linkedin.com/in/apponislam](https://www.linkedin.com/in/apponislam/)
+- **Twitter / X:** [twitter.com/appon2003](https://twitter.com/appon2003)
+- **Resume:** [View Resume](https://drive.google.com/file/d/1A29W_NKb_N3VPjADS4tWapnEQUzmnQFs/view?usp=sharing)
+- **Contact Form:** [Send a message](https://www.apponislam.com/contact)
+
+## Optional Comprehensive Context
+- [Full Documentation (llms-full.txt)](https://www.apponislam.com/llms-full.txt)

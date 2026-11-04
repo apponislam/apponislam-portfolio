@@ -1,0 +1,70 @@
+# Appon Islam | Full Stack Developer & Software Engineer - Full Profile
+
+> Comprehensive documentation of Appon Islam's portfolio, background, full-stack projects, technical proficiencies, work experience, education, and contact channels.
+
+## About Appon Islam
+Appon Islam is a dedicated Full Stack Developer based in Dhaka, Bangladesh. He specializes in crafting high-performance, accessible, and scalable web applications using the modern JavaScript and TypeScript ecosystem. With experience across both frontend design implementation and robust backend systems, he builds end-to-end digital solutions.
+
+## Main Links
+- Website: [https://www.apponislam.com](https://www.apponislam.com)
+- Projects: [https://www.apponislam.com/projects](https://www.apponislam.com/projects)
+- Skills: [https://www.apponislam.com/skills](https://www.apponislam.com/skills)
+- Contact: [https://www.apponislam.com/contact](https://www.apponislam.com/contact)
+- GitHub: [https://github.com/apponislam](https://github.com/apponislam)
+- LinkedIn: [https://www.linkedin.com/in/apponislam/](https://www.linkedin.com/in/apponislam/)
+- Twitter / X: [https://twitter.com/appon2003](https://twitter.com/appon2003)
+- Resume: [https://drive.google.com/file/d/1A29W_NKb_N3VPjADS4tWapnEQUzmnQFs/view?usp=sharing](https://drive.google.com/file/d/1A29W_NKb_N3VPjADS4tWapnEQUzmnQFs/view?usp=sharing)
+
+## Work Experience
+### Full Stack Developer — Sparktech Agency (August 2025 - Present)
+- Developing responsive web applications using MERN stack (MongoDB, Express, React, Node.js) and Next.js.
+- Designing secure RESTful APIs, database schemas (MongoDB, PostgreSQL), and role-based authentication systems (JWT, Firebase).
+- Translating Figma/PSD layouts into pixel-perfect, accessible React and Tailwind CSS components.
+- Integrating third-party payment gateways (SurjoPay, SSLCommerz) and state management solutions (Zustand, Redux Toolkit).
+
+## Education
+### B.Sc. in Computer Science & Engineering — Northern University Bangladesh (2025 - Present)
+- Location: Dhaka, Bangladesh
+- Focus: Algorithms, Software Architecture, System Design, and Database Systems.
+
+### Diploma in Computer Technology — Dinajpur Polytechnic Institute (2020 - 2024)
+- Location: Dinajpur, Bangladesh
+- Focus: Computer Technology, Network Administration, and Software Engineering Fundamentals.
+
+## Certifications & Problem Solving
+- **Computer Science & Fundamentals** — Phitron
+- Active problem solving and competitive programming on CodeChef and Codeforces.
+
+## Detailed Projects
+
+### 1. Bike Shop Application
+- **URL**: [https://www.apponislam.com/projects/bike-shop-application](https://www.apponislam.com/projects/bike-shop-application)
+- **Live Demo**: [https://peppy-hotteok-65ea2d.netlify.app/](https://peppy-hotteok-65ea2d.netlify.app/)
+- **Frontend Repo**: [https://github.com/apponislam/bike-store-frontend](https://github.com/apponislam/bike-store-frontend)
+- **Backend Repo**: [https://github.com/apponislam/bike-store-backend](https://github.com/apponislam/bike-store-backend)
+- **Tech Stack**: Next.js, React, Tailwind CSS, Node.js, Express.js, TypeScript, MongoDB, JWT, SurjoPay
+- **Summary**: Full-featured e-commerce platform for bicycles featuring catalog browsing, advanced filtering, JWT-based role authentication for customers and administrators, order tracking, and SurjoPay payment processing.
+
+### 2. AP Classroom
+- **URL**: [https://www.apponislam.com/projects/ap-classroom](https://www.apponislam.com/projects/ap-classroom)
+- **Live Demo**: [https://assignmentb9a12.web.app/](https://assignmentb9a12.web.app/)
+- **Frontend Repo**: [https://github.com/apponislam/Classrooms-client](https://github.com/apponislam/Classrooms-client)
+- **Tech Stack**: React, Node.js, Express.js, MongoDB, Firebase Auth, Tailwind CSS, Stripe
+- **Summary**: Modern learning management platform enabling instructors to create and monetize classes, students to enroll and submit assignments, and administrators to review course approvals and financial metrics.
+
+### 3. Appon Assignment Library
+- **URL**: [https://www.apponislam.com/projects/appon-assignment-library](https://www.apponislam.com/projects/appon-assignment-library)
+- **Tech Stack**: Next.js, TypeScript, Tailwind CSS, Node.js, MongoDB
+- **Summary**: Centralized academic resource portal designed for university students to publish, categorize, preview, and download study assignments, lecture notes, and lab reports.
+
+## Technical Skills Breakdown
+- **Languages**: TypeScript, JavaScript (ES6+), HTML5, CSS3, SQL, C/C++
+- **Frontend Frameworks & Libraries**: Next.js, React, Redux Toolkit, Zustand, Tailwind CSS, Radix UI, Lucide Icons
+- **Backend Frameworks & Runtime**: Node.js, Express.js, REST APIs, JSON Web Tokens (JWT)
+- **Databases & ORMs**: MongoDB, Mongoose, PostgreSQL, Prisma
+- **DevOps, Tooling & Cloud**: Git, GitHub, Docker, Postman, Vercel, Netlify
+
+## Contact
+- Email: apponislamdev@gmail.com
+- Telephone: +8801722779803
+- Online Contact Form: [https://www.apponislam.com/contact](https://www.apponislam.com/contact)
