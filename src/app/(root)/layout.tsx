@@ -15,7 +15,9 @@ export default async function MarketingLayout({ children }: { children: React.Re
                         <NavRightMenu></NavRightMenu>
                     </div>
                 </header>
-                {children}
+                <main id="main-content" className="flex-1">
+                    {children}
+                </main>
                 <PremiumFooter />
             </div>
         </div>

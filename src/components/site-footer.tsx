@@ -16,6 +16,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`${item.name} (${item.username})`}
+                            title={`${item.name} (${item.username})`}
                             className={cn(
                                 buttonVariants({
                                     variant: "ghost",
@@ -25,7 +26,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
                             )}
                         >
                             <item.icon className="h-5 w-5" aria-hidden="true" />
-                            <span className="sr-only">{item.name}</span>
+                            <span className="sr-only">{item.name} ({item.username})</span>
                         </Link>
                     </CustomTooltip>
                 ))}

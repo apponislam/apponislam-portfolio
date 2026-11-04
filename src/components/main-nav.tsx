@@ -48,8 +48,8 @@ export function MainNav({ items, children }: MainNavProps) {
                     ))}
                 </nav>
             ) : null}
-            <button className="flex items-center space-x-2 md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                {showMobileMenu ? <Icons.close /> : <Icons.menu />}
+            <button className="flex items-center space-x-2 md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)} aria-label="Toggle mobile menu">
+                {showMobileMenu ? <Icons.close aria-hidden="true" /> : <Icons.menu aria-hidden="true" />}
                 <span className="font-bold">Menu</span>
             </button>
             {showMobileMenu && items && <MobileNav items={items}>{children}</MobileNav>}

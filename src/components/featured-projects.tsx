@@ -22,9 +22,9 @@ export async function FeaturedProjects() {
                 ))}
             </div>
 
-            <Link href="/projects" className="flex justify-center">
+            <Link href="/projects" className="flex justify-center" aria-label="View all projects">
                 <Button variant={"outline"} className="rounded-xl">
-                    <Icons.chevronDown className="mr-2 h-4 w-4" /> View All
+                    <Icons.chevronDown className="mr-2 h-4 w-4" aria-hidden="true" /> View All Projects
                 </Button>
             </Link>
         </section>

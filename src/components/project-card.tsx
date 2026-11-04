@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 {/* <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
             </div>
             <div className="pt-5 space-y-3 flex-1 flex flex-col">
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{project.companyName}</h5>
+                <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{project.companyName}</h3>
                 <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400">{project.shortDescription}</p>
                 <div className="flex gap-2 flex-wrap">
                     <ChipContainer textArr={project.category} />
@@ -49,7 +49,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 <div className="mt-auto pt-3">
                     <Link href={`/projects/${project._id}`} aria-label={`Read more about ${project.companyName}`}>
                         <Button variant={"default"}>
-                            Read more
+                            Read more <span className="sr-only">about {project.companyName}</span>
                             <Icons.chevronRight className="w-4 ml-1" aria-hidden="true" />
                         </Button>
                     </Link>

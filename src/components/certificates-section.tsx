@@ -55,22 +55,24 @@ export function CertificatesSection() {
                                     <Link
                                         href={item.codeChefUrl}
                                         target="_blank"
-                                        rel="noreferrer"
+                                        rel="noopener noreferrer"
+                                        aria-label={`${item.title} on CodeChef`}
                                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
                                     >
                                         <span>CodeChef</span>
-                                        <Icons.codeChef className="h-3.5 w-3.5" />
+                                        <Icons.codeChef className="h-3.5 w-3.5" aria-hidden="true" />
                                     </Link>
                                 )}
                                 {item.codeForcesUrl && (
                                     <Link
                                         href={item.codeForcesUrl}
                                         target="_blank"
-                                        rel="noreferrer"
+                                        rel="noopener noreferrer"
+                                        aria-label={`${item.title} on Codeforces`}
                                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
                                     >
                                         <span>Codeforces</span>
-                                        <Icons.codeForces className="h-3.5 w-3.5" />
+                                        <Icons.codeForces className="h-3.5 w-3.5" aria-hidden="true" />
                                     </Link>
                                 )}
                                 {item.credentialUrl && (
@@ -80,17 +82,18 @@ export function CertificatesSection() {
                                             title="Ongoing - Credential not yet available"
                                         >
                                             <span>Verify Credential</span>
-                                            <Icons.externalLink className="h-3.5 w-3.5" />
+                                            <Icons.externalLink className="h-3.5 w-3.5" aria-hidden="true" />
                                         </span>
                                     ) : (
                                         <Link
                                             href={item.credentialUrl}
                                             target="_blank"
-                                            rel="noreferrer"
+                                            rel="noopener noreferrer"
+                                            aria-label={`Verify credential for ${item.title}`}
                                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
                                         >
                                             <span>Verify Credential</span>
-                                            <Icons.externalLink className="h-3.5 w-3.5" />
+                                            <Icons.externalLink className="h-3.5 w-3.5" aria-hidden="true" />
                                         </Link>
                                     )
                                 )}

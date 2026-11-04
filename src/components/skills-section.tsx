@@ -12,9 +12,9 @@ export function SkillsSection() {
                 <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">{pagesConfig.skills.description}</p>
             </div>
             <HomeSkills />
-            <Link href="/skills" className="flex justify-center">
+            <Link href="/skills" className="flex justify-center" aria-label="View all skills">
                 <Button variant={"outline"} className="rounded-xl">
-                    <Icons.chevronDown className="mr-2 h-4 w-4" /> View All
+                    <Icons.chevronDown className="mr-2 h-4 w-4" aria-hidden="true" /> View All Skills
                 </Button>
             </Link>
         </section>

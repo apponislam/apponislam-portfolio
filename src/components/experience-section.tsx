@@ -11,7 +11,7 @@ export function ExperienceSection() {
         <div className="space-y-6" data-aos="fade-up">
             <div className="flex items-center gap-3 border-b pb-4 border-border/60">
                 <div className="p-2 rounded-lg bg-primary/5 text-primary">
-                    <Icons.work className="h-6 w-6" />
+                    <Icons.work className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h3 className="font-heading text-2xl font-bold tracking-tight">Professional Experience</h3>
             </div>

@@ -23,8 +23,8 @@ export function HeroSection() {
                         alt={`${siteConfig.name}-img`}
                     />
                     {siteConfig.showStatus && (
-                        <div className="absolute top-2 left-1/2 translate-x-[15%] md:translate-x-[25%] flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 dark:bg-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.4)] text-[11px] md:text-xs font-bold text-white transition-all duration-300 hover:scale-105">
-                            <span className="relative flex h-2 w-2">
+                        <div className="absolute top-2 left-1/2 translate-x-[15%] md:translate-x-[25%] flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-800 dark:bg-emerald-800 shadow-[0_0_15px_rgba(6,95,70,0.5)] text-[11px] md:text-xs font-bold text-white transition-all duration-300 hover:scale-105">
+                            <span className="relative flex h-2 w-2" aria-hidden="true">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                             </span>
@@ -33,7 +33,7 @@ export function HeroSection() {
                     )}
                 </div>
                 <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">{siteConfig.name}</h1>
-                <h3 className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl font-semibold">Full Stack Developer</h3>
+                <p className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl font-semibold">{siteConfig.title ? "Full Stack Developer" : "Full Stack Developer"}</p>
                 <p className="max-w-2xl leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">{siteConfig.description}</p>
 
                 <div className="grid grid-cols-2 mt-6 items-center justify-center sm:flex-row gap-3">
