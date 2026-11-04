@@ -43,6 +43,8 @@ export function PremiumFooter({ className }: React.HTMLAttributes<HTMLElement>) 
                                 <Link
                                     href={item.link}
                                     target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`${item.name} (${item.username})`}
                                     className={cn(
                                         buttonVariants({
                                             variant: "ghost",
@@ -51,7 +53,8 @@ export function PremiumFooter({ className }: React.HTMLAttributes<HTMLElement>) 
                                         "h-9 w-9 p-0 rounded-full border border-border/60 hover:bg-accent/60 dark:hover:bg-accent/30",
                                     )}
                                 >
-                                    <item.icon className="h-4 w-4" />
+                                    <item.icon className="h-4 w-4" aria-hidden="true" />
+                                    <span className="sr-only">{item.name}</span>
                                 </Link>
                             </CustomTooltip>
                         ))}

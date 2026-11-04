@@ -24,8 +24,9 @@ const ScrollButton = () => {
     }
 
     return (
-        <button onClick={handleScrollAndAsyncTasks}>
-            <Icons.chevronDown className="h-6 w-6 mt-10 downarrow" />
+        <button onClick={handleScrollAndAsyncTasks} aria-label="Scroll down to skills section">
+            <Icons.chevronDown className="h-6 w-6 mt-10 downarrow" aria-hidden="true" />
+            <span className="sr-only">Scroll down to skills section</span>
         </button>
     );
 };

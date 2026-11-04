@@ -37,12 +37,13 @@ export function HeroSection() {
                 <p className="max-w-2xl leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">{siteConfig.description}</p>
 
                 <div className="grid grid-cols-2 mt-6 items-center justify-center sm:flex-row gap-3">
-                    <Link href={siteConfig.links.github} target="_blank" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
-                        <Icons.gitHub className="w-4 h-4 mr-2" /> GitHub
+                    <Link href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
+                        <Icons.gitHub className="w-4 h-4 mr-2" aria-hidden="true" /> GitHub
                     </Link>
                     <Link
                         href={siteConfig.links.linkedin}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className={cn(
                             buttonVariants({
                                 variant: "outline",
@@ -51,12 +52,13 @@ export function HeroSection() {
                             "px-4 md:px-8",
                         )}
                     >
-                        <Icons.linkedin className="w-4 h-4 mr-2" /> LinkedIn
+                        <Icons.linkedin className="w-4 h-4 mr-2" aria-hidden="true" /> LinkedIn
                     </Link>
 
                     <Link
                         href={siteConfig.links.resume}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className={cn(
                             buttonVariants({
                                 variant: "outline",
@@ -65,10 +67,10 @@ export function HeroSection() {
                             "px-4 md:px-8",
                         )}
                     >
-                        <Icons.download className="w-4 h-4 mr-2" /> Resume
+                        <Icons.download className="w-4 h-4 mr-2" aria-hidden="true" /> Resume
                     </Link>
-                    <Link href={"/contact"} rel="noreferrer" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
-                        <Icons.contact className="w-4 h-4 mr-2" /> Contact
+                    <Link href={"/contact"} className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
+                        <Icons.contact className="w-4 h-4 mr-2" aria-hidden="true" /> Contact
                     </Link>
                 </div>
                 <ScrollButton />
