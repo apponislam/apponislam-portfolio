@@ -27,7 +27,7 @@ export default function SkillsCard2({ skills }: SkillsCardProps) {
     return (
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-5xl lg:grid-cols-3">
             {skills.map((skill, id) => {
-                const IconComponent = iconMap[skill.icon as keyof typeof iconMap];
+                const IconComponent = iconMap[skill.icon as keyof typeof iconMap] || iconMap.javascript;
                 return (
                     <div key={id} className="relative overflow-hidden rounded-lg border bg-background p-2" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                         <div className="flex h-57.5 flex-col justify-between rounded-md p-6 sm:h-57.5">

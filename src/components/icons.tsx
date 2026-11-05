@@ -3,10 +3,10 @@ import { BsInfoCircle, BsQuestionCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { HiOutlineExternalLink, HiOutlineLink, HiBriefcase } from "react-icons/hi";
-import { AlertTriangle, ArrowRight, Award, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code, Workflow, Cloud, Database, Search, Mail, Calendar, Reply, ExternalLink } from "lucide-react";
-import { SiAngular, SiAntdesign, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin, SiCodechef, SiCodeforces } from "react-icons/si";
+import { AlertTriangle, ArrowRight, Award, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code, Workflow, Cloud, Database, Search, Mail, Calendar, Reply, ExternalLink, Clock, KeyRound, Layers, Lightbulb, MessageSquare, Users } from "lucide-react";
+import { SiAngular, SiAntdesign, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin, SiCodechef, SiCodeforces, SiDocker, SiFirebase, SiGit, SiGithub, SiJsonwebtokens, SiMongoose, SiNginx, SiPassport, SiPostman, SiPrisma, SiRabbitmq, SiRedis, SiStripe, SiVercel } from "react-icons/si";
 import { IoIosGitBranch } from "react-icons/io";
-import { TbBrandFiverr } from "react-icons/tb";
+import { TbBrandFiverr, TbApi } from "react-icons/tb";
 import { FcGoogle } from "react-icons/fc";
 import { CiEdit } from "react-icons/ci";
 import { CgMoreVerticalAlt } from "react-icons/cg";
@@ -135,5 +135,28 @@ export const Icons = {
     ),
     codeChef: SiCodechef,
     codeForces: SiCodeforces,
+    docker: SiDocker,
+    firebase: SiFirebase,
+    git: SiGit,
+    github: SiGithub,
+    jwt: SiJsonwebtokens,
+    mongoose: SiMongoose,
+    nginx: SiNginx,
+    passport: SiPassport,
+    postman: SiPostman,
+    prisma: SiPrisma,
+    rabbitmq: SiRabbitmq,
+    redis: SiRedis,
+    stripe: SiStripe,
+    vercel: SiVercel,
+    restapi: TbApi,
+    oauth: KeyRound,
+    bullmq: Layers,
+    rtkquery: SiRedux,
+    creativeproblemsolving: Lightbulb,
+    timemanagement: Clock,
+    teamwork: Users,
+    professionalism: Award,
+    effectivecommunication: MessageSquare,
 };
 
