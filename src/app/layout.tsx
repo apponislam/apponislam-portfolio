@@ -8,15 +8,19 @@ import { siteConfig } from "@/components/config/site";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/utils/modal-provider";
 import { WebMCPProvider } from "@/components/providers/WebMCPProvider";
+import { AosProvider } from "@/components/providers/AosProvider";
 
 const fontSans = FontSans({
     subsets: ["latin"],
     variable: "--font-sans",
+    display: "swap",
 });
 
 const fontHeading = localFont({
     src: "../assets/fonts/CalSans-SemiBold.woff2",
     variable: "--font-heading",
+    display: "swap",
+    preload: true,
 });
 
 export const metadata: Metadata = {
@@ -147,13 +151,15 @@ export default function RootLayout({
                 <link rel="ard" href="/.well-known/ard.json" />
                 <link rel="agentmap" href="/.well-known/ard.json" />
             </head>
-            <body suppressHydrationWarning={true} data-new-gr-c-s-check-loaded="14.1224.0" cz-shortcut-listen="true" data-gr-ext-installed="" className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
+            <body suppressHydrationWarning={true} className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
                 <script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <Providers>
                         <WebMCPProvider>
-                            {children}
-                            <ModalProvider />
+                            <AosProvider>
+                                {children}
+                                <ModalProvider />
+                            </AosProvider>
                         </WebMCPProvider>
                     </Providers>
                 </ThemeProvider>

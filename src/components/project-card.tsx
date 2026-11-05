@@ -7,11 +7,10 @@ import { Icons } from "@/components/icons";
 import ChipContainer from "./chip-container";
 import { ProjectsInterface } from "./config/projects";
 import { Badge } from "./ui/badge";
-import aos from "aos";
-import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { optimizeCloudinaryUrl } from "@/lib/utils";
 import CustomTooltip from "./custom-tooltips";
+import aos from "aos";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
@@ -19,7 +18,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
     useEffect(() => {
-        aos.init();
+        aos.refresh();
     }, []);
 
     return (

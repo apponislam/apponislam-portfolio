@@ -6,14 +6,10 @@ import { ExperienceSection } from "@/components/experience-section";
 import { EducationSection } from "@/components/education-section";
 import { CertificatesSection } from "@/components/certificates-section";
 import aos from "aos";
-import "aos/dist/aos.css";
 
 export function ResumeSection() {
     useEffect(() => {
-        aos.init({
-            duration: 800,
-            once: true,
-        });
+        aos.refresh();
     }, []);
 
     return (

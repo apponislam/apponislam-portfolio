@@ -1,9 +1,9 @@
 "use client";
+
 import { useEffect } from "react";
 import Rating from "./rating";
 import { iconMap } from "./ui/icons";
 import aos from "aos";
-import "aos/dist/aos.css";
 
 interface ISkills {
     _id: string;
@@ -21,7 +21,7 @@ interface SkillsCardProps {
 
 export default function SkillsCard2({ skills }: SkillsCardProps) {
     useEffect(() => {
-        aos.init();
+        aos.refresh();
     }, []);
 
     return (
