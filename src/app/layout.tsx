@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/utils/modal-provider";
 import { WebMCPProvider } from "@/components/providers/WebMCPProvider";
 import { AosProvider } from "@/components/providers/AosProvider";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -159,6 +160,7 @@ export default function RootLayout({
                             <AosProvider>
                                 {children}
                                 <ModalProvider />
+                                <ChatWidget />
                             </AosProvider>
                         </WebMCPProvider>
                     </Providers>
