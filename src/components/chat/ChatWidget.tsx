@@ -14,16 +14,23 @@ export const ChatWidget: React.FC = () => {
 
     const { messages, isStreaming, isLoadingHistory, isOnline, sendMessage, stopStreaming, clearChat } = useGuestChat();
 
-    // Close on Escape key
+    // Close and abort stream on escape key or user close
+    const handleClose = () => {
+        if (isStreaming) {
+            stopStreaming();
+        }
+        setIsOpen(false);
+    };
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape" && isOpen) {
-                setIsOpen(false);
+                handleClose();
             }
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isOpen]);
+    }, [isOpen, isStreaming]);
 
     const handleClearChat = async () => {
         await clearChat();
@@ -36,7 +43,7 @@ export const ChatWidget: React.FC = () => {
             {isOpen && (
                 <div
                     role="dialog"
-                    aria-label="AI Chat Assistant"
+                    aria-label="Appon's AI Assistant"
                     aria-modal="true"
                     className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 z-50 flex flex-col w-full h-full sm:w-102.5 sm:h-150 sm:rounded-2xl bg-white/95 dark:bg-zinc-950/95 backdrop-blur-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden animate-in fade-in-0 zoom-in-95 duration-150"
                 >
@@ -55,10 +62,9 @@ export const ChatWidget: React.FC = () => {
 
                             <div className="flex flex-col">
                                 <div className="flex items-center gap-1.5">
-                                    <h3 className="font-heading font-semibold text-sm leading-tight text-zinc-900 dark:text-zinc-100">Appon&apos;s AI</h3>
-                                    <span className="inline-block px-1.5 py-0.2 rounded text-[9px] font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">Llama 3.2</span>
+                                    <h3 className="font-heading font-semibold text-sm leading-tight text-zinc-900 dark:text-zinc-100">Appon&apos;s AI Assistant</h3>
                                 </div>
-                                <span className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">Ask about projects, skills & experience</span>
+                                <span className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">{isOnline === true ? "Online • Llama 3.2" : isOnline === false ? "Offline • Llama 3.2" : "Connecting • Llama 3.2"}</span>
                             </div>
                         </div>
 
@@ -76,13 +82,7 @@ export const ChatWidget: React.FC = () => {
                                 </button>
                             )}
 
-                            <button
-                                type="button"
-                                onClick={() => setIsOpen(false)}
-                                className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
-                                title="Close"
-                                aria-label="Close chat window"
-                            >
+                            <button type="button" onClick={handleClose} className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer" title="Close" aria-label="Close chat window">
                                 <X className="w-4 h-4" aria-hidden="true" />
                             </button>
                         </div>
@@ -111,15 +111,27 @@ export const ChatWidget: React.FC = () => {
                 </div>
             )}
 
-            {/* Floating Trigger Button */}
+            {/* Floating Trigger Button (56px x 56px with status dot) */}
             <div className="fixed bottom-6 right-6 z-50">
                 <button
                     type="button"
-                    onClick={() => setIsOpen((prev) => !prev)}
-                    className="group relative flex items-center justify-center w-13 h-13 rounded-full bg-zinc-950 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-950 border border-zinc-800/40 dark:border-zinc-200/50 shadow-xl shadow-black/20 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600 focus:ring-offset-2"
+                    onClick={() => {
+                        if (isOpen) {
+                            handleClose();
+                        } else {
+                            setIsOpen(true);
+                        }
+                    }}
+                    className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-zinc-950 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-950 border border-zinc-800/40 dark:border-zinc-200/50 shadow-xl shadow-black/20 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600 focus:ring-offset-2"
                     aria-label={isOpen ? "Close AI chat assistant" : "Ask Appon's AI"}
                     title={isOpen ? "Close AI chat" : "Ask Appon's AI"}
                 >
+                    {/* 10px Health Status Dot */}
+                    <span
+                        className={`absolute top-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-zinc-950 transition-colors ${isOnline === true ? "bg-emerald-500" : isOnline === false ? "bg-rose-500" : "bg-amber-500"}`}
+                        title={isOnline === true ? "AI Online" : isOnline === false ? "AI Offline" : "Connecting..."}
+                    />
+
                     {isOpen ? (
                         <X className="w-5 h-5 transition-transform duration-200" aria-hidden="true" />
                     ) : (

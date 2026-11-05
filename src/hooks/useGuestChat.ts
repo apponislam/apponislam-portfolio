@@ -27,6 +27,9 @@ export function useGuestChat() {
     const [error, setError] = useState<string | null>(null);
 
     const abortControllerRef = useRef<AbortController | null>(null);
+    const sessionIdRef = useRef<string | null>(null);
+    const createSessionPromiseRef = useRef<Promise<string | null> | null>(null);
+    const hasInitializedRef = useRef(false);
     const baseUrl = getChatApiBaseUrl();
 
     // Check backend & Ollama health
@@ -47,35 +50,62 @@ export function useGuestChat() {
         }
     }, [baseUrl]);
 
-    // Create a new session on the server
+    // Create a new session on the server (with deduplication lock)
     const createNewSession = useCallback(async (): Promise<string | null> => {
-        try {
-            const res = await fetch(`${baseUrl}/chat/sessions`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ model: "llama3.2:3b" }),
-            });
-            if (!res.ok) throw new Error("Failed to create chat session");
-            const json = await res.json();
-            const newId = json?.data?.sessionId;
-            if (newId) {
-                if (typeof window !== "undefined") {
-                    localStorage.setItem(STORAGE_KEY, newId);
-                }
-                setSessionId(newId);
-                setMessages([]);
-                return newId;
-            }
-            return null;
-        } catch (err) {
-            console.error("Error creating session:", err);
-            return null;
+        // If we already have an active session in memory or localStorage, return it
+        if (sessionIdRef.current) {
+            return sessionIdRef.current;
         }
+        if (typeof window !== "undefined") {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                sessionIdRef.current = stored;
+                setSessionId(stored);
+                return stored;
+            }
+        }
+
+        // If a creation request is already in flight, reuse the same promise (prevents 2 parallel calls)
+        if (createSessionPromiseRef.current) {
+            return createSessionPromiseRef.current;
+        }
+
+        createSessionPromiseRef.current = (async () => {
+            try {
+                const res = await fetch(`${baseUrl}/chat/sessions`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ model: "llama3.2:3b" }),
+                });
+                if (!res.ok) throw new Error("Failed to create chat session");
+                const json = await res.json();
+                const newId = json?.data?.sessionId;
+                if (newId) {
+                    if (typeof window !== "undefined") {
+                        localStorage.setItem(STORAGE_KEY, newId);
+                    }
+                    sessionIdRef.current = newId;
+                    setSessionId(newId);
+                    return newId;
+                }
+                return null;
+            } catch (err) {
+                console.error("Error creating session:", err);
+                return null;
+            } finally {
+                createSessionPromiseRef.current = null;
+            }
+        })();
+
+        return createSessionPromiseRef.current;
     }, [baseUrl]);
 
     // Initialize session and fetch history
     const initSession = useCallback(async () => {
         if (typeof window === "undefined") return;
+        if (hasInitializedRef.current) return;
+        hasInitializedRef.current = true;
+
         setIsLoadingHistory(true);
         setError(null);
 
@@ -90,6 +120,7 @@ export function useGuestChat() {
                 });
 
                 if (validateRes.ok) {
+                    sessionIdRef.current = existingSessionId;
                     setSessionId(existingSessionId);
                     // Fetch history
                     const historyRes = await fetch(`${baseUrl}/chat/sessions/${existingSessionId}/messages`, {
@@ -116,6 +147,8 @@ export function useGuestChat() {
                     return;
                 } else if (validateRes.status === 404) {
                     localStorage.removeItem(STORAGE_KEY);
+                    sessionIdRef.current = null;
+                    setSessionId(null);
                 }
             } catch (err) {
                 console.warn("Session validation failed, will create a new session:", err);
@@ -156,7 +189,11 @@ export function useGuestChat() {
             setError(null);
 
             // Ensure we have an active session
-            let activeSessionId = sessionId;
+            let activeSessionId =
+                sessionIdRef.current ||
+                sessionId ||
+                (typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null);
+
             if (!activeSessionId) {
                 activeSessionId = await createNewSession();
                 if (!activeSessionId) {
@@ -276,7 +313,7 @@ export function useGuestChat() {
                         if (last && last.role === "assistant" && !last.content) {
                             next[next.length - 1] = {
                                 ...last,
-                                content: "⚠️ Sorry, I encountered an error connecting to the AI assistant. Please verify the server is running or try again shortly.",
+                                content: "Connection timed out. Please try sending your message again.",
                             };
                         }
                         return next;
@@ -293,9 +330,10 @@ export function useGuestChat() {
     // Clear chat and reset session
     const clearChat = useCallback(async () => {
         stopStreaming();
-        if (sessionId) {
+        const currentSessionId = sessionIdRef.current || sessionId;
+        if (currentSessionId) {
             try {
-                await fetch(`${baseUrl}/chat/sessions/${sessionId}`, {
+                await fetch(`${baseUrl}/chat/sessions/${currentSessionId}`, {
                     method: "DELETE",
                 });
             } catch (err) {
@@ -305,6 +343,8 @@ export function useGuestChat() {
         if (typeof window !== "undefined") {
             localStorage.removeItem(STORAGE_KEY);
         }
+        sessionIdRef.current = null;
+        setSessionId(null);
         setMessages([]);
         setError(null);
         await createNewSession();

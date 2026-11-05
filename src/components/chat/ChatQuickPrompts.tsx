@@ -14,7 +14,7 @@ const QUICK_PROMPTS = [
     {
         title: "Tech Stack & Skills",
         desc: "Frameworks, languages, databases",
-        prompt: "What is your tech stack and expertise?",
+        prompt: "What is your tech stack?",
         icon: Code2,
     },
     {
@@ -26,13 +26,13 @@ const QUICK_PROMPTS = [
     {
         title: "Experience & Background",
         desc: "Work history and professional roles",
-        prompt: "What is your professional experience?",
+        prompt: "What is your current work experience?",
         icon: Briefcase,
     },
     {
         title: "Hire & Contact",
         desc: "Availability, email, and social links",
-        prompt: "How can I contact or hire you?",
+        prompt: "How can I contact or hire Appon?",
         icon: Mail,
     },
 ];
