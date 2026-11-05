@@ -3,18 +3,21 @@
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import aos from "aos";
-import "aos/dist/aos.css";
 
 export function AosProvider({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        aos.init({
-            duration: 800,
-            once: true,
-            easing: "ease-out-cubic",
-        });
-        aos.refresh();
+        // Defer AOS initialization past initial paint to eliminate forced reflows during page load
+        const timer = setTimeout(() => {
+            aos.init({
+                duration: 800,
+                once: true,
+                easing: "ease-out-cubic",
+            });
+        }, 120);
+
+        return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {

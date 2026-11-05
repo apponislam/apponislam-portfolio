@@ -1,9 +1,5 @@
-"use client";
-
-import { useEffect } from "react";
 import Rating from "./rating";
 import { iconMap } from "./ui/icons";
-import aos from "aos";
 
 interface ISkills {
     _id: string;
@@ -20,9 +16,6 @@ interface SkillsCardProps {
 }
 
 export default function SkillsCard2({ skills }: SkillsCardProps) {
-    useEffect(() => {
-        aos.refresh();
-    }, []);
 
     return (
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-5xl lg:grid-cols-3">

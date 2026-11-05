@@ -7,19 +7,14 @@ import { Icons } from "@/components/icons";
 import ChipContainer from "./chip-container";
 import { ProjectsInterface } from "./config/projects";
 import { Badge } from "./ui/badge";
-import { useEffect } from "react";
 import { optimizeCloudinaryUrl } from "@/lib/utils";
 import CustomTooltip from "./custom-tooltips";
-import aos from "aos";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-    useEffect(() => {
-        aos.refresh();
-    }, []);
 
     return (
         <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-transparent dark:border-gray-700 flex flex-col h-full justify-between" data-aos="fade-up" data-aos-anchor-placement="top-bottom">

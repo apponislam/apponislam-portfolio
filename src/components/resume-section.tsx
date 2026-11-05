@@ -1,16 +1,10 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import { pagesConfig } from "@/components/config/pages";
 import { ExperienceSection } from "@/components/experience-section";
 import { EducationSection } from "@/components/education-section";
 import { CertificatesSection } from "@/components/certificates-section";
-import aos from "aos";
 
 export function ResumeSection() {
-    useEffect(() => {
-        aos.refresh();
-    }, []);
 
     return (
         <section id="resume" className="md:container space-y-12 py-10 my-14 dark:bg-transparent overflow-hidden">
