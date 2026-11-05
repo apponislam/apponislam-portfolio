@@ -37,12 +37,7 @@ function CodeBlock({ language, value }: { language: string; value: string }) {
         <div className="relative my-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-zinc-100 overflow-hidden text-xs font-mono">
             <div className="flex items-center justify-between px-3.5 py-1.5 bg-zinc-900/90 border-b border-zinc-800 text-[11px] text-zinc-400">
                 <span className="font-medium lowercase tracking-wide">{language || "code"}</span>
-                <button
-                    type="button"
-                    onClick={handleCopy}
-                    className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md hover:text-zinc-100 hover:bg-zinc-800 transition-colors cursor-pointer text-[11px]"
-                    aria-label={copied ? "Copied code" : "Copy code"}
-                >
+                <button type="button" onClick={handleCopy} className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md hover:text-zinc-100 hover:bg-zinc-800 transition-colors cursor-pointer text-[11px]" aria-label={copied ? "Copied code" : "Copy code"}>
                     {copied ? (
                         <>
                             <Check className="w-3 h-3 text-emerald-400" aria-hidden="true" />
@@ -63,15 +58,7 @@ function CodeBlock({ language, value }: { language: string; value: string }) {
     );
 }
 
-export const ChatMessageList: React.FC<ChatMessageListProps> = ({
-    messages,
-    isStreaming,
-    isLoadingHistory,
-    hasMoreOlder = false,
-    isLoadingOlder = false,
-    onLoadOlder,
-    onSelectPrompt,
-}) => {
+export const ChatMessageList: React.FC<ChatMessageListProps> = ({ messages, isStreaming, isLoadingHistory, hasMoreOlder = false, isLoadingOlder = false, onLoadOlder, onSelectPrompt }) => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const topSentinelRef = useRef<HTMLDivElement>(null);
@@ -130,7 +117,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
                 root: container,
                 threshold: 0.1,
                 rootMargin: "60px 0px 0px 0px",
-            }
+            },
         );
 
         observer.observe(sentinel);
@@ -184,24 +171,16 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
     }
 
     return (
-        <div
-            ref={scrollContainerRef}
-            onScroll={handleScroll}
-            className="flex-1 overflow-y-auto p-4 space-y-4 text-sm scrollbar-thin"
-        >
+        <div ref={scrollContainerRef} onScroll={handleScroll} className="flex-1 overflow-y-auto p-4 space-y-4 text-sm scrollbar-thin">
             {/* Top sentinel for lazy loading older messages when scrolling top */}
-            <div ref={topSentinelRef} className="w-full flex items-center justify-center min-h-[4px]">
+            <div ref={topSentinelRef} className="w-full flex items-center justify-center min-h-1">
                 {isLoadingOlder && (
                     <div className="flex items-center gap-2 py-2 text-xs text-zinc-500 animate-in fade-in-50 duration-150">
                         <div className="w-3.5 h-3.5 rounded-full border-2 border-zinc-400 dark:border-zinc-600 border-t-zinc-900 dark:border-t-zinc-100 animate-spin" />
                         <span>Loading older messages...</span>
                     </div>
                 )}
-                {!hasMoreOlder && messages.length > 0 && (
-                    <div className="py-1 text-[11px] text-zinc-400 dark:text-zinc-600 font-medium select-none">
-                        Beginning of conversation
-                    </div>
-                )}
+                {!hasMoreOlder && messages.length > 0 && <div className="py-1 text-[11px] text-zinc-400 dark:text-zinc-600 font-medium select-none">Beginning of conversation</div>}
             </div>
 
             {messages.map((msg, index) => {
@@ -210,10 +189,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
                 const isGeneratingCurrent = !isUser && isLast && isStreaming;
 
                 return (
-                    <div
-                        key={msg.id || `${msg.role}-${msg.createdAt || index}`}
-                        className={`flex gap-2.5 ${isUser ? "justify-end" : "justify-start"} animate-in fade-in-50 duration-150`}
-                    >
+                    <div key={msg.id || `${msg.role}-${msg.createdAt || index}`} className={`flex gap-2.5 ${isUser ? "justify-end" : "justify-start"} animate-in fade-in-50 duration-150`}>
                         {!isUser && (
                             <div className="w-7 h-7 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 shrink-0 mt-0.5 shadow-xs">
                                 <Image src={apponImg} alt="Appon AI" width={28} height={28} className="w-full h-full object-cover" />
@@ -222,9 +198,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
 
                         <div
                             className={`relative max-w-[85%] rounded-2xl px-4 py-2.5 shadow-xs ${
-                                isUser
-                                    ? "bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 rounded-tr-xs ml-auto"
-                                    : "bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-900 dark:text-zinc-100 rounded-tl-xs"
+                                isUser ? "bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 rounded-tr-xs ml-auto" : "bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-900 dark:text-zinc-100 rounded-tl-xs"
                             }`}
                         >
                             {isUser ? (
@@ -235,12 +209,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
                                         <ReactMarkdown
                                             components={{
                                                 a: ({ href, children }) => (
-                                                    <a
-                                                        href={href}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="font-medium underline underline-offset-4 decoration-zinc-400 dark:decoration-zinc-500 hover:decoration-zinc-900 dark:hover:decoration-zinc-100 transition-colors"
-                                                    >
+                                                    <a href={href} target="_blank" rel="noopener noreferrer" className="font-medium underline underline-offset-4 decoration-zinc-400 dark:decoration-zinc-500 hover:decoration-zinc-900 dark:hover:decoration-zinc-100 transition-colors">
                                                         {children}
                                                     </a>
                                                 ),
@@ -253,10 +222,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
                                                     }
 
                                                     return (
-                                                        <code
-                                                            className="px-1.5 py-0.5 rounded-md bg-zinc-200/70 dark:bg-zinc-800 text-[12px] font-mono border border-zinc-300/40 dark:border-zinc-700/40 text-zinc-900 dark:text-zinc-100"
-                                                            {...props}
-                                                        >
+                                                        <code className="px-1.5 py-0.5 rounded-md bg-zinc-200/70 dark:bg-zinc-800 text-[12px] font-mono border border-zinc-300/40 dark:border-zinc-700/40 text-zinc-900 dark:text-zinc-100" {...props}>
                                                             {children}
                                                         </code>
                                                     );
@@ -265,11 +231,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
                                                 ul: ({ children }) => <ul className="list-disc pl-4 space-y-1 mb-2">{children}</ul>,
                                                 ol: ({ children }) => <ol className="list-decimal pl-4 space-y-1 mb-2">{children}</ol>,
                                                 li: ({ children }) => <li className="leading-relaxed">{children}</li>,
-                                                blockquote: ({ children }) => (
-                                                    <blockquote className="border-l-2 border-zinc-400 dark:border-zinc-600 pl-3 my-2 italic text-zinc-600 dark:text-zinc-400">
-                                                        {children}
-                                                    </blockquote>
-                                                ),
+                                                blockquote: ({ children }) => <blockquote className="border-l-2 border-zinc-400 dark:border-zinc-600 pl-3 my-2 italic text-zinc-600 dark:text-zinc-400">{children}</blockquote>,
                                             }}
                                         >
                                             {msg.content}
@@ -286,9 +248,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
                                     ) : null}
 
                                     {/* Streaming cursor */}
-                                    {isGeneratingCurrent && msg.content && (
-                                        <span className="inline-block w-1.5 h-3.5 ml-0.5 bg-zinc-900 dark:bg-zinc-100 align-middle animate-pulse" aria-hidden="true" />
-                                    )}
+                                    {isGeneratingCurrent && msg.content && <span className="inline-block w-1.5 h-3.5 ml-0.5 bg-zinc-900 dark:bg-zinc-100 align-middle animate-pulse" aria-hidden="true" />}
                                 </div>
                             )}
                         </div>
