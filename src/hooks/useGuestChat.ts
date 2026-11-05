@@ -108,7 +108,7 @@ export function useGuestChat() {
                                     content: m.content,
                                     status: m.status,
                                     createdAt: m.createdAt,
-                                }))
+                                })),
                             );
                         }
                     }
@@ -287,7 +287,7 @@ export function useGuestChat() {
                 abortControllerRef.current = null;
             }
         },
-        [baseUrl, createNewSession, isStreaming, sessionId]
+        [baseUrl, createNewSession, isStreaming, sessionId],
     );
 
     // Clear chat and reset session

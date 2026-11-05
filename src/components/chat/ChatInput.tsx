@@ -10,12 +10,7 @@ interface ChatInputProps {
     disabled?: boolean;
 }
 
-export const ChatInput: React.FC<ChatInputProps> = ({
-    onSendMessage,
-    onStopStreaming,
-    isStreaming,
-    disabled = false,
-}) => {
+export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, onStopStreaming, isStreaming, disabled = false }) => {
     const [input, setInput] = useState("");
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -55,13 +50,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                     disabled={disabled}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder={
-                        isStreaming
-                            ? "AI is thinking..."
-                            : disabled
-                            ? "Connecting to assistant..."
-                            : "Ask a question..."
-                    }
+                    placeholder={isStreaming ? "AI is thinking..." : disabled ? "Connecting to assistant..." : "Ask a question..."}
                     className="flex-1 max-h-28 resize-none border-0 bg-transparent px-2.5 py-1.5 text-xs sm:text-[13px] text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:outline-hidden leading-relaxed scrollbar-thin"
                 />
 
@@ -92,9 +81,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 </div>
             </div>
 
-            <p className="mt-1.5 text-center text-[10px] text-zinc-400 dark:text-zinc-500 select-none tracking-tight">
-                Powered by Llama 3.2 · Appon Islam Portfolio
-            </p>
+            <p className="mt-1.5 text-center text-[10px] text-zinc-400 dark:text-zinc-500 select-none tracking-tight">Powered by Llama 3.2 · Appon Islam Portfolio</p>
         </div>
     );
 };

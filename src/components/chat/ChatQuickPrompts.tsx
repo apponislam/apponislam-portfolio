@@ -43,13 +43,7 @@ export const ChatQuickPrompts: React.FC<ChatQuickPromptsProps> = ({ onSelectProm
             {/* Minimal Avatar Greeting */}
             <div className="relative">
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-zinc-200 dark:border-zinc-800 shadow-md mx-auto">
-                    <Image
-                        src={apponImg}
-                        alt="Appon Islam"
-                        width={64}
-                        height={64}
-                        className="w-full h-full object-cover"
-                    />
+                    <Image src={apponImg} alt="Appon Islam" width={64} height={64} className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 shadow-xs">
                     <Sparkles className="w-3 h-3" aria-hidden="true" />
@@ -57,12 +51,8 @@ export const ChatQuickPrompts: React.FC<ChatQuickPromptsProps> = ({ onSelectProm
             </div>
 
             <div className="space-y-1">
-                <h4 className="font-heading text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-                    Ask Appon&apos;s AI
-                </h4>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-[270px] mx-auto leading-relaxed">
-                    Trained on my projects, skills, and background. Select a question below or write your own.
-                </p>
+                <h4 className="font-heading text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Ask Appon&apos;s AI</h4>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-67.5 mx-auto leading-relaxed">Trained on my projects, skills, and background. Select a question below or write your own.</p>
             </div>
 
             {/* Clean Prompt Cards */}
@@ -82,12 +72,8 @@ export const ChatQuickPrompts: React.FC<ChatQuickPromptsProps> = ({ onSelectProm
                                     <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                                 </span>
                                 <div className="flex flex-col min-w-0">
-                                    <span className="font-medium text-xs text-zinc-900 dark:text-zinc-100 truncate">
-                                        {item.title}
-                                    </span>
-                                    <span className="text-[11px] text-zinc-500 dark:text-zinc-400 truncate">
-                                        {item.desc}
-                                    </span>
+                                    <span className="font-medium text-xs text-zinc-900 dark:text-zinc-100 truncate">{item.title}</span>
+                                    <span className="text-[11px] text-zinc-500 dark:text-zinc-400 truncate">{item.desc}</span>
                                 </div>
                             </div>
                             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2" />
