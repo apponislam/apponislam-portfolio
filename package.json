@@ -53,9 +53,11 @@
         "typescript": "^5"
     },
     "browserslist": [
-        "defaults and fully supports es6-module",
-        "last 2 versions",
-        "> 0.5%",
+        "Chrome >= 93",
+        "Firefox >= 90",
+        "Safari >= 15.4",
+        "Edge >= 93",
+        "iOS >= 15.4",
         "not dead"
     ]
 }
