@@ -14,13 +14,13 @@ export function HeroSection() {
                 <div className="relative w-full">
                     <Image
                         src={apponislam}
-                        height={100}
-                        width={100}
+                        height={256}
+                        width={256}
                         priority
                         fetchPriority="high"
-                        sizes="(max-width: 768px) 160px, 256px"
+                        sizes="(max-width: 640px) 192px, 256px"
                         className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary dark:border-white dark:bg-white mx-auto"
-                        alt={`${siteConfig.name}-img`}
+                        alt={`${siteConfig.name} profile photo`}
                     />
                     {siteConfig.showStatus && (
                         <div className="absolute top-2 left-1/2 translate-x-[15%] md:translate-x-[25%] flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-800 dark:bg-emerald-800 shadow-[0_0_15px_rgba(6,95,70,0.5)] text-[11px] md:text-xs font-bold text-white transition-all duration-300 hover:scale-105">

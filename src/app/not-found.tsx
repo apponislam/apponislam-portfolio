@@ -1,5 +1,4 @@
 import React from "react";
-import "./globals.css";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
@@ -9,7 +8,7 @@ export default function Custom404() {
     return (
         <div className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-12">
             {/* Ambient background glows */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[140px]" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 h-125 w-125 rounded-full bg-primary/10 blur-[140px]" />
 
             <div className="max-w-md w-full space-y-6">
                 {/* 404 Glowing Number */}

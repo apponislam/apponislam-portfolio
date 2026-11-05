@@ -7,11 +7,10 @@ import { Icons } from "@/components/icons";
 import ChipContainer from "./chip-container";
 import { ProjectsInterface } from "./config/projects";
 import { Badge } from "./ui/badge";
-import aos from "aos";
-import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { optimizeCloudinaryUrl } from "@/lib/utils";
 import CustomTooltip from "./custom-tooltips";
+import aos from "aos";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
@@ -19,13 +18,13 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
     useEffect(() => {
-        aos.init();
+        aos.refresh();
     }, []);
 
     return (
         <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-transparent dark:border-gray-700 flex flex-col h-full justify-between" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <div className="relative w-full h-50 shrink-0">
-                <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt={`${project.companyName} logo`} fill priority />
+                <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt={`${project.companyName} logo`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px" />
                 {/* <Image className="rounded-lg border border-gray-200 dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
             </div>
             <div className="pt-5 space-y-3 flex-1 flex flex-col">
