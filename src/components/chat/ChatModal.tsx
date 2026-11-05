@@ -13,11 +13,20 @@ interface ChatModalProps {
     onClose: () => void;
     isOnline?: boolean | null;
 }
-
 export const ChatModal: React.FC<ChatModalProps> = ({ isOpen, onClose, isOnline }) => {
     const [showConfirmClear, setShowConfirmClear] = useState(false);
-
-    const { messages, isStreaming, isLoadingHistory, isOnline: hookIsOnline, sendMessage, stopStreaming, clearChat } = useGuestChat();
+    const {
+        messages,
+        isStreaming,
+        isLoadingHistory,
+        hasMoreOlder,
+        isLoadingOlder,
+        loadOlderMessages,
+        isOnline: hookIsOnline,
+        sendMessage,
+        stopStreaming,
+        clearChat,
+    } = useGuestChat();
 
     // Use online status from hook if available, fallback to prop
     const onlineStatus = hookIsOnline ?? isOnline;
@@ -128,7 +137,15 @@ export const ChatModal: React.FC<ChatModalProps> = ({ isOpen, onClose, isOnline 
             )}
 
             {/* Messages Body */}
-            <ChatMessageList messages={messages} isStreaming={isStreaming} isLoadingHistory={isLoadingHistory} onSelectPrompt={sendMessage} />
+            <ChatMessageList
+                messages={messages}
+                isStreaming={isStreaming}
+                isLoadingHistory={isLoadingHistory}
+                hasMoreOlder={hasMoreOlder}
+                isLoadingOlder={isLoadingOlder}
+                onLoadOlder={loadOlderMessages}
+                onSelectPrompt={sendMessage}
+            />
 
             {/* Input Footer */}
             <ChatInput onSendMessage={sendMessage} onStopStreaming={stopStreaming} isStreaming={isStreaming} disabled={isLoadingHistory} />

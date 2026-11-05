@@ -23,6 +23,8 @@ export function useGuestChat() {
     const [sessionId, setSessionId] = useState<string | null>(null);
     const [isStreaming, setIsStreaming] = useState(false);
     const [isLoadingHistory, setIsLoadingHistory] = useState(false);
+    const [hasMoreOlder, setHasMoreOlder] = useState(false);
+    const [isLoadingOlder, setIsLoadingOlder] = useState(false);
     const [isOnline, setIsOnline] = useState<boolean | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -30,6 +32,7 @@ export function useGuestChat() {
     const sessionIdRef = useRef<string | null>(null);
     const createSessionPromiseRef = useRef<Promise<string | null> | null>(null);
     const hasInitializedRef = useRef(false);
+    const isLoadingOlderRef = useRef<boolean>(false);
     const baseUrl = getChatApiBaseUrl();
 
     // Check backend & Ollama health
@@ -122,25 +125,31 @@ export function useGuestChat() {
                 if (validateRes.ok) {
                     sessionIdRef.current = existingSessionId;
                     setSessionId(existingSessionId);
-                    // Fetch history
-                    const historyRes = await fetch(`${baseUrl}/chat/sessions/${existingSessionId}/messages`, {
-                        method: "GET",
-                        headers: { Accept: "application/json" },
-                    });
+                    // Fetch initial latest 20 messages (returned in chronological order)
+                    const historyRes = await fetch(
+                        `${baseUrl}/chat/sessions/${existingSessionId}/messages?limit=20`,
+                        {
+                            method: "GET",
+                            headers: { Accept: "application/json" },
+                        }
+                    );
 
                     if (historyRes.ok) {
                         const historyJson = await historyRes.json();
                         const historyData = historyJson?.data;
+                        const historyMeta = historyJson?.meta;
+
                         if (Array.isArray(historyData)) {
-                            setMessages(
-                                historyData.map((m: any) => ({
-                                    id: m._id || m.id,
-                                    role: m.role,
-                                    content: m.content,
-                                    status: m.status,
-                                    createdAt: m.createdAt,
-                                })),
-                            );
+                            const formatted: ChatMessage[] = historyData.map((m: any) => ({
+                                id: m._id || m.id,
+                                role: m.role,
+                                content: m.content,
+                                status: m.status,
+                                createdAt: m.createdAt,
+                            }));
+
+                            setMessages(formatted);
+                            setHasMoreOlder(Boolean(historyMeta?.hasMore ?? historyMeta?.hasNext));
                         }
                     }
                     setIsLoadingHistory(false);
@@ -327,6 +336,73 @@ export function useGuestChat() {
         [baseUrl, createNewSession, isStreaming, sessionId],
     );
 
+    // Load previous page of older messages when scrolling to top (cursor-based before lazy load)
+    const loadOlderMessages = useCallback(async (): Promise<number> => {
+        const currentSessionId = sessionIdRef.current || sessionId;
+        if (!currentSessionId || !hasMoreOlder || isLoadingOlderRef.current || isStreaming) {
+            return 0;
+        }
+
+        // Get the oldest message's createdAt timestamp or id currently in state
+        const oldestMsg = messages.length > 0 ? messages[0] : null;
+        const beforeCursor = oldestMsg?.createdAt || oldestMsg?.id;
+        if (!beforeCursor) {
+            setHasMoreOlder(false);
+            return 0;
+        }
+
+        isLoadingOlderRef.current = true;
+        setIsLoadingOlder(true);
+
+        try {
+            const encoded = encodeURIComponent(beforeCursor);
+            const res = await fetch(
+                `${baseUrl}/chat/sessions/${currentSessionId}/messages?limit=20&before=${encoded}`,
+                {
+                    method: "GET",
+                    headers: { Accept: "application/json" },
+                }
+            );
+
+            if (res.ok) {
+                const json = await res.json();
+                const olderRaw = json?.data;
+                const meta = json?.meta;
+
+                if (Array.isArray(olderRaw) && olderRaw.length > 0) {
+                    const formatted: ChatMessage[] = olderRaw.map((m: any) => ({
+                        id: m._id || m.id,
+                        role: m.role,
+                        content: m.content,
+                        status: m.status,
+                        createdAt: m.createdAt,
+                    }));
+
+                    // Backend returns matching older messages in chronological order
+                    // Prepend older messages while deduplicating by ID
+                    setMessages((prev) => {
+                        const existingIds = new Set(prev.map((m) => m.id).filter(Boolean));
+                        const uniqueOlder = formatted.filter((m) => !m.id || !existingIds.has(m.id));
+                        return [...uniqueOlder, ...prev];
+                    });
+
+                    setHasMoreOlder(Boolean(meta?.hasMore ?? meta?.hasNext));
+                    return formatted.length;
+                } else {
+                    setHasMoreOlder(false);
+                }
+            } else {
+                setHasMoreOlder(false);
+            }
+        } catch (err) {
+            console.error("Failed to load older chat messages:", err);
+        } finally {
+            isLoadingOlderRef.current = false;
+            setIsLoadingOlder(false);
+        }
+        return 0;
+    }, [baseUrl, hasMoreOlder, isStreaming, messages, sessionId]);
+
     // Clear chat and reset session
     const clearChat = useCallback(async () => {
         stopStreaming();
@@ -346,6 +422,8 @@ export function useGuestChat() {
         sessionIdRef.current = null;
         setSessionId(null);
         setMessages([]);
+        setHasMoreOlder(false);
+        setIsLoadingOlder(false);
         setError(null);
         await createNewSession();
     }, [baseUrl, createNewSession, sessionId, stopStreaming]);
@@ -355,6 +433,9 @@ export function useGuestChat() {
         sessionId,
         isStreaming,
         isLoadingHistory,
+        hasMoreOlder,
+        isLoadingOlder,
+        loadOlderMessages,
         isOnline,
         error,
         sendMessage,
